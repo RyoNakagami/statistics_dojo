@@ -1,0 +1,62 @@
+project:
+  type: book
+  preview:
+    port: 4200
+    browser: false
+
+
+book:
+  title: "statistics dojo"
+  repo-url: https://github.com/RyoNakagami/statistics_dojo
+  site-url: https://ryonakagami.github.io/statistics_dojo/
+  google-analytics: 
+    tracking-id: "G-KHFEF7P8W9"
+  favicon: ./img/favicon.ico
+  sharing: twitter
+  sidebar:
+      tools:
+       - text: Blog Series
+         icon: brush
+         menu:
+         - text: Ryo's Tech Blog
+           href: https://ryonakagami.github.io/
+           aria-label: blog-general
+         - text: OhGoshGit!?!
+           href: https://ohgoshgit.github.io/
+           aria-label: blog-ogg
+    
+  repo-actions: [edit, issue]
+  page-footer:
+    center:
+      - text: "© Copyright RyoNak"
+      - text: "License"
+        href: LICENSE
+  chapters:
+    - index.qmd
+    - posts/test.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    include-in-header: 
+      - include/setup_googletagmanager.html
+      - include/custom_webfont.html
+    include-in-body: include/setup_googletagmanager_body.html
+    lang: ja_JP.UTF-8
+    number-depth: 1
+    theme: 
+      light: cosmo
+      dark: darkly
+    code-copy: true
+    code-fold: true
+    code-overflow: wrap
+    date-format: "iso"
+    bibliography: references.bib
+    biblatexoptions: bibstyle=jauthoryear,citestyle=numeric,natbib=true
+    csl: reference.csl
+    mainfont: "Noto Sans JP"
+    monofont: monospace

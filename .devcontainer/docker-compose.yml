@@ -1,0 +1,20 @@
+services:
+  rstudio:
+    user: "rstudio"
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - "../:/home/rstudio/workspaces"
+      - TinyTeX:/home/rstudio/.TinyTex
+      - RenvCache_dojo:/home/rstudio/.cache/R
+    
+    tty: true
+volumes:
+  TinyTeX:
+    external: true
+  RenvCache_dojo:
+    external: true
+    

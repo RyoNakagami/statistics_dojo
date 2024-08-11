@@ -1,0 +1,26 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "dockerComposeFile": "docker-compose.yml",
+    // container name
+    "runArgs": ["--name", "statistics-dojo-dev"],
+    "service":"rstudio",
+    "remoteUser": "rstudio",
+    // user when log into the container
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "REditorSupport.r",
+                "quarto.quarto",
+                "mhutchie.git-graph"
+            ]
+        }
+    },
+    "forwardPorts": [
+        4200
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/workspaces,type=bind,consistency=cached", 
+    "workspaceFolder": "/home/rstudio/workspaces",
+    // command after start-up
+    //"postStartCommand": "bash ../custom_script/update-r.sh"
+    "shutdownAction": "stopCompose"
+}
