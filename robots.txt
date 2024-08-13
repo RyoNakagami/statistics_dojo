@@ -1,1 +1,1 @@
-Sitemap: https://ryonakagami.github.io/statistics-dojo/sitemap.xml
+Sitemap: https://ryonakagami.github.io/statistics_dojo/sitemap.xml
