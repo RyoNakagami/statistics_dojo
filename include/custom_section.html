@@ -1,0 +1,8 @@
+<script>
+    var custom_title = document.querySelectorAll('.custom_problem .theorem-title');
+    
+    for (let i = 0; i < custom_title.length; i++ ) {
+       var mod_name = custom_title[i].innerHTML;
+       custom_title[i].innerHTML = mod_name.replace("Exercise", "Problem");
+    };
+    </script>
