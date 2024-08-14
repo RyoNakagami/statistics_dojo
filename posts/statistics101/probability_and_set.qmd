@@ -1,0 +1,360 @@
+---
+title: "集合演算と確率"
+author: "Ryo Nakagtami"
+date: "2024-08-15"
+date-modified: last-modified
+code-fold: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+---
+
+## 集合演算
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+以下の事象を簡単に表せ：
+
+$$
+\begin{align}
+&(A \cup B) \cup (C \cup B^c)\tag{a}\\
+&A \cap (B \backslash A)\tag{b}\\
+&(A\cap B) \cup (A \backslash B)\tag{c}
+\end{align}
+$$
+
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; (a)</strong>
+
+結合法則より
+
+$$
+\begin{align*}
+(A\cup C) \cap (B \cup B^c) = (A\cup C) \cup \Omega = \Omega
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; (b)</strong>
+
+結合法則より
+
+$$
+\begin{align*}
+A \cap (B \cap A^c) = (A\cap A^c) \cap B = \emptyset \cap B = \emptyset
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; (c)</strong>
+
+分配法則より
+
+$$
+\begin{align*}
+(A\cap B) \cup (A \cap B^c) = A \cap (B \cup B^c) = A\cap \Omega = A
+\end{align*}
+$$
+
+:::
+
+
+
+
+
+
+
+## 事象と確率
+
+<strong > &#9654;&nbsp; Key Points</strong>
+
+- 標本点がすべて同程度に確からしいのみ，集合の要素数と有限標本空間の要素数の割り算で確率が計算できる
+
+<br>
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+A, B, Cを事象とする．次の事象を式で表せ
+
+1. A,B,CのうちAだけが発生する
+2. A,B,Cのうち少なくとも２つが起きる
+3. A,B,Cどれも起きない
+4. A,B,Cのうち，２つ以上の事象は同時には起きない
+5. A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; (1) A,B,CのうちAだけが発生する</strong>
+
+$$
+A - (B\cup C) = A \cap B^c \cap C^c
+$$
+
+<strong > &#9654;&nbsp; (2) A,B,Cのうち少なくとも２つが起きる</strong>
+
+$$
+(A\cap B) \cup (B\cap C) \cup (A\cap C)
+$$
+
+<strong > &#9654;&nbsp; (3) A,B,Cどれも起きない</strong>
+
+$$
+(A\cup B\cup C)^c = A^c \cap B^c \cap C^c
+$$
+
+<strong > &#9654;&nbsp; (4) A,B,Cのうち，２つ以上の事象は同時には起きない</strong>
+
+(2)の余集合に相当するので
+
+$$
+\begin{align*}
+&(A - (B\cup C)) \cup (B - (A\cup C)) \cup (C - (A\cup B)) \cup (A^c \cap B^c \cap C^c)\\
+&=((A\cap B) \cup (B\cap C) \cup (A\cap C))^c
+\end{align*}
+$$
+
+RでRHSとLHSが一致するかを以下確認します．
+
+
+```{r}
+library(ggVennDiagram)
+library(ggplot2)
+set.seed(42)
+
+# genesがsample space omegaに相当
+genes <- paste("gene",1:1000,sep="")
+x <- list(A=sample(genes,300),
+          B=sample(genes,300),
+          C=sample(genes,300))
+
+ggVennDiagram(x)
+
+# RHS setoperation
+rhs_set <- list(AB_inter=intersect(x$A, x$B),
+                BC_inter=intersect(x$B, x$C),
+                AC_inter=intersect(x$A, x$C))
+union_set <- Reduce(union, rhs_set)
+rhs_answer <- setdiff(genes, union_set)
+
+# LHS setoperation
+y <- list(A=setdiff(x$A, union(x$B, x$C)),
+          B=setdiff(x$B, union(x$A, x$C)),
+          C=setdiff(x$C, union(x$A, x$B)),
+          D=setdiff(genes, Reduce(union, x)))
+lhs_answer <- Reduce(union, y)
+```
+
+結果を確認してみると
+
+```{r}
+#| code-fold: false
+# visualize
+ggVennDiagram(list(LHS=lhs_answer, RHS=rhs_answer))
+setequal(lhs_answer, rhs_answer)
+```
+
+上記のように結果が一致することを確かめられました．
+
+
+
+<strong > &#9654;&nbsp; (5) A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか</strong>
+
+$$
+(A\cap B\cap C) \cup (A^c \cap B^c \cap C^c)
+$$
+
+
+:::
+
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには
+
+$$
+[abc|\emptyset|\emptyset]
+$$
+
+と表記するとする．このとき，すべての標本点は何通り存在するか？
+
+:::
+
+</div>
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+３つのボールについて３つのアサインメント先がそれぞれ考えられるので，
+
+$$
+3^3 = 27 \text{通り}
+$$
+
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
+
+- 第１の箱に３つとも入ったときには $[3,0,0]$
+- 第１の箱に2つ, 第２の箱に１つ入ったときには $[2,1,0]$
+
+と表記するとする．このとき，すべての標本点は何通り存在するか？
+
+:::
+
+</div>
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+区別できないボール３つに対して，両端を含むボールの間４つの候補から仕切りを２つ選ぶ問題と同じみなせるので
+４つから２つ重複ありの組み合わせを選ぶ問題, ${}_4H_2$ と考えることができる．
+
+したがって，
+
+$$
+\begin{align*}
+{}_4H_2 = {}_{4+2-1}C_2 = 10\text{通り}
+\end{align*}
+$$
+
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
+第１と第２の箱が空ではない確率を求めよ．
+
+:::
+
+</div>
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$[2, 1, 0], [1, 1, 1], [1, 2, 0]$が条件を標本点となりことから，多項分布の問題の問題と考えることができます．
+
+$$
+\begin{align*}
+P((2, 1, 0)) &= \frac{3!}{2!1!}\left(\frac{1}{3}\right)^2\left(\frac{1}{3}\right)^1\\
+P((1, 1, 1)) &= \frac{3!}{1!1!1!}\left(\frac{1}{3}\right)\left(\frac{1}{3}\right)\left(\frac{1}{3}\right)\\
+P((1, 2, 0)) &= \frac{3!}{1!2!}\left(\frac{1}{3}\right)^1\left(\frac{1}{3}\right)^2
+\end{align*}
+$$
+
+それぞれの事象は排反なので，和を取ることで第１と第２の箱が空ではない確率が求まります．したがって，
+
+$$
+P(\text{第１と第２の箱が空ではない確率})=\frac{4}{9}
+$$
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:gray;'>
+<strong style="color:red">WARNING !</strong> <br> 
+
+- 標本点 $[2, 1, 0], [1, 1, 1], [1, 2, 0]$, 標本空間の要素数10通りというところから，$4/10=0.4$と計算することはできない
+- 「**標本点がすべて同程度に確からしい**」という仮定を満たしていないのが理由
+
+</div>
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
+第１の箱に１つ以上のボールが入っている確率を求めよ
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+「第１の箱に１つ以上のボールが入っている」という事象Aは「第１の箱に０このボールが入っている」の余事象となるので $1 - \Pr(A^c)$で求まる．したがって，
+
+$$
+1 - \Pr(A^c) = 1 - \left(\frac{2}{3}\right)^3 = \frac{19}{27}
+$$
+
+が答えとなる．
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+A国の人は10%がrich, 7%がfamous, 5%がrich and famousであることが知られている．このとき無作為に選ばれた１人について，以下の事象の確率を求めよ
+
+1. $\Pr(\text{not rich})$ 
+2. $\Pr(\text{rich but not famous})$
+3. $\Pr(\text{rich or famous})$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; (1) $\Pr(\text{not rich})$ </strong>
+
+事象richを$R$と表すと，事象not richは$R^c$と表せるので
+
+$$
+\Pr(\text{not rich}) = 1 - \Pr(R) = 0.9
+$$
+
+<strong > &#9654;&nbsp; (2) $\Pr(\text{rich but not famous})$</strong>
+
+事象famousを$F$と表すと，事象rich but not famousは$R \cap F^c$．したがって，
+
+$$
+\begin{align*}
+\Pr(\text{rich but not famous}) &= \Pr(R \cap F^c)\\
+                                &= \Pr(R \backslash F)\\
+                                &= \Pr(R) - \Pr(R\cap F)\\
+                                &= 0.1 - 0.05 = 0.05
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; (3) $\Pr(\text{rich or famous})$</strong>
+
+事象rich or famousは$R\cup F$と表現できるので
+
+$$
+\Pr(\text{rich or famous}) = \Pr(R) + \Pr(F) - \Pr(R\cap F) = 0.12
+$$
+
+
+:::

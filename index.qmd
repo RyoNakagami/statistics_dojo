@@ -1,5 +1,11 @@
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
-This is a Quarto book.
+このQuarto Bookは統計関係の基礎問題練習道場となります．
+一部，Rでの可視化を実施しています．
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+### 参考文献
+
+|Title|著者|ISBN|
+|---|---|---|
+|確率そのまま使える答えの書き方|金川 秀也 著|9784061539624|
+|例題で学べる確率モデル|成田 清正 著|9784320019126|
