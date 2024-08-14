@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./posts/test.html" rel="next">
+<link href="./posts/statistics101/chapter_header.html" rel="next">
 <link href="././img/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -102,7 +102,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,6 +132,11 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
             OhGoshGit!?!
             </a>
           </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://ryonakagami.github.io/statistics-for-regression-monkey/">
+            Regression Monkeys
+            </a>
+          </li>
       </ul>
     </div>
     <a href="https://github.com/RyoNakagami/statistics_dojo" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
@@ -150,25 +155,36 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./posts/test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1: 確率基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,7 +203,10 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <ul class="collapse">
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献">参考文献</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -213,15 +232,46 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<section id="welcome" class="level1 unnumbered">
+<h1 class="unnumbered">Welcome</h1>
+<p>このQuarto Bookは統計関係の基礎問題練習道場となります． 一部，Rでの可視化を実施しています．</p>
+<section id="参考文献" class="level3">
+<h3 class="anchored" data-anchor-id="参考文献">参考文献</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>著者</th>
+<th>ISBN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>確率そのまま使える答えの書き方</td>
+<td>金川 秀也 著</td>
+<td>9784061539624</td>
+</tr>
+<tr class="even">
+<td>例題で学べる確率モデル</td>
+<td>成田 清正 著</td>
+<td>9784320019126</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
+</section>
 
 </main> <!-- /main -->
+<script>
+    var custom_title = document.querySelectorAll('.custom_problem .theorem-title');
+    
+    for (let i = 0; i < custom_title.length; i++ ) {
+       var mod_name = custom_title[i].innerHTML;
+       custom_title[i].innerHTML = mod_name.replace("Exercise", "Problem");
+    };
+    </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -790,8 +840,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./posts/test.html" class="pagination-link" aria-label="Welcome">
-        <span class="nav-page-text">Welcome</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./posts/statistics101/chapter_header.html" class="pagination-link" aria-label="Part 1: 確率基礎">
+        <span class="nav-page-text">Part 1: 確率基礎</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

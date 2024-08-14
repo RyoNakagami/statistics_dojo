@@ -4,39 +4,62 @@
     "href": "index.html",
     "title": "statistics dojo",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
-    "crumbs": [
-      "Preface"
-    ]
-  },
-  {
-    "objectID": "posts/test.html",
-    "href": "posts/test.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Code\n1 + 1\n\n\n[1] 2\n\n\nCode\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level.",
+    "text": "Welcome\nこのQuarto Bookは統計関係の基礎問題練習道場となります． 一部，Rでの可視化を実施しています．\n\n参考文献\n\n\n\nTitle\n著者\nISBN\n\n\n\n\n確率そのまま使える答えの書き方\n金川 秀也 著\n9784061539624\n\n\n例題で学べる確率モデル\n成田 清正 著\n9784320019126",
     "crumbs": [
       "Welcome"
     ]
   },
   {
+    "objectID": "posts/statistics101/probability_and_set.html",
+    "href": "posts/statistics101/probability_and_set.html",
+    "title": "1  集合演算と確率",
+    "section": "",
+    "text": "集合演算",
+    "crumbs": [
+      "Part 1: 確率基礎",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>集合演算と確率</span>"
+    ]
+  },
+  {
+    "objectID": "posts/statistics101/probability_and_set.html#集合演算",
+    "href": "posts/statistics101/probability_and_set.html#集合演算",
+    "title": "1  集合演算と確率",
+    "section": "",
+    "text": "Exercise 1.1 \n以下の事象を簡単に表せ：\n\\[\n\\begin{align}\n&(A \\cup B) \\cup (C \\cup B^c)\\tag{a}\\\\\n&A \\cap (B \\backslash A)\\tag{b}\\\\\n&(A\\cap B) \\cup (A \\backslash B)\\tag{c}\n\\end{align}\n\\]\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n ▶  (a)\n結合法則より\n\\[\n\\begin{align*}\n(A\\cup C) \\cap (B \\cup B^c) = (A\\cup C) \\cup \\Omega = \\Omega\n\\end{align*}\n\\]\n ▶  (b)\n結合法則より\n\\[\n\\begin{align*}\nA \\cap (B \\cap A^c) = (A\\cap A^c) \\cap B = \\emptyset \\cap B = \\emptyset\n\\end{align*}\n\\]\n ▶  (c)\n分配法則より\n\\[\n\\begin{align*}\n(A\\cap B) \\cup (A \\cap B^c) = A \\cap (B \\cup B^c) = A\\cap \\Omega = A\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Part 1: 確率基礎",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>集合演算と確率</span>"
+    ]
+  },
+  {
+    "objectID": "posts/statistics101/probability_and_set.html#事象と確率",
+    "href": "posts/statistics101/probability_and_set.html#事象と確率",
+    "title": "1  集合演算と確率",
+    "section": "事象と確率",
+    "text": "事象と確率\n ▶  Key Points\n\n標本点がすべて同程度に確からしいのみ，集合の要素数と有限標本空間の要素数の割り算で確率が計算できる\n\n\n\n\nExercise 1.2 \nA, B, Cを事象とする．次の事象を式で表せ\n\nA,B,CのうちAだけが発生する\nA,B,Cのうち少なくとも２つが起きる\nA,B,Cどれも起きない\nA,B,Cのうち，２つ以上の事象は同時には起きない\nA,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n ▶  (1) A,B,CのうちAだけが発生する\n\\[\nA - (B\\cup C) = A \\cap B^c \\cap C^c\n\\]\n ▶  (2) A,B,Cのうち少なくとも２つが起きる\n\\[\n(A\\cap B) \\cup (B\\cap C) \\cup (A\\cap C)\n\\]\n ▶  (3) A,B,Cどれも起きない\n\\[\n(A\\cup B\\cup C)^c = A^c \\cap B^c \\cap C^c\n\\]\n ▶  (4) A,B,Cのうち，２つ以上の事象は同時には起きない\n(2)の余集合に相当するので\n\\[\n\\begin{align*}\n&(A - (B\\cup C)) \\cup (B - (A\\cup C)) \\cup (C - (A\\cup B)) \\cup (A^c \\cap B^c \\cap C^c)\\\\\n&=((A\\cap B) \\cup (B\\cap C) \\cup (A\\cap C))^c\n\\end{align*}\n\\]\nRでRHSとLHSが一致するかを以下確認します．\n\n\nCode\nlibrary(ggVennDiagram)\nlibrary(ggplot2)\nset.seed(42)\n\n# genesがsample space omegaに相当\ngenes &lt;- paste(\"gene\",1:1000,sep=\"\")\nx &lt;- list(A=sample(genes,300),\n          B=sample(genes,300),\n          C=sample(genes,300))\n\nggVennDiagram(x)\n\n\n\n\n\n\n\n\n\nCode\n# RHS setoperation\nrhs_set &lt;- list(AB_inter=intersect(x$A, x$B),\n                BC_inter=intersect(x$B, x$C),\n                AC_inter=intersect(x$A, x$C))\nunion_set &lt;- Reduce(union, rhs_set)\nrhs_answer &lt;- setdiff(genes, union_set)\n\n# LHS setoperation\ny &lt;- list(A=setdiff(x$A, union(x$B, x$C)),\n          B=setdiff(x$B, union(x$A, x$C)),\n          C=setdiff(x$C, union(x$A, x$B)),\n          D=setdiff(genes, Reduce(union, x)))\nlhs_answer &lt;- Reduce(union, y)\n\n\n結果を確認してみると\n\n# visualize\nggVennDiagram(list(LHS=lhs_answer, RHS=rhs_answer))\n\n\n\n\n\n\n\nsetequal(lhs_answer, rhs_answer)\n\n[1] TRUE\n\n\n上記のように結果が一致することを確かめられました．\n ▶  (5) A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか\n\\[\n(A\\cap B\\cap C) \\cup (A^c \\cap B^c \\cap C^c)\n\\]\n\n\n\n\n\nExercise 1.3  3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには\n\\[\n[abc|\\emptyset|\\emptyset]\n\\]\nと表記するとする．このとき，すべての標本点は何通り存在するか？\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n３つのボールについて３つのアサインメント先がそれぞれ考えられるので，\n\\[\n3^3 = 27 \\text{通り}\n\\]\n\n\n\n\n\nExercise 1.4  区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，\n\n第１の箱に３つとも入ったときには \\([3,0,0]\\)\n第１の箱に2つ, 第２の箱に１つ入ったときには \\([2,1,0]\\)\n\nと表記するとする．このとき，すべての標本点は何通り存在するか？\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n区別できないボール３つに対して，両端を含むボールの間４つの候補から仕切りを２つ選ぶ問題と同じみなせるので ４つから２つ重複ありの組み合わせを選ぶ問題, \\({}_4H_2\\) と考えることができる．\nしたがって，\n\\[\n\\begin{align*}\n{}_4H_2 = {}_{4+2-1}C_2 = 10\\text{通り}\n\\end{align*}\n\\]\n\n\n\n\n\nExercise 1.5  区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１と第２の箱が空ではない確率を求めよ．\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\([2, 1, 0], [1, 1, 1], [1, 2, 0]\\)が条件を標本点となりことから，多項分布の問題の問題と考えることができます．\n\\[\n\\begin{align*}\nP((2, 1, 0)) &= \\frac{3!}{2!1!}\\left(\\frac{1}{3}\\right)^2\\left(\\frac{1}{3}\\right)^1\\\\\nP((1, 1, 1)) &= \\frac{3!}{1!1!1!}\\left(\\frac{1}{3}\\right)\\left(\\frac{1}{3}\\right)\\left(\\frac{1}{3}\\right)\\\\\nP((1, 2, 0)) &= \\frac{3!}{1!2!}\\left(\\frac{1}{3}\\right)^1\\left(\\frac{1}{3}\\right)^2\n\\end{align*}\n\\]\nそれぞれの事象は排反なので，和を取ることで第１と第２の箱が空ではない確率が求まります．したがって，\n\\[\nP(\\text{第１と第２の箱が空ではない確率})=\\frac{4}{9}\n\\]\n\nWARNING ! \n\n標本点 \\([2, 1, 0], [1, 1, 1], [1, 2, 0]\\), 標本空間の要素数10通りというところから，\\(4/10=0.4\\)と計算することはできない\n「標本点がすべて同程度に確からしい」という仮定を満たしていないのが理由\n\n\n\n\n\n\n\nExercise 1.6  上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１の箱に１つ以上のボールが入っている確率を求めよ\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n「第１の箱に１つ以上のボールが入っている」という事象Aは「第１の箱に０このボールが入っている」の余事象となるので \\(1 - \\Pr(A^c)\\)で求まる．したがって，\n\\[\n1 - \\Pr(A^c) = 1 - \\left(\\frac{2}{3}\\right)^3 = \\frac{19}{27}\n\\]\nが答えとなる．\n\n\n\n\n\nExercise 1.7 \nA国の人は10%がrich, 7%がfamous, 5%がrich and famousであることが知られている．このとき無作為に選ばれた１人について，以下の事象の確率を求めよ\n\n\\(\\Pr(\\text{not rich})\\)\n\\(\\Pr(\\text{rich but not famous})\\)\n\\(\\Pr(\\text{rich or famous})\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n ▶  (1) \\(\\Pr(\\text{not rich})\\) \n事象richを\\(R\\)と表すと，事象not richは\\(R^c\\)と表せるので\n\\[\n\\Pr(\\text{not rich}) = 1 - \\Pr(R) = 0.9\n\\]\n ▶  (2) \\(\\Pr(\\text{rich but not famous})\\)\n事象famousを\\(F\\)と表すと，事象rich but not famousは\\(R \\cap F^c\\)．したがって，\n\\[\n\\begin{align*}\n\\Pr(\\text{rich but not famous}) &= \\Pr(R \\cap F^c)\\\\\n                                &= \\Pr(R \\backslash F)\\\\\n                                &= \\Pr(R) - \\Pr(R\\cap F)\\\\\n                                &= 0.1 - 0.05 = 0.05\n\\end{align*}\n\\]\n ▶  (3) \\(\\Pr(\\text{rich or famous})\\)\n事象rich or famousは\\(R\\cup F\\)と表現できるので\n\\[\n\\Pr(\\text{rich or famous}) = \\Pr(R) + \\Pr(F) - \\Pr(R\\cap F) = 0.12\n\\]",
+    "crumbs": [
+      "Part 1: 確率基礎",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>集合演算と確率</span>"
+    ]
+  },
+  {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "2  Introduction",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming. sadasd\n\n\n\n\nKnuth, D. E. (1984), 「Literate Programming」, Comput. J., USA: Oxford University Press, Inc., 27, 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
@@ -47,6 +70,36 @@
     "text": "Knuth, D. E. (1984), “Literate programming,” Comput.\nJ., USA: Oxford University Press, Inc., 27, 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "posts/statistics101/chapter_header.html",
+    "href": "posts/statistics101/chapter_header.html",
+    "title": "Part 1: 確率基礎",
+    "section": "",
+    "text": "標本空間と確率の公理\n古典的確率論は，\nという仮定のもとで，\\(\\Omega\\) の部分集合の全体 \\(\\wp(\\Omega)\\) に対する事象 \\(A\\in \\wp(\\Omega)\\) の確率\\(P(A)\\)を以下のように定義します\n\\[\nP(A) = \\frac{\\text{A の要素数}}{\\Omega\\text{の要素数}}\n\\]\n\\(\\Omega\\) を定義域，区間 \\([0, 1]\\) を値域とする写像 \\(P:\\Omega\\to[0, 1]\\) として確率関数を理解することができます．",
+    "crumbs": [
+      "Part 1: 確率基礎"
+    ]
+  },
+  {
+    "objectID": "posts/statistics101/chapter_header.html#標本空間と確率の公理",
+    "href": "posts/statistics101/chapter_header.html#標本空間と確率の公理",
+    "title": "Part 1: 確率基礎",
+    "section": "",
+    "text": "Def: 標本空間 \n\n試行: 不確実性を伴う実験や調査\n標本点(sample point): 試行によって起こりうる個々の結果（=１点からなる事象）．集合表記した場合，根源事象と呼んだりもする\n標本空間(sample space): 標本点の全体からなる集合，一般的には\\(\\Omega\\)と表記される\n事象: \\(\\Omega\\)の部分集合\n\n\n\n\n標本空間\\(\\Omega\\)が有限個の点からなる集合\n標本点がすべて同程度に確からしい\n\n\n\n\nベン図的には \\(\\Omega\\) の面積を1と標準化して, 事象Aの面積を対応させる形で古典的確率は定義される\n確率は事象に対して定義される\n\n\n📘 コルモゴロフの確率の公理 \n上記の古典的確率\\(P(A)\\)は常に以下の性質を満たしている．\n(P1) 任意の \\(A\\in \\wp(\\Omega)\\) に対して，\\(0 \\leq P(A) \\leq 1\\)  (P2) \\(P(\\Omega) = 1\\)  (P3) (有限加法性) \\(A_i \\in \\wp(\\Omega), i=1, \\cdots, n\\) としたとき \\(A_i \\cap A_j (i\\neq j)\\) ならば\n\\[\nP\\bigg(\\bigcup^n_i A_i\\bigg)=\\sum_{i}^n P(A_i)\n\\]",
+    "crumbs": [
+      "Part 1: 確率基礎"
+    ]
+  },
+  {
+    "objectID": "posts/statistics101/chapter_header.html#集合演算における分配法則とドモルガンの公式",
+    "href": "posts/statistics101/chapter_header.html#集合演算における分配法則とドモルガンの公式",
+    "title": "Part 1: 確率基礎",
+    "section": "集合演算における分配法則とド・モルガンの公式",
+    "text": "集合演算における分配法則とド・モルガンの公式\n\n 📘 集合演算における分配法則 \n\\[\n\\begin{align*}\nA \\cup (B\\cap C) &= (A\\cup B) \\cap (A\\cup C)\\\\\nA \\cap (B\\cup C) &= (A\\cap B) \\cup (A\\cap C)\n\\end{align*}\n\\]\n 📘 ド・モルガンの公式 \n\\[\n\\begin{align*}\n(A\\cup B)^c &= A^c \\cap B^c\\\\\n(A\\cap B)^c &= A^c \\cup B^c\n\\end{align*}\n\\]\n 📘 その他集合演算基本性質 \n\\[\n\\begin{align*}\nA\\cap A^c &= \\emptyset\\\\\nA\\cup A^c &= \\Omega\\\\\nA\\cup \\Omega &= \\Omega\\\\\nA\\cap \\Omega &= A\\\\\nA\\cap \\emptyset &= \\emptyset\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Part 1: 確率基礎"
     ]
   }
 ]

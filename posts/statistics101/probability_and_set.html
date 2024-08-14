@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryo Nakagtami">
-<meta name="dcterms.date" content="2024-07-20">
+<meta name="dcterms.date" content="2024-08-15">
 
-<title>Welcome – statistics dojo</title>
+<title>1&nbsp; 集合演算と確率 – statistics dojo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,27 +59,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../intro.html" rel="next">
-<link href="../index.html" rel="prev">
-<link href=".././img/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../intro.html" rel="next">
+<link href="../../posts/statistics101/chapter_header.html" rel="prev">
+<link href="../.././img/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,6 +127,35 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -139,7 +168,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../posts/test.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">Part 1: 確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -154,7 +183,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">statistics dojo</a> 
+      <a href="../../">statistics dojo</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-brush"></i></a>
@@ -167,6 +196,11 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://ohgoshgit.github.io/">
             OhGoshGit!?!
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://ryonakagami.github.io/statistics-for-regression-monkey/">
+            Regression Monkeys
             </a>
           </li>
       </ul>
@@ -186,31 +220,42 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../posts/test.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1: 確率基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="../../intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="../../summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -219,15 +264,22 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#集合演算" id="toc-集合演算" class="nav-link active" data-scroll-target="#集合演算">集合演算</a></li>
+  <li><a href="#事象と確率" id="toc-事象と確率" class="nav-link" data-scroll-target="#事象と確率">事象と確率</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/probability_and_set.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">Part 1: 確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Welcome</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></h1>
 </div>
 
 
@@ -244,14 +296,14 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-07-20</p>
+      <p class="date">2024-08-15</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2024-08-13</p>
+      <p class="date-modified">2024-08-14</p>
     </div>
   </div>
     
@@ -262,39 +314,357 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </header>
 
 
+<section id="集合演算" class="level2">
+<h2 class="anchored" data-anchor-id="集合演算">集合演算</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> <br></p>
+<p>以下の事象を簡単に表せ：</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;(A \cup B) \cup (C \cup B^c)\tag{a}\\
+&amp;A \cap (B \backslash A)\tag{b}\\
+&amp;(A\cap B) \cup (A \backslash B)\tag{c}
+\end{align}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (a)</strong></p>
+<p>結合法則より</p>
+<p><span class="math display">\[
+\begin{align*}
+(A\cup C) \cap (B \cup B^c) = (A\cup C) \cup \Omega = \Omega
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; (b)</strong></p>
+<p>結合法則より</p>
+<p><span class="math display">\[
+\begin{align*}
+A \cap (B \cap A^c) = (A\cap A^c) \cap B = \emptyset \cap B = \emptyset
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; (c)</strong></p>
+<p>分配法則より</p>
+<p><span class="math display">\[
+\begin{align*}
+(A\cap B) \cup (A \cap B^c) = A \cap (B \cup B^c) = A\cap \Omega = A
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="事象と確率" class="level2">
+<h2 class="anchored" data-anchor-id="事象と確率">事象と確率</h2>
+<p><strong> ▶&nbsp; Key Points</strong></p>
+<ul>
+<li>標本点がすべて同程度に確からしいのみ，集合の要素数と有限標本空間の要素数の割り算で確率が計算できる</li>
+</ul>
+<p><br></p>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2</strong></span> <br></p>
+<p>A, B, Cを事象とする．次の事象を式で表せ</p>
+<ol type="1">
+<li>A,B,CのうちAだけが発生する</li>
+<li>A,B,Cのうち少なくとも２つが起きる</li>
+<li>A,B,Cどれも起きない</li>
+<li>A,B,Cのうち，２つ以上の事象は同時には起きない</li>
+<li>A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (1) A,B,CのうちAだけが発生する</strong></p>
+<p><span class="math display">\[
+A - (B\cup C) = A \cap B^c \cap C^c
+\]</span></p>
+<p><strong> ▶&nbsp; (2) A,B,Cのうち少なくとも２つが起きる</strong></p>
+<p><span class="math display">\[
+(A\cap B) \cup (B\cap C) \cup (A\cap C)
+\]</span></p>
+<p><strong> ▶&nbsp; (3) A,B,Cどれも起きない</strong></p>
+<p><span class="math display">\[
+(A\cup B\cup C)^c = A^c \cap B^c \cap C^c
+\]</span></p>
+<p><strong> ▶&nbsp; (4) A,B,Cのうち，２つ以上の事象は同時には起きない</strong></p>
+<p>(2)の余集合に相当するので</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;(A - (B\cup C)) \cup (B - (A\cup C)) \cup (C - (A\cup B)) \cup (A^c \cap B^c \cap C^c)\\
+&amp;=((A\cap B) \cup (B\cap C) \cup (A\cap C))^c
+\end{align*}
+\]</span></p>
+<p>RでRHSとLHSが一致するかを以下確認します．</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(Temp, Ozone)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># genesがsample space omegaに相当</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>genes <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"gene"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-airquality" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-airquality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="test_files/figure-html/fig-airquality-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-airquality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Temperature and ozone level.
-</figcaption>
+<div>
+<figure class="figure">
+<p><img src="probability_and_set_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RHS setoperation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rhs_set <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">AB_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">BC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">AC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>union_set <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, rhs_set)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rhs_answer <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(genes, union_set)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># LHS setoperation</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>A, <span class="fu">union</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C)),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>B, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C)),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>C, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B)),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">D=</span><span class="fu">setdiff</span>(genes, <span class="fu">Reduce</span>(union, x)))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>lhs_answer <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>結果を確認してみると</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(<span class="fu">list</span>(<span class="at">LHS=</span>lhs_answer, <span class="at">RHS=</span>rhs_answer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="probability_and_set_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(lhs_answer, rhs_answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>上記のように結果が一致することを確かめられました．</p>
+<p><strong> ▶&nbsp; (5) A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか</strong></p>
+<p><span class="math display">\[
+(A\cap B\cap C) \cup (A^c \cap B^c \cap C^c)
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> <br> 3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには</p>
+<p><span class="math display">\[
+[abc|\emptyset|\emptyset]
+\]</span></p>
+<p>と表記するとする．このとき，すべての標本点は何通り存在するか？</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>３つのボールについて３つのアサインメント先がそれぞれ考えられるので，</p>
+<p><span class="math display">\[
+3^3 = 27 \text{通り}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，</p>
+<ul>
+<li>第１の箱に３つとも入ったときには <span class="math inline">\([3,0,0]\)</span></li>
+<li>第１の箱に2つ, 第２の箱に１つ入ったときには <span class="math inline">\([2,1,0]\)</span></li>
+</ul>
+<p>と表記するとする．このとき，すべての標本点は何通り存在するか？</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>区別できないボール３つに対して，両端を含むボールの間４つの候補から仕切りを２つ選ぶ問題と同じみなせるので ４つから２つ重複ありの組み合わせを選ぶ問題, <span class="math inline">\({}_4H_2\)</span> と考えることができる．</p>
+<p>したがって，</p>
+<p><span class="math display">\[
+\begin{align*}
+{}_4H_2 = {}_{4+2-1}C_2 = 10\text{通り}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１と第２の箱が空ではない確率を求めよ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\([2, 1, 0], [1, 1, 1], [1, 2, 0]\)</span>が条件を標本点となりことから，多項分布の問題の問題と考えることができます．</p>
+<p><span class="math display">\[
+\begin{align*}
+P((2, 1, 0)) &amp;= \frac{3!}{2!1!}\left(\frac{1}{3}\right)^2\left(\frac{1}{3}\right)^1\\
+P((1, 1, 1)) &amp;= \frac{3!}{1!1!1!}\left(\frac{1}{3}\right)\left(\frac{1}{3}\right)\left(\frac{1}{3}\right)\\
+P((1, 2, 0)) &amp;= \frac{3!}{1!2!}\left(\frac{1}{3}\right)^1\left(\frac{1}{3}\right)^2
+\end{align*}
+\]</span></p>
+<p>それぞれの事象は排反なので，和を取ることで第１と第２の箱が空ではない確率が求まります．したがって，</p>
+<p><span class="math display">\[
+P(\text{第１と第２の箱が空ではない確率})=\frac{4}{9}
+\]</span></p>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:gray;">
+<p><strong style="color:red">WARNING !</strong> <br></p>
+<ul>
+<li>標本点 <span class="math inline">\([2, 1, 0], [1, 1, 1], [1, 2, 0]\)</span>, 標本空間の要素数10通りというところから，<span class="math inline">\(4/10=0.4\)</span>と計算することはできない</li>
+<li>「<strong>標本点がすべて同程度に確からしい</strong>」という仮定を満たしていないのが理由</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6</strong></span> <br> 上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１の箱に１つ以上のボールが入っている確率を求めよ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>「第１の箱に１つ以上のボールが入っている」という事象Aは「第１の箱に０このボールが入っている」の余事象となるので <span class="math inline">\(1 - \Pr(A^c)\)</span>で求まる．したがって，</p>
+<p><span class="math display">\[
+1 - \Pr(A^c) = 1 - \left(\frac{2}{3}\right)^3 = \frac{19}{27}
+\]</span></p>
+<p>が答えとなる．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> <br></p>
+<p>A国の人は10%がrich, 7%がfamous, 5%がrich and famousであることが知られている．このとき無作為に選ばれた１人について，以下の事象の確率を求めよ</p>
+<ol type="1">
+<li><span class="math inline">\(\Pr(\text{not rich})\)</span></li>
+<li><span class="math inline">\(\Pr(\text{rich but not famous})\)</span></li>
+<li><span class="math inline">\(\Pr(\text{rich or famous})\)</span></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (1) <span class="math inline">\(\Pr(\text{not rich})\)</span> </strong></p>
+<p>事象richを<span class="math inline">\(R\)</span>と表すと，事象not richは<span class="math inline">\(R^c\)</span>と表せるので</p>
+<p><span class="math display">\[
+\Pr(\text{not rich}) = 1 - \Pr(R) = 0.9
+\]</span></p>
+<p><strong> ▶&nbsp; (2) <span class="math inline">\(\Pr(\text{rich but not famous})\)</span></strong></p>
+<p>事象famousを<span class="math inline">\(F\)</span>と表すと，事象rich but not famousは<span class="math inline">\(R \cap F^c\)</span>．したがって，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(\text{rich but not famous}) &amp;= \Pr(R \cap F^c)\\
+                                &amp;= \Pr(R \backslash F)\\
+                                &amp;= \Pr(R) - \Pr(R\cap F)\\
+                                &amp;= 0.1 - 0.05 = 0.05
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; (3) <span class="math inline">\(\Pr(\text{rich or famous})\)</span></strong></p>
+<p>事象rich or famousは<span class="math inline">\(R\cup F\)</span>と表現できるので</p>
+<p><span class="math display">\[
+\Pr(\text{rich or famous}) = \Pr(R) + \Pr(F) - \Pr(R\cap F) = 0.12
+\]</span></p>
+</div>
+</div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
+<script>
+    var custom_title = document.querySelectorAll('.custom_problem .theorem-title');
+    
+    for (let i = 0; i < custom_title.length; i++ ) {
+       var mod_name = custom_title[i].innerHTML;
+       custom_title[i].innerHTML = mod_name.replace("Exercise", "Problem");
+    };
+    </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -859,15 +1229,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/statistics-for-regression-monkey" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../../posts/statistics101/chapter_header.html" class="pagination-link" aria-label="Part 1: 確率基礎">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Part 1: 確率基礎</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../intro.html" class="pagination-link" aria-label="Introduction">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -883,12 +1255,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
  © Copyright RyoNak
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="../LICENSE">
+    <a class="nav-link" href="../../LICENSE">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/test.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/probability_and_set.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

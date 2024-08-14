@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ryonakagami.github.io/statistics_dojo/index.html</loc>
-    <lastmod>2024-08-13T10:40:42.172Z</lastmod>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
   </url>
   <url>
-    <loc>https://ryonakagami.github.io/statistics_dojo/posts/test.html</loc>
-    <lastmod>2024-08-13T10:40:42.172Z</lastmod>
+    <loc>https://ryonakagami.github.io/statistics_dojo/posts/statistics101/probability_and_set.html</loc>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
   </url>
   <url>
     <loc>https://ryonakagami.github.io/statistics_dojo/intro.html</loc>
-    <lastmod>2024-08-13T10:40:42.172Z</lastmod>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
   </url>
   <url>
     <loc>https://ryonakagami.github.io/statistics_dojo/summary.html</loc>
-    <lastmod>2024-08-13T10:40:42.176Z</lastmod>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
   </url>
   <url>
     <loc>https://ryonakagami.github.io/statistics_dojo/references.html</loc>
-    <lastmod>2024-08-13T10:40:42.172Z</lastmod>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ryonakagami.github.io/statistics_dojo/posts/statistics101/chapter_header.html</loc>
+    <lastmod>2024-08-14T10:36:41.945Z</lastmod>
   </url>
 </urlset>

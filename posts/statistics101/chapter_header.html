@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ryo Nakagtami">
+<meta name="dcterms.date" content="2024-08-15">
 
-<title>2&nbsp; Introduction – statistics dojo</title>
+<title>Part 1: 確率基礎 – statistics dojo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,50 +22,30 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./posts/statistics101/probability_and_set.html" rel="prev">
-<link href="././img/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../posts/statistics101/probability_and_set.html" rel="next">
+<link href="../../index.html" rel="prev">
+<link href="../.././img/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,6 +93,35 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -123,7 +134,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">Part 1: 確率基礎</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,7 +149,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">statistics dojo</a> 
+      <a href="../../">statistics dojo</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-brush"></i></a>
@@ -175,13 +186,13 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
+            <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Part 1: 確率基礎</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -190,7 +201,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span></a>
   </div>
 </li>
@@ -198,19 +209,19 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -219,23 +230,48 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#標本空間と確率の公理" id="toc-標本空間と確率の公理" class="nav-link active" data-scroll-target="#標本空間と確率の公理">標本空間と確率の公理</a></li>
+  <li><a href="#集合演算における分配法則とドモルガンの公式" id="toc-集合演算における分配法則とドモルガンの公式" class="nav-link" data-scroll-target="#集合演算における分配法則とドモルガンの公式">集合演算における分配法則とド・モルガンの公式</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/chapter_header.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">Part 1: 確率基礎</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryo Nakagtami </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2024-08-15</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2024-08-14</p>
+    </div>
+  </div>
     
   </div>
   
@@ -244,15 +280,71 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </header>
 
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming. sadasd</p>
+<section id="標本空間と確率の公理" class="level2">
+<h2 class="anchored" data-anchor-id="標本空間と確率の公理">標本空間と確率の公理</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<p><strong>Def: 標本空間</strong> <br></p>
+<ul>
+<li><strong>試行</strong>: 不確実性を伴う実験や調査</li>
+<li><strong>標本点</strong>(sample point): 試行によって起こりうる個々の結果（=１点からなる事象）．集合表記した場合，根源事象と呼んだりもする</li>
+<li><strong>標本空間</strong>(sample space): 標本点の全体からなる集合，一般的には<span class="math inline">\(\Omega\)</span>と表記される</li>
+<li><strong>事象</strong>: <span class="math inline">\(\Omega\)</span>の部分集合</li>
+</ul>
+</div>
+<p>古典的確率論は，</p>
+<ul>
+<li>標本空間<span class="math inline">\(\Omega\)</span>が有限個の点からなる集合</li>
+<li>標本点がすべて同程度に確からしい</li>
+</ul>
+<p>という仮定のもとで，<span class="math inline">\(\Omega\)</span> の部分集合の全体 <span class="math inline">\(\wp(\Omega)\)</span> に対する事象 <span class="math inline">\(A\in \wp(\Omega)\)</span> の確率<span class="math inline">\(P(A)\)</span>を以下のように定義します</p>
+<p><span class="math display">\[
+P(A) = \frac{\text{A の要素数}}{\Omega\text{の要素数}}
+\]</span></p>
+<ul>
+<li>ベン図的には <span class="math inline">\(\Omega\)</span> の面積を1と標準化して, 事象Aの面積を対応させる形で古典的確率は定義される</li>
+<li>確率は事象に対して定義される</li>
+</ul>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<p><strong>📘 コルモゴロフの確率の公理</strong> <br></p>
+<p>上記の古典的確率<span class="math inline">\(P(A)\)</span>は常に以下の性質を満たしている．</p>
+<p>(P1) 任意の <span class="math inline">\(A\in \wp(\Omega)\)</span> に対して，<span class="math inline">\(0 \leq P(A) \leq 1\)</span> <br> (P2) <span class="math inline">\(P(\Omega) = 1\)</span> <br> (P3) (有限加法性) <span class="math inline">\(A_i \in \wp(\Omega), i=1, \cdots, n\)</span> としたとき <span class="math inline">\(A_i \cap A_j (i\neq j)\)</span> ならば</p>
+<p><span class="math display">\[
+P\bigg(\bigcup^n_i A_i\bigg)=\sum_{i}^n P(A_i)
+\]</span></p>
+</div>
+<p><span class="math inline">\(\Omega\)</span> を定義域，区間 <span class="math inline">\([0, 1]\)</span> を値域とする写像 <span class="math inline">\(P:\Omega\to[0, 1]\)</span> として確率関数を理解することができます．</p>
+</section>
+<section id="集合演算における分配法則とドモルガンの公式" class="level2">
+<h2 class="anchored" data-anchor-id="集合演算における分配法則とドモルガンの公式">集合演算における分配法則とド・モルガンの公式</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<p><strong> 📘 集合演算における分配法則</strong> <br></p>
+<p><span class="math display">\[
+\begin{align*}
+A \cup (B\cap C) &amp;= (A\cup B) \cap (A\cup C)\\
+A \cap (B\cup C) &amp;= (A\cap B) \cup (A\cap C)
+\end{align*}
+\]</span></p>
+<p><strong> 📘 ド・モルガンの公式</strong> <br></p>
+<p><span class="math display">\[
+\begin{align*}
+(A\cup B)^c &amp;= A^c \cap B^c\\
+(A\cap B)^c &amp;= A^c \cup B^c
+\end{align*}
+\]</span></p>
+<p><strong> 📘 その他集合演算基本性質</strong> <br></p>
+<p><span class="math display">\[
+\begin{align*}
+A\cap A^c &amp;= \emptyset\\
+A\cup A^c &amp;= \Omega\\
+A\cup \Omega &amp;= \Omega\\
+A\cap \Omega &amp;= A\\
+A\cap \emptyset &amp;= \emptyset
+\end{align*}
+\]</span></p>
+</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, D. E. (1984), <span>「Literate Programming」</span>, <em>Comput. J.</em>, USA: Oxford University Press, Inc., 27, 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -827,15 +919,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/statistics-for-regression-monkey" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./posts/statistics101/probability_and_set.html" class="pagination-link" aria-label="集合演算と確率">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span>
+      <a href="../../index.html" class="pagination-link" aria-label="Welcome">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/statistics101/probability_and_set.html" class="pagination-link" aria-label="集合演算と確率">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -851,12 +945,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
  © Copyright RyoNak
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE">
+    <a class="nav-link" href="../../LICENSE">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/chapter_header.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
