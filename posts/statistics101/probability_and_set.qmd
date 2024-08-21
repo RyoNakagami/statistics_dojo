@@ -43,7 +43,7 @@ $$
 
 $$
 \begin{align*}
-(A\cup C) \cap (B \cup B^c) = (A\cup C) \cup \Omega = \Omega
+(A\cup C) \cup (B \cup B^c) = (A\cup C) \cup \Omega = \Omega
 \end{align*}
 $$
 
@@ -266,8 +266,7 @@ $$
 
 $$
 \begin{align*}
-A\cap B \cap C &\subset A\cap B\\
-               &\subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
+A\cap B \cap C &\subset A\cap B \subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
 \end{align*}
 $$
 
