@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryo Nakagami">
-<meta name="dcterms.date" content="2024-08-15">
+<meta name="dcterms.date" content="2024-08-20">
 
-<title>確率基礎 – statistics dojo</title>
+<title>2&nbsp; 条件付き確率 – statistics dojo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/statistics101/probability_and_set.html" rel="next">
-<link href="../../index.html" rel="prev">
+<link href="../../posts/statistics101/combination_permutation.html" rel="next">
+<link href="../../posts/statistics101/probability_and_set.html" rel="prev">
 <link href="../.././img/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -134,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/conditional_probability.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,7 +192,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">確率基礎</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -207,7 +207,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/statistics101/conditional_probability.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/statistics101/conditional_probability.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></span></a>
   </div>
 </li>
@@ -247,22 +247,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#標本空間と確率の公理" id="toc-標本空間と確率の公理" class="nav-link active" data-scroll-target="#標本空間と確率の公理">標本空間と確率の公理</a>
-  <ul class="collapse">
-  <li><a href="#ラプラス流確率論の問題点" id="toc-ラプラス流確率論の問題点" class="nav-link" data-scroll-target="#ラプラス流確率論の問題点">ラプラス流確率論の問題点</a></li>
-  </ul></li>
-  <li><a href="#集合演算における分配法則とドモルガンの公式" id="toc-集合演算における分配法則とドモルガンの公式" class="nav-link" data-scroll-target="#集合演算における分配法則とドモルガンの公式">集合演算における分配法則とド・モルガンの公式</a></li>
-  <li><a href="#条件付き確率と事象の独立性" id="toc-条件付き確率と事象の独立性" class="nav-link" data-scroll-target="#条件付き確率と事象の独立性">条件付き確率と事象の独立性</a></li>
-  <li><a href="#組み合わせ" id="toc-組み合わせ" class="nav-link" data-scroll-target="#組み合わせ">組み合わせ</a></li>
+  <li><a href="#条件付き確率と独立性" id="toc-条件付き確率と独立性" class="nav-link active" data-scroll-target="#条件付き確率と独立性">条件付き確率と独立性</a></li>
+  <li><a href="#条件付き確率モデル" id="toc-条件付き確率モデル" class="nav-link" data-scroll-target="#条件付き確率モデル">条件付き確率モデル</a></li>
+  <li><a href="#causal-inference" id="toc-causal-inference" class="nav-link" data-scroll-target="#causal-inference">Causal Inference</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/chapter_header.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/conditional_probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/conditional_probability.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">確率基礎</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></h1>
 </div>
 
 
@@ -279,7 +275,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-08-15</p>
+      <p class="date">2024-08-20</p>
     </div>
   </div>
   
@@ -297,255 +293,475 @@ window.Quarto = {
 </header>
 
 
-<section id="標本空間と確率の公理" class="level2">
-<h2 class="anchored" data-anchor-id="標本空間と確率の公理">標本空間と確率の公理</h2>
+<section id="条件付き確率と独立性" class="level2">
+<h2 class="anchored" data-anchor-id="条件付き確率と独立性">条件付き確率と独立性</h2>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>Def: 標本空間</strong> <br></p>
-<ul>
-<li><strong>試行</strong>: 不確実性を伴う実験や調査</li>
-<li><strong>標本点</strong>(sample point): 試行によって起こりうる個々の結果（=１点からなる事象）．集合表記した場合，根源事象と呼んだりもする</li>
-<li><strong>標本空間</strong>(sample space): 標本点の全体からなる集合，一般的には<span class="math inline">\(\Omega\)</span>と表記される</li>
-<li><strong>事象</strong>: <span class="math inline">\(\Omega\)</span>の部分集合</li>
-</ul>
-</div>
-<p>ラプラス流の古典的確率論は，</p>
-<ul>
-<li>標本空間<span class="math inline">\(\Omega\)</span>が有限個の点からなる集合</li>
-<li>標本点がすべて同程度に確からしい</li>
-</ul>
-<p>という仮定のもとで，<span class="math inline">\(\Omega\)</span> の部分集合の全体 <span class="math inline">\(\wp(\Omega)\)</span> に対する事象 <span class="math inline">\(A\in \wp(\Omega)\)</span> の確率<span class="math inline">\(P(A)\)</span>を以下のように定義します</p>
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> <br></p>
+<p>空集合ではない事象 A, Bの間に</p>
 <p><span class="math display">\[
-P(A) = \frac{\text{A の要素数}}{\Omega\text{の要素数}}
+\Pr(B\vert A) = \Pr(B\vert A^c)
 \]</span></p>
-<ul>
-<li>ベン図的には <span class="math inline">\(\Omega\)</span> の面積を1と標準化して, 事象Aの面積を対応させる形でラプラス流古典的確率は定義される</li>
-<li>確率は事象に対して定義される</li>
-</ul>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>📘 コルモゴロフの確率の公理</strong> <br></p>
-<p>上記の古典的確率<span class="math inline">\(P(A)\)</span>は常に以下の性質を満たしている．</p>
-<p>(P1) 任意の <span class="math inline">\(A\in \wp(\Omega)\)</span> に対して，<span class="math inline">\(0 \leq P(A) \leq 1\)</span> <br> (P2) <span class="math inline">\(P(\Omega) = 1\)</span> <br> (P3) (有限加法性) <span class="math inline">\(A_i \in \wp(\Omega), i=1, \cdots, n\)</span> としたとき <span class="math inline">\(A_i \cap A_j = \emptyset (i\neq j)\)</span> ならば</p>
-<p><span class="math display">\[
-P\bigg(\bigcup^n_i A_i\bigg)=\sum_{i}^n P(A_i)
-\]</span></p>
+<p>という関係があるとき，A, Bは互いに独立であることを示せ．</p>
 </div>
-<p><span class="math inline">\(\Omega\)</span> を定義域，区間 <span class="math inline">\([0, 1]\)</span> を値域とする写像 <span class="math inline">\(P:\Omega\to[0, 1]\)</span> として確率関数を理解することができます．</p>
-<p>(P3)の有限加法性は</p>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="math inline">\((A\cap B) \cup (A^c\cap B) = B\)</span></li>
+<li><span class="math inline">\((A\cap B) \cap (A^c\cap B) = \emptyset\)</span></li>
+</ul>
+<p>に留意すると</p>
 <p><span class="math display">\[
 \begin{align*}
-(A \cap B) \cup (A^c \cap B) &amp;= B\\
-(A \cap B) \cap (A^c \cap B) &amp;= \emptyset
+&amp;\Pr(A\cap B) + \Pr(A^c\cap B) = \Pr(B)\\
+&amp;\Pr(A\cap B) = \Pr(B) - \Pr(A^c\cap B)
 \end{align*}
 \]</span></p>
-<p>より <span class="math inline">\(\Pr(B) = \Pr(A \cap B) + \Pr(A^c \cap B)\)</span> という式変形でよく使われます．</p>
-<section id="ラプラス流確率論の問題点" class="level3">
-<h3 class="anchored" data-anchor-id="ラプラス流確率論の問題点">ラプラス流確率論の問題点</h3>
-<p>標本空間が無限集合となる場合，要素数の比という計算が不可能になってしまうという問題点をラプラス流確率論は抱えています． 集合の要素の個数の概念を無限集合についても一般化した「濃度」というものを用いたら解決できそうですが，実際は無理です．</p>
-<p>区間 <span class="math inline">\(A = (0,1)\)</span> 上の一様分布に従う確率変数 <span class="math inline">\(X\)</span> を考えます．<span class="math inline">\(B = (0, 0.5)\)</span> としたとき，<span class="math inline">\(X\in B\)</span> となる確率は <span class="math inline">\(\Pr(X \in (0, 0.5)) = 0.5\)</span> と区間の長さで確率測度を定義することで理解できますが，濃度となると 全単射となる <span class="math inline">\(F;A\to B\)</span> という写像を定義できるので，集合 <span class="math inline">\(A\)</span> と <span class="math inline">\(B\)</span> の濃度は等しい となってしまいます．そのため，現代では測度論に基づいて確率を定式化するのが主流です．</p>
+<p><span class="math inline">\(\Pr(B\vert A) = \Pr(B\vert A^c)\)</span>と問題文より与えられているので</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\frac{\Pr(B) - \Pr(A^c\cap B)}{\Pr(A)} = \frac{\Pr(A^c \cap B)}{1 - \Pr(A)}\\
+&amp;\Rightarrow \Pr(B) - \Pr(A^c\cap B) -\Pr(A)\Pr(B) + \Pr(A)\Pr(A^C\cap B) = \Pr(A)\Pr(A^C\cap B)\\
+&amp;\Rightarrow \Pr(B) - \Pr(A^c\cap B) = \Pr(A)\Pr(B)\\
+&amp;\Rightarrow \Pr(A\cap B) = \Pr(A)\Pr(B)
+\end{align*}
+\]</span></p>
+<p>したがって，事象A, Bは独立</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> <br></p>
+<p>事象A, Bが独立のとき，以下が成立することを示せ．ただし，<span class="math inline">\(0 &lt; \Pr(A) &lt; 1\)</span>とする．</p>
+<p><span class="math display">\[
+\Pr(B \vert A) = \Pr(B \vert A^c)
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>事象 A, Bが独立なので定義より <span class="math inline">\(\Pr(A\cap B) = \Pr(A)\Pr(B)\Rightarrow \Pr(B\vert A)=\Pr(B)\)</span></li>
+<li><span class="math inline">\(A\)</span> と <span class="math inline">\(A^c\)</span> は排反なので, <span class="math inline">\(\Pr(B) = \Pr(A\cap B) + \Pr(A^c\cap B)\)</span></li>
+</ul>
+<p>従って，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(B\vert A^c) &amp;= \frac{\Pr(B) - \Pr(A\cap B) }{\Pr(A^c)}\\
+                &amp;= \frac{(1 - \Pr(A))\Pr(B)}{\Pr(A^c)}\\
+                &amp;= \Pr(B)
+\end{align*}
+\]</span></p>
+<p>従って，<span class="math inline">\(\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)\)</span> が成り立つ．</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 加比の理
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>事象の独立性より <span class="math inline">\(\Pr(B\vert A) = \Pr(B)\)</span> は明らか．次に，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(B) &amp;= \frac{\Pr(B)}{1}\\
+       &amp;= \frac{\Pr(A\cap B)}{\Pr(A)}\\
+       &amp;= \frac{\Pr(B) - \Pr(A\cap B)}{1 - \Pr(A)} \because{\text{加比の理}}\\
+       &amp;= \frac{\Pr(A^c\cap B)}{\Pr(A^c)}\\
+       &amp;= \Pr(B\vert A^c)
+\end{align*}
+\]</span></p>
+<p>従って, $<span class="math inline">\(\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)\)</span> が成り立つ.</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> <br></p>
+<p>条件付き確率について,</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(A\vert D) &amp;\geq \Pr(B\vert D)\\
+\Pr(A\vert D^c) &amp;\geq \Pr(B\vert D^c)
+\end{align*}
+\]</span></p>
+<p>が成立しているとき, <span class="math inline">\(\Pr(A)\geq \Pr(B)\)</span> であることを示せ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\Pr(A) &amp;= \Pr(A\vert D)\Pr(D) + \Pr(A\vert D^c)\Pr(D^c)\\
+       &amp;\geq \Pr(B\vert D)\Pr(D) + \Pr(B\vert D^c)\Pr(D^c)\\
+       &amp;= \Pr(B)
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> <strong>ペアワイズ独立性</strong> <br></p>
+<p>空集合ではない確率事象 A, B, C を考える．AとBが独立，BとCが独立のとき, AとCは独立であると言えるか？ 成立しない場合は反例を述べよ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\Omega = {w_1, w_2, w_3, w_4}\)</span>, 標本点すべてが同程度に確からしい, <span class="math inline">\(A = \{w_1, w_2\}\)</span>, <span class="math inline">\(B = \{w_2, w_3\}\)</span>, <span class="math inline">\(C = \{w_3, w_4\}\)</span>，と確率事象が定義されたとき，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(A \cap B) &amp;= \frac{1}{4} = \Pr(A)\Pr(B)\\
+\Pr(B \cap C) &amp;= \frac{1}{4} = \Pr(B)\Pr(C)
+\end{align*}
+\]</span></p>
+<p>とAとBが独立，BとCが独立となるが，</p>
+<p><span class="math display">\[
+\Pr(A \cap C) = 0 \neq \Pr(A)\Pr(C)
+\]</span></p>
+<p>となり, A と C は独立でない．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> <strong>ペアワイズ独立性</strong> <br></p>
+<p><span class="math inline">\(\Omega = \{w_1, w_2, w_3, w_4\}\)</span>, 標本点すべてが同程度に確からしい, <span class="math inline">\(A = \{w_1, w_2\}\)</span>, <span class="math inline">\(B = \{w_1, w_3\}\)</span>, <span class="math inline">\(C = \{w_1, w_4\}\)</span>と事象が定義され， 各根元事象の</p>
+<p><span class="math display">\[
+\Pr(\{w_i\}) = \frac{1}{4} \space (i=1,2,3,4)
+\]</span></p>
+<p>このとき，事象A, B, Cのどの２つも独立（=ペアワイズ独立）だが，３つの事象A, B, Cは互いに独立でないことを示せ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; 任意の２つ事象の独立性</strong></p>
+<p><span class="math inline">\(A\cap B = B\cap C = C\cap A = \{w_1\}\)</span></p>
+<p>より</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(A\cap B) &amp;= \Pr(A)\Pr(B) = \frac{1}{4}\\
+\Pr(B\cap C) &amp;= \Pr(B)\Pr(C) = \frac{1}{4}\\
+\Pr(A\cap C) &amp;= \Pr(A)\Pr(A) = \frac{1}{4}
+\end{align*}
+\]</span></p>
+<p>したがって，<span class="math inline">\(A\perp B, B\perp C, A\perp C\)</span>が成立する．</p>
+<p><strong> ▶&nbsp; ３つの事象A, B, Cの組の独立性</strong></p>
+<p>３つの事象A, B, Cの組の独立性するということは</p>
+<p><span class="math display">\[
+\Pr(A\cap B \cap C) = \Pr(A)\Pr(B)\Pr(C)
+\]</span></p>
+<p>が成立するすることが必要十分条件．一方，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(A\cap B \cap C) &amp;= \Pr(\{w_1\}) = \frac{1}{4}\\
+\Pr(A)\Pr(B)\Pr(C) &amp;= \frac{1}{8}
+\end{align*}
+\]</span></p>
+<p>従って，<span class="math inline">\(\Pr(A\cap B \cap C) \neq \Pr(A)\Pr(B)\Pr(C)\)</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> <br></p>
+</div>
+</div>
 </section>
-</section>
-<section id="集合演算における分配法則とドモルガンの公式" class="level2">
-<h2 class="anchored" data-anchor-id="集合演算における分配法則とドモルガンの公式">集合演算における分配法則とド・モルガンの公式</h2>
+<section id="条件付き確率モデル" class="level2">
+<h2 class="anchored" data-anchor-id="条件付き確率モデル">条件付き確率モデル</h2>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong> 📘 集合演算における分配法則</strong> <br></p>
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> <br></p>
+<p>2人の子供のいる夫婦について，子供に一人が女のことであるという条件のもとで２人共女の子である確率をもとめよ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>少なくとも子供の一人が女の子である確率は, 子供二人共男の子である確率事象 <span class="math inline">\(A\)</span> の余事象とみなせるので</p>
 <p><span class="math display">\[
-\begin{align*}
-A \cup (B\cap C) &amp;= (A\cup B) \cap (A\cup C)\\
-A \cap (B\cup C) &amp;= (A\cap B) \cup (A\cap C)
-\end{align*}
+\Pr(A^c) = 1- \frac{1}{4} = \frac{3}{4}
 \]</span></p>
-<p><strong> 📘 ド・モルガンの公式</strong> <br></p>
+<p>二人共女の子である確率事象 Bは <span class="math inline">\(B \subset A^c\)</span> なので, <span class="math inline">\(B \cap A^c = B\)</span>．従って，</p>
 <p><span class="math display">\[
 \begin{align*}
-(A\cup B)^c &amp;= A^c \cap B^c\\
-(A\cap B)^c &amp;= A^c \cup B^c
-\end{align*}
-\]</span></p>
-<p><strong> 📘 その他集合演算基本性質</strong> <br></p>
-<p><span class="math display">\[
-\begin{align*}
-A\cap A^c &amp;= \emptyset\\
-A\cup A^c &amp;= \Omega\\
-A\cup \Omega &amp;= \Omega\\
-A\cap \Omega &amp;= A\\
-A\cap \emptyset &amp;= \emptyset
+\Pr(B \vert A^c) &amp;= \frac{\Pr(A^c \cap B)}{\Pr(A^c)}\\
+                 &amp;= \frac{\Pr(B)}{\Pr(A^c)}\\
+                 &amp;= \frac{1}{3}
 \end{align*}
 \]</span></p>
 </div>
-</section>
-<section id="条件付き確率と事象の独立性" class="level2">
-<h2 class="anchored" data-anchor-id="条件付き確率と事象の独立性">条件付き確率と事象の独立性</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>Def: 事象の独立</strong> <br></p>
-<p>A,Bが確率事象で</p>
-<p><span class="math display">\[
-\Pr(A\cap B) = \Pr(A)\Pr(B)
-\]</span></p>
-<p>が成り立つとき，A, Bは互いに独立であるという．更に，一般に <span class="math inline">\(A_1, \cdots, A_n, \cdots\)</span> が有限または加算個の確率事象系列で，その任意の 有限部分系列, <span class="math inline">\(A_{i_1}, \cdots, A_{i_k}\)</span> に対して</p>
-<p><span class="math display">\[
-\Pr(A_{i_1} \cap \cdots\cap A_{i_k}) = \Pr(A_{i_1}) \cdots\Pr(A_{i_k})
-\]</span></p>
-<p>が成り立つとき，<span class="math inline">\(A_1, \cdots, A_n, \cdots\)</span> は互いに独立であるという．</p>
 </div>
-<p><br></p>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>Def: 条件付き確率</strong> <br></p>
-<p>事象 <span class="math inline">\(A, B\)</span> について，<span class="math inline">\(\Pr(A)\neq 0\)</span> のとき</p>
-<p><span class="math display">\[
-\Pr(B\vert A) = \frac{\Pr(A\cap B)}{\Pr(A)}
-\]</span></p>
-<p>をAが起こったとき前提の下にBの起こる「条件付き確率」という．</p>
-</div>
-<p>条件付き独立の定義より以下のこともわかる</p>
-<p><span class="math display">\[
-\begin{align*}
-A \perp B &amp;\Leftrightarrow \Pr(A\cap B) = \Pr(A)\Pr(B)\\
-          &amp;\Leftrightarrow \Pr(A\cap B)/\Pr(A) = \Pr(B)\\
-          &amp;\Leftrightarrow \Pr(B\vert A) = \Pr(B)
-\end{align*}
-\]</span></p>
-<div id="exm-1" class="custom_problem theorem example">
-<p><span class="theorem-title"><strong>Example 1</strong></span> <br></p>
-<p>事象 A, Bが独立のとき，<span class="math inline">\(\Pr(B) = \Pr(A\cap B) + \Pr(A^c\cap B)\)</span>なので</p>
-<p><span class="math display">\[
-\begin{align*}
-&amp;\Pr(A\cap B) = \Pr(A)\Pr(B)\\
-&amp;\Rightarrow \Pr(A^c\cap B) = (1  - \Pr(A))\Pr(B) = \Pr(A^c)\Pr(B)
-\end{align*}
-\]</span></p>
-<p>従って，事象 A, Bが独立のとき, <span class="math inline">\(A^c \perp B\)</span> が成立する．同様のロジックで, <span class="math inline">\(A \perp B^c, A^c\perp B^c\)</span> も成立する．</p>
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>Theorem: 互いに独立</strong> <br></p>
-<p>n個の事象の集まり <span class="math inline">\(\{A_1, \cdots, A_n\}\)</span> が互いに独立であるならば，<span class="math inline">\(B_i = A_i\)</span> または <span class="math inline">\(B_i = A_i^c\)</span> とおいて 得られる <span class="math inline">\(k \leq n\)</span> 個のあつまり <span class="math inline">\(\{B_1, B_2, \cdots, B_k\}\)</span> も互いに独立である．</p>
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.8</strong></span> <br></p>
+<p>あたりが <span class="math inline">\(m &gt;0\)</span> 本, はずれが <span class="math inline">\(n\)</span> 本あるくじを２つのプレイヤーが1回ずつ引く場合，先攻と後攻どちらが有利か？</p>
 </div>
-<p>この定理から，確率事象 <span class="math inline">\(\{A_1, \cdots, A_n\}\)</span> が互いに独立で，<span class="math inline">\(\Pr(A_i) = p_i\)</span> のとき，</p>
-<p><span class="math display">\[
-\Pr(A_1 \cup \cdots \cup A_n) = 1 - (1 - p_1)(1 - p_2)\cdots(1 - p_n)
-\]</span></p>
-<p>が成立することがわかる．ド・モルガンの公式と独立性より</p>
-<p><span class="math display">\[
-\begin{align*}
-\Pr(A_1 \cup \cdots \cup A_n) &amp;= 1 - \Pr((A_1 \cup \cdots \cup A_n))^c\\
-                              &amp;= 1 - \Pr(A_1^c \cap \cdots \cap A_n^c)\\
-                              &amp;= 1 - \Pr(A_1^c)\cdots\Pr(A_n^c)\\
-                              &amp;= 1 - (1 - p_1)(1 - p_2)\cdots(1 - p_n)
-\end{align*}
-\]</span></p>
-<p>が成立するため．</p>
-<div id="exm-" class="custom_problem theorem example">
-<p><span class="theorem-title"><strong>Example 2</strong></span> <br></p>
-<p>n台のサーバーで動くシステムがある．このシステムは，n台すべてのサーバーが故障したときのみ停止する． それぞれのサーバーは独立に作動し，故障の確率は10%である．99%以上の可能性でシステムが停止とならないためには， 最低何台のサーバーが必要かを考えてみる．</p>
-<p><span class="math inline">\(A_i = \{\text{サーバー i が稼働している}\}\)</span> と確率事象を定義すると，<span class="math inline">\(\Pr(A^c) = 0.1\)</span>. つまり，</p>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{align*}
-\Pr(\text{システムが稼働}) &amp;= \Pr(A_1 \cup A_2 \cup \cdots \cup A_n)\\
-                        &amp;= 1 - \Pr((A_1 \cup A_2 \cup \cdots \cup A_n)^c)\\
-                        &amp;= 1 - \Pr(A_1^c \cap A_2^C \cap \cdots \cap A_n^c)\\
-                        &amp;= 1 - 0.1^n \geq 0.99
+\Pr(\text{先攻が当たりを引く}) &amp;= \frac{m}{m+n}\\
+\Pr(\text{後攻が当たりを引く}) &amp;= \Pr(\text{後攻が当たりを引く}\vert \text{先攻が当たりを引く})\Pr(\text{先攻が当たりを引く}) + \Pr(\text{後攻が当たりを引く}\vert \text{先攻がはずれを引く})\Pr(\text{先攻がはずれを引く})\\
+                            &amp;= \frac{m-1}{m+n-1}\frac{m}{m+n} + \frac{m}{m+n-1}\frac{n}{m+n}\\
+                            &amp;= \frac{(m+n-1)(m)}{(m+n-1)(m+n)}\\
+                            &amp;= \frac{m}{m+n}
 \end{align*}
 \]</span></p>
-<p>従って，<span class="math inline">\(0.01 \geq 0.1^n \Rightarrow n\geq 2\)</span>.</p>
+<p>従って，当たりを引く確率の最大化という観点では有利不利は存在しない．</p>
+</div>
+</div>
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong> 📘 全確率の公式</strong> <br></p>
-<p>確率事象 <span class="math inline">\(A_1, A_2, \cdots\)</span> に対し，</p>
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> <br></p>
 <ul>
-<li><span class="math inline">\(A_i\cap A_j = \emptyset \ \  (i\neq j)\)</span></li>
-<li><span class="math inline">\(\Pr(A_i) &gt;0 \ \  \forall i\)</span></li>
-<li><span class="math inline">\(\bigcup_i A_i = \Omega\)</span></li>
+<li>ある製品を作る機械が3台あり, A, B, Cとする．</li>
+<li>A, B, Cはそzれぞれ全体の20%, 30%, 50%の製品を生産している</li>
+<li>A, B, Cの各機械から生産される製品について，それぞれ5%, 4%, 2% の割合で不良品が混ざっていることが知られている</li>
 </ul>
-<p>ならば任意の確率事象 <span class="math inline">\(B\)</span> について，</p>
+<p>上記の設定において，製品全体からランダムに1個とりだしたとき，それが不良品である確率はいくつか？また，取り出しした製品が不良品であることを条件としたとき， その製品を生産した機械がA, B, Cである確率をそれぞれ求めよ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; 不良品の確率</strong></p>
+<p>ランダムに取り出した製品が不良品である確率事象をDとすると</p>
 <p><span class="math display">\[
-B = (A_1\cap B) \cup (A_2\cap B) \cup \cdots
+\begin{align*}
+\Pr(D) &amp;= \Pr(D\cap A) + \Pr(D\cap B) + \Pr(D\cap C)\\
+       &amp;= \Pr(D\vert A)\Pr(A) + \Pr(D\vert B)\Pr(B) + \Pr(D\vert C)\Pr(C)\\
+       &amp;= \frac{5}{100}\frac{20}{100} + \frac{4}{100}\frac{30}{100} + \frac{2}{100}\frac{50}{100}\\
+       &amp;= \frac{4}{125}
+\end{align*}
 \]</span></p>
-<p>また，各 <span class="math inline">\((A_i\cap B) \cap (A_j\cap B) = \emptyset\)</span> が成立するので</p>
+<p><strong> ▶&nbsp; 不良品生産機械の確率</strong></p>
 <p><span class="math display">\[
-\Pr(B) = \Pr(A_1\cap B) + \Pr(A_2\cap B) \cup \cdots
+\begin{align*}
+\Pr(A\vert D) &amp;= \frac{100}{320} = \frac{5}{16}\\
+\Pr(B\vert D) &amp;= \frac{120}{320} = \frac{3}{8}\\
+\Pr(C\vert D) &amp;= \frac{100}{320} = \frac{5}{16}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="causal-inference" class="level2">
+<h2 class="anchored" data-anchor-id="causal-inference">Causal Inference</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1-propensity-score" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> <strong>: MHE The Propensity Score Theorem (p81)</strong> <br></p>
+<p><span class="math inline">\(i\)</span> を観測単位のindexとしたとき，<span class="math inline">\(D_i\)</span> を0,1を値域とするbinary確率変数，<span class="math inline">\(X_i\)</span> をcovariate確率変数のベクトル， <span class="math inline">\(\{Y_{0i}, Y_{1i}\}\)</span> を <span class="math inline">\(D_i\)</span> の値に対応したPotential Outcomeの組とする．</p>
+<p><span class="math display">\[
+\begin{align*}
+\{Y_{0i}, Y_{1i}\}{\perp \!\!\! \perp} D_i\vert X_i
+\end{align*}
+\]</span></p>
+<p>とCIAが成立するとき，以下が成立することを示せ：</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\{Y_{0i}, Y_{1i}\} {\perp \!\!\! \perp} D_i\vert p(X_i)\\[4pt]
+&amp;\text{where } p(X_i) \equiv \mathbb E[D_i\vert X_i]
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(p(X_i)\)</span> をコントロールしたときに，Potential Outcomeの同時分布は <span class="math inline">\(D_i\)</span> と独立であることが示せれば良いので，</p>
+<p><span class="math display">\[
+\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) = \Pr(D_i = 1 \vert p(X_i)) = p(X_i)
+\]</span></p>
+<p>であることが示せれば十分．</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) \\
+&amp;= \mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= \mathbb E[\mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= \mathbb E[\mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= \mathbb E[\mathbb E[D_i \vert Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]
+\end{align*}
+\]</span></p>
+<p>このとき，問題の仮定より <span class="math inline">\(\{Y_{0i}, Y_{1i}\}{\perp \!\!\! \perp} D_i\vert X_i\)</span> なので</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\mathbb E[\mathbb E[D_i \vert Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= \mathbb E[\mathbb E[D_i \vert X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= \mathbb E[p(X_i) \vert p(X_i), Y_{0i}, Y_{1i}]\\
+&amp;= p(X_i)
+\end{align*}
 \]</span></p>
 <p>従って，</p>
 <p><span class="math display">\[
-\Pr(B) = \Pr(B\vert A_1)\Pr(A_1) + \Pr(B\vert A_2)\Pr(A_2) + \cdots
+\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) = \Pr(D_i = 1 \vert p(X_i)) = p(X_i)
 \]</span></p>
-<p>が成立する．</p>
 </div>
-<br>
+</div>
+</div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>Def: ベイズの定理</strong> <br></p>
-<p>確率事象 <span class="math inline">\(A_1, A_2, \cdots\)</span> に対し，</p>
-<ul>
-<li><span class="math inline">\(A_i\cap A_j = \emptyset \ \ (i\neq j)\)</span></li>
-<li><span class="math inline">\(\Pr(A_i) &gt;0 \ \  \forall i\)</span></li>
-<li><span class="math inline">\(\bigcup_i A_i = \Omega\)</span></li>
-</ul>
-<p>ならば任意の確率事象 <span class="math inline">\(B\)</span> について，<span class="math inline">\(\Pr(B) &gt; 0\)</span> のときには <span class="math inline">\(B\)</span> を与えたときの <span class="math inline">\(A_j\)</span> の条件付き確率は</p>
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> <strong>: MHE The Propensity Score and ATT (p82)</strong> <br></p>
+<p><a href="#exr-1-propensity-score">上の問題</a>と同じ設定のとき，以下を示せ．</p>
 <p><span class="math display">\[
-\Pr(A_j\vert B) = \frac{\Pr(B \vert A_j)\Pr(A_j)}{\sum_{i=1}\Pr(B \vert A_i)\Pr(A_i)}
+\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1] = \mathbb E\bigg[\frac{(D_i - p(X_i))Y_i}{(1 - p(X_i))\Pr(D_i=1)}\bigg]
 \]</span></p>
-<p>と表される．とくに <span class="math inline">\(\Pr(A_j)\)</span> を事前確率, <span class="math inline">\(\Pr(A_j\vert B)\)</span> を事後確率と呼ぶ．</p>
 </div>
-</section>
-<section id="組み合わせ" class="level2">
-<h2 class="anchored" data-anchor-id="組み合わせ">組み合わせ</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>📘 マルチクラスの組み合わせ</strong> <br></p>
-<p>n個のものがc個のクラスに分けられていて，各クラスの個数を <span class="math inline">\(n_i\)</span> と表すとする．このときの組み合わせ個数は</p>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">\[
-\frac{n!}{n_1!n_2!\cdots n_c!} \ \ (n_1 + n_2 + \cdots + n_c = n)
+\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1] = \mathbb E[Y_{1i}\vert D_i=1] - \mathbb E[Y_{0i}\vert D_i=1]
 \]</span></p>
-<p>と表せる．</p>
-</div>
-<div id="exm-" class="custom_problem theorem example">
-<p><span class="theorem-title"><strong>Example 3</strong></span> <br></p>
-<p>n個の要素を<span class="math inline">\(C_1, C_2, C_3\)</span>の３つのクラスに分けることを考える．<span class="math inline">\(C_1\)</span> の個数を <span class="math inline">\(n_1\)</span>, <span class="math inline">\(C_2\)</span> の個数を <span class="math inline">\(n_2\)</span>, <span class="math inline">\(C_3\)</span> の個数を <span class="math inline">\(n_3 = n-n_1-n_2\)</span>としたとき，</p>
+<p>と分解できることに注目する．</p>
+<p><strong> ▶&nbsp; <span class="math inline">\(\mathbb E[Y_{1i}\vert D_i=1]\)</span> について</strong></p>
 <p><span class="math display">\[
 \begin{align*}
-{}_nC_{n_1} \times {}_{n-n_1}C_{n_2} &amp;= \frac{n!}{(n-n_1)!n_1!}\frac{(n-n_1)!}{n_2!(n-n_1-n_2)!}\\
-                                     &amp;=\frac{n!}{n_1!n_2!n_3!}
+&amp;\mathbb E[D_iY_i] = \mathbb E[Y_{1i}\vert D_i=1]\Pr(D_i=1)\\[4pt]
+&amp;\Rightarrow \mathbb E[Y_{1i}\vert D_i=1] = \frac{\mathbb E[D_iY_i]}{\Pr(D_i=1)} \tag{a}
 \end{align*}
 \]</span></p>
-<p>となりマルチクラスの組み合わせの式と一致することがわかる．</p>
-</div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>📘 重複組み合わせ</strong> <br></p>
-<p>n個のツボに，空ツボを許容して区別できない r 個のボールをアサインする問題を考えるとき，その組み合わせの個数は</p>
+<p><strong> ▶&nbsp; <span class="math inline">\(\mathbb E[Y_{0i}\vert D_i=1]\)</span> について</strong></p>
 <p><span class="math display">\[
-{}_nH_r = {}_{n+r-1}C_r
+\begin{align*}
+&amp;\mathbb E[Y_{0i}] = \mathbb E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) + \mathbb E[Y_{0i}\vert D_i = 0] \Pr(D_i = 0)\\[4pt]
+&amp;\Rightarrow \mathbb E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) = \mathbb E[Y_{0i}] - \mathbb E[Y_{0i}\vert D_i = 0] \Pr(D_i = 0)\\[4pt]
+&amp;\Rightarrow E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) = \mathbb E[Y_{0i}] - \frac{\mathbb E[(1 - D_i)Y_i]}{\Pr(D_i = 0)}\Pr(D_i = 0)\\[4pt]
+&amp;\Rightarrow E[Y_{0i}\vert D_i = 1] = (\mathbb E[Y_{0i}] - \mathbb E[(1 - D_i)Y_i])/\Pr(D_i = 1) \tag{b}
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; <span class="math inline">\(\mathbb E[Y_{0i}]\)</span> について</strong></p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg]\\[4pt]
+&amp;= \mathbb E\bigg\{\mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg\vert X_i\bigg]\bigg\}\\[4pt]
+&amp;= \mathbb E\bigg\{\frac{1}{1 - p(X_i)} (1 - p(X_i))\mathbb E\bigg[Y_{0i} \vert X_i\bigg]\bigg\}\\[4pt]
+&amp;= \mathbb E[Y_{0i}] \tag{c}
+\end{align*}
+\]</span></p>
+<p>(a), (b), (c)より</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1]\\[4pt]
+&amp;= \frac{1}{\Pr(D_i=1)}\bigg(\mathbb E[D_iY_i] - \mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg] + \mathbb E[(1 - D_i)Y_i] \bigg)\\[4pt]
+&amp;= \frac{1}{\Pr(D_i=1)}\mathbb E\bigg[Y_i - \frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg]\\[4pt]
+&amp;= \frac{1}{\Pr(D_i=1)}\mathbb E\bigg\{\frac{(D_i - p(X_i))Y_i}{1 - p(X_i)}\bigg\}\\[4pt]
+&amp;= \mathbb E\bigg[\frac{(D_i - p(X_i))Y_i}{(1 - p(X_i))\Pr(D_i=1)}\bigg]
+\end{align*}
 \]</span></p>
 </div>
-<p>重複組み合わせは次のような考えでも理解できる，例として，a, b, cの３つの文字から５個取り出す組み合わせの問題を考えるとする． このとき，</p>
-<ul>
-<li>○○|○○○| → aが2個, bが3個, cが0個</li>
-<li>○|○|○○○ → aが1個, bが1個, cが3個</li>
-</ul>
-<p>と考えてみると，○５個と|２個を一列に並べる問題と同一視できることがわかる．従って，</p>
-<p><span class="math display">\[
-{}_3H_5 = \frac{7!}{5!2!} = {}_{7}C_2
-\]</span></p>
-<div id="exm-" class="custom_problem theorem example">
-<p><span class="theorem-title"><strong>Example 4</strong></span> <br></p>
-<p>黒と白の２種類のまんじゅうから３個のまんじゅうを買う問題を考える．このとき，組み合わせに個数は</p>
-<p><span class="math display">\[
-{}_2H_3 = {}_4C_3 = 4
-\]</span></p>
-<p>となるが，実際に買い方として <span class="math inline">\((3, 0), (2, 1), (1, 2), (3, 0)\)</span> が考えられるので正しいことがわかる．</p>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<p><strong>📘 写像を用いた重複組み合わせと組み合わせの対応</strong> <br></p>
-<p>集合 <span class="math inline">\(A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, C = \{1, 2, 3, \cdots, n + r - 1\}\)</span> であるとき， 写像 <span class="math inline">\(f: A\to B\)</span> に対して，</p>
-<p><span class="math display">\[
-F(k) = f(k) + (k - 1)
-\]</span></p>
-<p>という写像 <span class="math inline">\(F: A\to C\)</span> を考える．このとき，</p>
-<ul>
-<li><span class="math inline">\(f\)</span> が広義単調増加写像なら <span class="math inline">\(F:A\to C\)</span> は狭義単調増加写像となる</li>
-<li><span class="math inline">\(F\)</span> が狭義単調増加写像なら <span class="math inline">\(f\)</span> は広義単調増加写像になる</li>
-</ul>
-<p>従って，広義単調増加写像に限定した <span class="math inline">\(f\)</span> の個数と 狭義単調増加写像に限定した <span class="math inline">\(F\)</span> の個数は等しくなるので</p>
-<p><span class="math display">\[
-{}_nH_r = _{n+r-1}C_r
-\]</span></p>
-<p>という関係性がわかる．</p>
 </div>
 
 
@@ -1128,13 +1344,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../../posts/statistics101/probability_and_set.html" class="pagination-link" aria-label="集合演算と確率">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../posts/statistics101/probability_and_set.html" class="pagination-link" aria-label="集合演算と確率">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/statistics101/combination_permutation.html" class="pagination-link" aria-label="場合の数">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1155,7 +1371,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/chapter_header.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/conditional_probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

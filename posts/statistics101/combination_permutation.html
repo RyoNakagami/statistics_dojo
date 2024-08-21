@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ryo Nakagami">
+<meta name="dcterms.date" content="2024-08-21">
 
-<title>References – statistics dojo</title>
+<title>3&nbsp; 場合の数 – statistics dojo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,48 +22,30 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="prev">
-<link href="././img/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../intro.html" rel="next">
+<link href="../../posts/statistics101/conditional_probability.html" rel="prev">
+<link href="../.././img/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,6 +93,35 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -121,7 +134,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/combination_permutation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,7 +149,7 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">statistics dojo</a> 
+      <a href="../../">statistics dojo</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-brush"></i></a>
@@ -173,13 +186,13 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
+            <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">確率基礎</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -188,19 +201,19 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/statistics101/probability_and_set.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/statistics101/conditional_probability.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/statistics101/conditional_probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/statistics101/combination_permutation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/statistics101/combination_permutation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></span></a>
   </div>
 </li>
@@ -208,19 +221,19 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -229,23 +242,47 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#組み合わせと順列" id="toc-組み合わせと順列" class="nav-link active" data-scroll-target="#組み合わせと順列">組み合わせと順列</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/combination_permutation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/combination_permutation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryo Nakagami </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2024-08-21</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2024-08-21</p>
+    </div>
+  </div>
     
   </div>
   
@@ -254,14 +291,225 @@ gtag('config', 'G-KHFEF7P8W9', { 'anonymize_ip': true});
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, D. E. (1984), <span>“Literate programming,”</span> <em>Comput.
-J.</em>, USA: Oxford University Press, Inc., 27, 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<section id="組み合わせと順列" class="level2">
+<h2 class="anchored" data-anchor-id="組み合わせと順列">組み合わせと順列</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-map" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.1</strong></span> <strong>写像の個数</strong> <br></p>
+<p>集合 <span class="math inline">\(A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, n\geq r\)</span> を考える． このとき以下の条件を満たす写像 <span class="math inline">\(f: A\to B\)</span> はそれぞれ全部でいくつあるか？</p>
+<ol type="1">
+<li>任意の写像</li>
+<li>１対１写像(＝単射)</li>
+<li>広義単調増加写像</li>
+<li>狭義単調増加写像</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (1) 任意の写像</strong></p>
+<p>Aの各元について，Bの元の個数分の割当先が考えられるので <span class="math inline">\(n^r\)</span> 個</p>
+<p><strong> ▶&nbsp; (2) １対１写像(＝単射)</strong></p>
+<p>単射の定義として</p>
+<p><span class="math display">\[
+(\forall i, j \in A) [i\neq j\Rightarrow f(i)\neq f(j)]
+\]</span></p>
+<p>Bからr個の要素を順番に取り出す順列と対応することがわかる．従って，</p>
+<p><span class="math display">\[
+\text{単射の個数} = \frac{n!}{(n-r)!}
+\]</span></p>
+<p><strong> ▶&nbsp; (3) 広義単調増加写像 </strong></p>
+<p>n個のツボにr個の区別できないボールを空ツボを許容して割り当てる問題と同一視できるので</p>
+<p><span class="math display">\[
+\text{広義単調増加写像の個数} = {}_nH_r = \frac{n+r-1!}{r!(n-1)!}
+\]</span></p>
+<p><strong> ▶&nbsp; (4) 狭義単調増加写像 </strong></p>
+<p>n個元からr個選ぶ組み合わせの問題と同一視できるので</p>
+<p><span class="math display">\[
+\text{狭義単調増加写像の個数} = {}_nC_r = \frac{n!}{r!(n-r)!}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> <br></p>
+<p><span class="math display">\[
+{}_{n}P_r = {}_{n-1}P_r + r \cdot {}_{n-1}P_{r-1}
+\]</span></p>
+<p>を示せ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{RHS} &amp;= \frac{(n-1!)}{(n-1-r)!} + r \frac{(n-1!)}{(n-r)!} \\
+           &amp;= (n-1)! \bigg(\frac{1}{(n-1-r)!} + \frac{r}{(n-r)!}\bigg)\\
+           &amp;= (n-1)! \frac{n + r - r}{(n-r)!}\\
+           &amp;= \frac{n!}{(n-r)!} = \text{LHS}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> <br></p>
+<p>0から9を１回ずつ用いて一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>0から9を１回ずつ用いて一直線に並べる場合の数は <span class="math inline">\(10!\)</span>．ここから左右ひっくり返したものを除かなくてはならないが， すべての要素が異なる順列に対しての反転なので，その数はちょうど半分となる．従って，<span class="math inline">\(10!/2\)</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> <br></p>
+<p>赤玉５個，白玉４個を一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>一直線に並べる場合の数は</p>
+<p><span class="math display">\[
+\frac{9!}{5!}{4!}
+\]</span></p>
+<p>この内，左右対称となるもの(=ひっくり返したら同じになる並び順が存在しない組)は次の条件を満たすもの</p>
+<ul>
+<li>中央が赤玉</li>
+<li>左右の枠４個ずつについて，赤白がそれぞれ２個ずつ使用されている</li>
+</ul>
+<p>つまり，<span class="math inline">\({}_{4}C_2 = 6\)</span> 通りが完全左右対称の並びとなる．従って，</p>
+<p><span class="math display">\[
+\frac{126 - 6}{2} + 6 = 66\text{通り}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> <br></p>
+<p>ある野球チームの9人の選手の打順を決める．投手と二塁手は，７番，８番，９番のどれかにするとしたとき，９人の打順の決め方は何通りあるか？</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>投手と２塁手以外の順番は <span class="math inline">\(7!\)</span></li>
+<li>投手と二塁手の順番の表し方は <span class="math inline">\(2!\)</span></li>
+<li>投手と二塁手が専有する打順の組み合わせは <span class="math inline">\({}_3C_2 = 3!/2!\)</span></li>
+</ul>
+<p>従って，</p>
+<p><span class="math display">\[
+7! \times 2! \times \frac{3!}{2!} = 7! \times 3! = 5040 \times 6 = 30240
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> <br></p>
+<p>4つのサイコロの出る目のくみあわせを求めよ． 例: <span class="math inline">\((4, 1, 1, 1)\)</span> という組と <span class="math inline">\((1, 4, 1, 1)\)</span> 組は出ている目の組み合わせが同じなので 同一の組とみなす．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 組み合わせ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>4つすべて同じ目の場合: <span class="math inline">\(6\text{通り}\)</span></li>
+<li>3つが同じ目の場合: <span class="math inline">\({}_6C_2 \times 2 = 30\text{通り}\)</span></li>
+<li>2つ, 2つが同じ目の場合: <span class="math inline">\({}_6C_2 = 15\text{通り}\)</span></li>
+<li>2つが同じ目，残り２つ異なる目の場合: <span class="math inline">\({}_6C_3 \times 3 = 60\text{通り}\)</span></li>
+<li>すべてが異なる場合: <span class="math inline">\({}_6C_4 = 15\text{通り}\)</span></li>
+</ul>
+<p>従って，<span class="math inline">\(126\text{通り}\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 重複組み合わせ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>サイコロの枠 1, 2, 3, 4, 5, 6に対して区別されない４つのボールを重複を許してアサインする問題と考えることができるので</p>
+<p><span class="math display">\[
+{}_6H_4 = {}_{9}C_4 = 126\text{通り}
+\]</span></p>
+</div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -836,13 +1084,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/statistics-for-regression-monkey" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span>
+      <a href="../../posts/statistics101/conditional_probability.html" class="pagination-link" aria-label="条件付き確率">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../intro.html" class="pagination-link" aria-label="Introduction">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -857,12 +1110,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
  © Copyright RyoNak
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE">
+    <a class="nav-link" href="../../LICENSE">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/references.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/combination_permutation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

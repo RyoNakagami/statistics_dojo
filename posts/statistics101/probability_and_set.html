@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ryo Nakagtami">
+<meta name="author" content="Ryo Nakagami">
 <meta name="dcterms.date" content="2024-08-15">
 
 <title>1&nbsp; 集合演算と確率 – statistics dojo</title>
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../intro.html" rel="next">
+<link href="../../posts/statistics101/conditional_probability.html" rel="next">
 <link href="../../posts/statistics101/chapter_header.html" rel="prev">
 <link href="../.././img/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -168,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">Part 1: 確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -227,7 +227,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/statistics101/chapter_header.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 1: 確率基礎</span></a>
+ <span class="menu-text">確率基礎</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -239,18 +239,30 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/statistics101/conditional_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/statistics101/combination_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -277,7 +289,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">Part 1: 確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/statistics101/chapter_header.html">確率基礎</a></li><li class="breadcrumb-item"><a href="../../posts/statistics101/probability_and_set.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">集合演算と確率</span></h1>
 </div>
@@ -289,7 +301,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ryo Nakagtami </p>
+             <p>Ryo Nakagami </p>
           </div>
   </div>
     
@@ -303,7 +315,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2024-08-14</p>
+      <p class="date-modified">2024-08-21</p>
     </div>
   </div>
     
@@ -322,9 +334,12 @@ window.Quarto = {
 <p>以下の事象を簡単に表せ：</p>
 <p><span class="math display">\[
 \begin{align}
-&amp;(A \cup B) \cup (C \cup B^c)\tag{a}\\
-&amp;A \cap (B \backslash A)\tag{b}\\
-&amp;(A\cap B) \cup (A \backslash B)\tag{c}
+&amp;(A \cup B) \cup (C \cup B^c)\tag{a}\\[4pt]
+&amp;A \cap (B \backslash A)\tag{b}\\[4pt]
+&amp;(A\cap B) \cup (A \backslash B)\tag{c}\\[4pt]
+&amp;(A\cup B) \cap (A \cup B^c)\tag{d}\\[4pt]
+&amp;(A\cup B) \cap (A^c \cup B) \cap (A \cup B^c)\tag{e}\\[4pt]
+&amp;A\cup (B - (A\cap B))\cup (C - (A\cap C))\tag{f}
 \end{align}
 \]</span></p>
 </div>
@@ -362,28 +377,52 @@ A \cap (B \cap A^c) = (A\cap A^c) \cap B = \emptyset \cap B = \emptyset
 (A\cap B) \cup (A \cap B^c) = A \cap (B \cup B^c) = A\cap \Omega = A
 \end{align*}
 \]</span></p>
+<p><strong> ▶&nbsp; (d)</strong></p>
+<p>分配法則より</p>
+<p><span class="math display">\[
+(A\cup B) \cap (A \cup B^c) = A \cup (B\cap B^c) = A\cup \emptyset = A
+\]</span></p>
+<p><strong> ▶&nbsp; (e)</strong></p>
+<p>結合法則と分配法則より</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;(A\cup B) \cap (A^c \cup B) \cap (A \cup B^c)\\
+&amp;=((A\cup B) \cap (A^c \cup B)) \cap (A \cup B^c)\\
+&amp;= (B\cup (A\cap A^c))\cap (A \cup B^c)\\
+&amp;= B\cap (A \cup B^c)\\
+&amp;= (A\cap B) \cup (B\cap B^c)\\
+&amp;= (A\cap B)
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; (f)</strong></p>
+<p><span class="math display">\[
+\begin{align*}
+B - (A\cap B) &amp;= B \cap (A\cap B)^c\\
+              &amp;= (A^c \cap B) \cup (B \cap B^c)\\
+              &amp;= (A^c \cap B)
+\end{align*}
+\]</span></p>
+<p>したがって，</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;A\cup (B - (A\cap B))\cup (C - (A\cap C))\\
+&amp;= A\cup (A^c \cap B) \cup ((A^c \cap C))\\
+&amp;= A\cup (A^c \cap B) \cup ((A^c \cap C)) \cup A\\
+&amp;= (\Omega \cap (A\cup B)) \cup (\Omega \cap (A\cup C))\\
+&amp;= (A\cup B) \cup ((A\cup C))\\
+&amp;= A\cup B \cup C
+\end{align*}
+\]</span></p>
 </div>
 </div>
 </div>
-</section>
-<section id="事象と確率" class="level2">
-<h2 class="anchored" data-anchor-id="事象と確率">事象と確率</h2>
-<p><strong> ▶&nbsp; Key Points</strong></p>
-<ul>
-<li>標本点がすべて同程度に確からしいのみ，集合の要素数と有限標本空間の要素数の割り算で確率が計算できる</li>
-</ul>
-<p><br></p>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.2</strong></span> <br></p>
-<p>A, B, Cを事象とする．次の事象を式で表せ</p>
-<ol type="1">
-<li>A,B,CのうちAだけが発生する</li>
-<li>A,B,Cのうち少なくとも２つが起きる</li>
-<li>A,B,Cどれも起きない</li>
-<li>A,B,Cのうち，２つ以上の事象は同時には起きない</li>
-<li>A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか</li>
-</ol>
+<p>A, Bが事象のとき, <span class="math display">\[
+A\cup B = (A\cap B) \cup (A\cap B^c) \cup (A^c \cap B) \tag{a}
+\]</span></p>
+<p>であることを確かめよ．または，<span class="math inline">\(A\cap B, A\cap B^c , A^c \cap B\)</span> は互いに排反であることを調べよ．</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -397,6 +436,513 @@ Solution
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (a)の成立について </strong></p>
+<p><span class="math display">\[
+\begin{align*}
+A &amp;= A\cap \Omega\\
+  &amp;= A\cap (B\cup B^c)\\
+  &amp;= (A\cap B) \cup (A\cap B^c)
+\end{align*}
+\]</span></p>
+<p>同様に，<span class="math inline">\(B = (A\cap B) \cup (A^c\cap B)\)</span> . 従って，</p>
+<p><span class="math display">\[
+\begin{align*}
+A \cup B &amp;= ((A\cap B) \cup (A^c\cap B)) \cup (A\cap B) \cup (A\cap B^c)\\
+         &amp;= (A\cap B) \cup (A^c\cap B) \cup (A\cap B^c)
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; 各事象の排反性について</strong></p>
+<p><span class="math display">\[
+\begin{align*}
+(A\cap B) &amp;\subset B\\
+(A\cap B^c) &amp;\subset B^c
+\end{align*}
+\]</span></p>
+<p>より，<span class="math inline">\((A\cap B) \cap (A\cap B^c) = \emptyset\)</span>. 同様に</p>
+<p><span class="math display">\[
+\begin{align*}
+(A\cap B) &amp;\subset A\\
+(A^c\cap B) &amp;\subset A^c\\
+(A\cap B^c) &amp;\subset A
+\end{align*}
+\]</span></p>
+<p>従って，<span class="math inline">\((A\cap B) \cap (A^c\cap B) = \emptyset, (A\cap B^c) \cap (A^c\cap B) = \emptyset\)</span> であることがわじゃry．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> <br></p>
+<p><span class="math inline">\(A, B\)</span> を空集合ではない集合としたとき，以下の関係式は正しいと言えるか？</p>
+<p><span class="math display">\[
+(A\cup B) - A = B
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+A\cup B = A \cup (B - A)
+\]</span></p>
+<p>と互いに交わりのない集合のUnionと表記できるので</p>
+<p><span class="math display">\[
+A\cup B - A = B - A \subset B
+\]</span></p>
+<p><span class="math inline">\(A \cap B \neq \emptyset\)</span> のとき，<span class="math inline">\(B \not\subset B-A\)</span>, つまり <span class="math inline">\(B - A \neq B\)</span>となるので関係式は正しくない．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> <br></p>
+<p><span class="math inline">\(A, B, C\)</span> を空集合ではない集合としたとき，以下の関係式は正しいと言えるか？</p>
+<p><span class="math display">\[
+(A\cup B) - C = A- (B - C)
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{LHS} &amp;= (A\cup B) \cap C^c\\
+           &amp;= (A\cap C^c) \cup (B \cap C^c)\\
+\Rightarrow&amp; ((A\cap C^c) \cup (B \cap C^c))\cap C = \emptyset
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\text{RHS} &amp;= A\cap (B \cap C^c)^c\\
+           &amp;= A\cap (B^c \cup C)\\
+           &amp;= (A\cap B^c) \cup (A\cap C)\\
+\Rightarrow&amp; ((A\cap B^c) \cup (A\cap C)) \cap C \neq \emptyset
+\end{align*}
+\]</span></p>
+<p>したがって，<span class="math inline">\(\text{LHS} \neq \text{RHS}\)</span>となり，与えられた関係式は正しくない．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> <br></p>
+<p><span class="math inline">\(A, B, C\)</span> を空集合ではない集合としたとき，以下の関係式を示せ</p>
+<p><span class="math display">\[
+A\cap B \cap C \subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+A\cap B \cap C &amp;\subset A\cap B\\
+               &amp;\subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-poker-game" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6</strong></span> <strong>ポーカーと集合</strong> <br></p>
+<p>ポーカーを考える．５枚のカードの組合せ全体を <span class="math inline">\(\Omega\)</span> としたとき，以下の事象の包含関係を調べよ</p>
+<ul>
+<li>事象A: 同じ数字のカードが２枚以上存在する組み合わせ</li>
+<li>事象B: 同じ数字のカードが３枚以上存在する組み合わせ</li>
+<li>事象C: 同じ数字のカードが４枚以上存在する組み合わせ</li>
+<li>事象D: 同じ数字のカードが２枚以上あるのが２種類ある組み合わせ</li>
+<li>事象E: フルハウス</li>
+<li>事象F: ワンペア</li>
+<li>事象G: ツーペア</li>
+<li>事象H: スリーカーズ</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+C &amp;\subset B \subset A\\
+D &amp;\subset A\\
+E &amp;= B \cap D\\
+F &amp;= (A - B) \cap (A - D) = A \cap (B\cup D)^c \\
+G &amp;= D - B\\
+H &amp;= (B - C) \cap (B - D) = B \cap (C \cup D)^c\\
+B - D &amp;= B - E\\
+D - B &amp;= D - E\\
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> <br></p>
+<p>上述の<a href="#exr-poker-game">ポーカーと集合問題</a>において，<span class="math inline">\(\Omega\)</span> 及び各 <span class="math inline">\(A\)</span>~<span class="math inline">\(H\)</span> 事象の個数（＝カードの組み合わせ数）を求めよ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>以下では <span class="math inline">\(\sharp(\cdot)\)</span> で集合の個数を表すとする．</p>
+<p><span class="math display">\[
+\begin{align*}
+\sharp(\Omega) = {}_{52}C_5 = 2598960
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(\sharp(A) = \sharp(\Omega) - \sharp(A^c)\)</span> なので</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\sharp(A^c) = {}_{13}C_5 \times 4^5 = 1317888\\
+\Rightarrow &amp;\sharp(A) = 2598960 - 1317888 = 1281072
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(C\)</span> の個数は，事実上フォーカーズの個数と同じなので</p>
+<p><span class="math display">\[
+\sharp(C) = {}_{13}C_1 \times 48 = 624
+\]</span></p>
+<p>フルハウス <span class="math inline">\(E\)</span> の個数は</p>
+<p><span class="math display">\[
+\begin{align*}
+\sharp(E) &amp;= {}_{13}C_2 \times 2 {}_{4}C_3 \times 2 {}_{4}C_2\\
+          &amp;= 3744
+\end{align*}
+\]</span></p>
+<p>ツーペア <span class="math inline">\(G\)</span> の個数は, ペアとして選ばれた数値のカード８枚分を引いた44枚の中からドベカードを選ぶ必要があるので</p>
+<p><span class="math display">\[
+\begin{align*}
+\sharp(G) &amp;= {}_{13}C_2 \times {}_{4}C_2 \times {}_{4}C_2 \times 44\\
+          &amp;= 123552
+\end{align*}
+\]</span></p>
+<p>スリーカーズ <span class="math inline">\(H\)</span> は <span class="math inline">\(H = B \cap (C \cup E)^c = (B - C) - E\)</span> かつ <span class="math inline">\(E \subset (B - C)\)</span> となるので，</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\sharp(B-C) = {}_{13}C_1 \times {}_{4}C_3 \times 48 = 58656\\
+\Rightarrow&amp; \sharp(H) = 58656 - 3744 = 54912
+\end{align*}
+\]</span></p>
+<p>また，同様の議論より</p>
+<p><span class="math display">\[
+\begin{align*}
+\sharp(B) = \sharp(B-C) + \sharp(C) = 58656 + 624 = 59280
+\end{align*}
+\]</span></p>
+<p>ワンペア集合 <span class="math inline">\(F\)</span> は 集合 <span class="math inline">\(A\)</span> から ツーペア <span class="math inline">\(G\)</span>, スリーカーズ <span class="math inline">\(H\)</span>, フォーカーズ <span class="math inline">\(C\)</span>, フルハウス <span class="math inline">\(E\)</span> を引けば良いので</p>
+<p><span class="math display">\[
+\sharp(F) = 1281072 - 123552 - 54912 - 624 - 3744 = 1098240
+\]</span></p>
+<p><span class="math inline">\(D - E = G\)</span> 及び <span class="math inline">\(E \cap G = \emptyset\)</span> という関係から <span class="math inline">\(\sharp(D) = \sharp(E) + \sharp(G)\)</span> となる．従って，</p>
+<p><span class="math display">\[
+\sharp(D) = 3744 + 123552 = 127296
+\]</span></p>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<p><strong>📘 REMARKS</strong> <br></p>
+<p>組み合わせで表された各標本点は同様に確からしいと考えられるので，各事象の確率は</p>
+<p><span class="math display">\[
+\Pr(A) = \frac{\sharp(A)}{\sharp(\Omega)}
+\]</span></p>
+<p>で考えることができる．</p>
+<p>また，ワンペア <span class="math inline">\(F\)</span> 個数の別解として，ペアの数字を一つ選んでから残りはバラバラの数字となることとも考えられるので</p>
+<p><span class="math display">\[
+\sharp(F) = _{13}C_1 \times _{4}C_2 \times _{12}C_3 \times 4^3 = 1098240
+\]</span></p>
+<p>と求めても良い．</p>
+</div>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> <br></p>
+<p>Rをもちいて，ワンペア，ツーペア，フルハウス，スリーカーズ，フォーカーズの場合の数を確かめよ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(combinat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'combinat'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:utils':
+
+    combn</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>num_cores <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the suits and ranks</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"D"</span>, <span class="st">"H"</span>, <span class="st">"S"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>, <span class="st">"5"</span>, <span class="st">"6"</span>, <span class="st">"7"</span>, <span class="st">"8"</span>, <span class="st">"9"</span>, <span class="st">"10"</span>, <span class="st">"J"</span>, <span class="st">"Q"</span>, <span class="st">"K"</span>, <span class="st">"A"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the deck of cards</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>deck <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">rep</span>(ranks, <span class="at">each =</span> <span class="dv">4</span>), suits, <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create all combinations</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>all_hands <span class="ot">&lt;-</span> <span class="fu">combn</span>(deck, <span class="dv">5</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to check the rank frequency in a hand</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>check_hand <span class="ot">&lt;-</span> <span class="cf">function</span>(hand) {</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  hand_ranks <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">strsplit</span>(hand, <span class="st">"-"</span>), <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="dv">1</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  rank_table <span class="ot">&lt;-</span> <span class="fu">table</span>(hand_ranks)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rank_table)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>hand_types <span class="ot">&lt;-</span> <span class="fu">mclapply</span>(all_hands, <span class="cf">function</span>(hand) {</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  rank_table <span class="ot">&lt;-</span> <span class="fu">check_hand</span>(hand)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">max</span>(rank_table) <span class="sc">==</span> <span class="dv">4</span>) {</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Four Cards"</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">max</span>(rank_table) <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;&amp;</span> <span class="fu">any</span>(rank_table <span class="sc">==</span> <span class="dv">2</span>)) {</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Full House"</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">max</span>(rank_table) <span class="sc">==</span> <span class="dv">3</span>) {</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Three Cards"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(rank_table <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Two Pair"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">any</span>(rank_table <span class="sc">==</span> <span class="dv">2</span>)) {</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"One Pair"</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"High Card"</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>}, <span class="at">mc.cores =</span> num_cores)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of hand types</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">unlist</span>(hand_types))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Four Cards  Full House   High Card    One Pair Three Cards    Two Pair 
+        624        3744     1317888     1098240       54912      123552 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="事象と確率" class="level2">
+<h2 class="anchored" data-anchor-id="事象と確率">事象と確率</h2>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.9</strong></span> <br></p>
+<p><span class="math inline">\(A\subset B\)</span> なる確率事象A, Bに対して <span class="math inline">\(\Pr(A)\leq \Pr(B)\)</span> を示せ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(B = A^c \cap B \cup A \cap B\)</span> および <span class="math inline">\((A^c \cap B) \cap (A \cap B) = \emptyset\)</span> より</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(B) &amp;= \Pr(A^c \cap B) + \Pr(A \cap B)\\
+       &amp;\geq \Pr(A \cap B)
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(A\subset B\)</span> より <span class="math inline">\(A \cap B = A\)</span>. 従って，</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(B) &amp;= \Pr(A^c \cap B) + \Pr(A \cap B)\\
+       &amp;\geq \Pr(A \cap B) = \Pr(A)
+\end{align*}
+\]</span></p>
+<p>よって，<span class="math inline">\(\Pr(A)\leq \Pr(B)\)</span> が成立する．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.10</strong></span> <br></p>
+<p>確率事象 <span class="math inline">\(A_1, A_2, \cdots, A_n\)</span> について</p>
+<p><span class="math display">\[
+\Pr(\bigcup_{i=1}^n A_i) \leq \sum_{i=1}^n\Pr(A_i)
+\]</span></p>
+<p>が成立することを示せ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 数学的帰納法
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>数学的帰納法を用いいて示す. <span class="math inline">\(n=1\)</span> のときは，</p>
+<p><span class="math display">\[
+\Pr(A_{1}) \leq \Pr(A_{1})
+\]</span></p>
+<p>より成立．<span class="math inline">\(n=2\)</span> のときも，</p>
+<p><span class="math display">\[
+\Pr(A_{1} \cup A_{2}) = \Pr(A_{1}) + \Pr(A_{2}) - \Pr(A_{1}\cap A_{2}) \leq \Pr(A_{1}) + \Pr(A_{2})
+\]</span></p>
+<p>より成立．<span class="math inline">\(n\)</span> のとき成り立つと仮定すると，仮定より <span class="math inline">\(\Pr(\bigcup_{i=1}^n A_i)\leq \sum_{i=1}^n\Pr(A_i)\)</span>.</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(\bigcup_{i=1}^{n+1} A_i) &amp;= \Pr((\bigcup_{i=1}^n A_i)\cup A_{n+1})\\
+                             &amp;\leq \Pr(\bigcup_{i=1}^n A_i) + \Pr(A_{n+1})\\
+                             &amp;\leq \sum_{i=1}^n\Pr(A_i) + \Pr(A_{n+1})\\
+                             &amp;= \sum_{i=1}^{n+1}\Pr(A_i)
+\end{align*}
+\]</span></p>
+<p>以上より，<span class="math inline">\(n+1\)</span> のときにも成り立つことがわかる．</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 排反事象の定義を用いた証明
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(B_1 = A_1, B2 = A_2 \cap B_1^c, \cdots, B_i = A_i \cap (B_1\cup \cdots \cup B_{i-1})^c\)</span> と定義する． このとき，<span class="math inline">\(B_i \cap B_j = \emptyset\)</span> で</p>
+<p><span class="math display">\[
+\bigcup_{i} A_i = \bigcup_{i} B_i
+\]</span></p>
+<p>が成立することをまず確かめる．</p>
+<p><strong> ▶&nbsp; 排反性</strong></p>
+<p><span class="math inline">\(i &lt; j\)</span> について</p>
+<p><span class="math display">\[
+\begin{align*}
+B_j &amp;= A_j \cap (B_1 \cup \cdots \cup B_i \cup \cdots B_{j-1})^c\\
+    &amp;\subset (B_1 \cup \cdots \cup B_i \cup \cdots B_{j-1})^c\subset B_i^c
+\end{align*}
+\]</span></p>
+<p>従って，<span class="math inline">\(B_i \cap B_j = \emptyset\)</span></p>
+<p><strong> ▶&nbsp; 事象の和</strong></p>
+<p><span class="math inline">\(B_i \subset A_i\)</span> より</p>
+<p><span class="math display">\[
+\begin{align*}
+\bigcup B_i \subset \bigcup A_i
+\end{align*}
+\]</span></p>
+<p>つぎに，<span class="math inline">\(w\in \bigcup A_i\)</span> のとき，<span class="math inline">\(w \in A_1\)</span> ならば <span class="math inline">\(w\in B_1\)</span> なので <span class="math inline">\(w \in \bigcup B_i\)</span>. <span class="math inline">\(w \in A_i \ \ (i &gt; 1)\)</span> のときは，<span class="math inline">\(B_i = A_i \cap (B_1 \cup \cdots \cup B_{i-1})^c\)</span> であることに留意すると，</p>
+<ul>
+<li><span class="math inline">\(w \in (B_1 \cup \cdots \cup B_{i-1})^c\)</span> ならば <span class="math inline">\(w\in B_i\)</span> となり, <span class="math inline">\(w \in \bigcup B_i\)</span>.</li>
+<li><span class="math inline">\(w \not \in (B_1 \cup \cdots \cup B_{i-1})^c\)</span> ならば <span class="math inline">\(w \in B_1 \cup \cdots \cup B_{i-1}\)</span> となり, <span class="math inline">\(w \in  \bigcup B_i\)</span></li>
+</ul>
+<p>従って，いずれの場合でも <span class="math inline">\(\bigcup A_i \subset \bigcup B_i\)</span> が成立するので</p>
+<p><span class="math display">\[
+\bigcup B_i = \bigcup A_i
+\]</span></p>
+<p>となる．</p>
+<p><strong> ▶&nbsp; Conclusion</strong></p>
+<p><span class="math inline">\(B_i \subset A_i\)</span> より <span class="math inline">\(\Pr(B_i) \leq \Pr(A_i)\)</span> は自明．また上記と合わせると</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(\bigcup_{i=1}^n A_i) &amp;= \Pr(\bigcup_{i=1}^n B_i)\\
+                         &amp;= \sum_i \Pr(B_i)\\
+                         &amp;\leq \sum_i \Pr(A_i)
+\end{align*}
+\]</span></p>
+<p>となり題意は示せた．</p>
+</div>
+</div>
+</div>
+<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div id="exr-1" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.11</strong></span> <br></p>
+<p>A, B, Cを事象とする．次の事象を式で表せ</p>
+<ol type="1">
+<li>A,B,CのうちAだけが発生する</li>
+<li>A,B,Cのうち少なくとも２つが起きる</li>
+<li>A,B,Cどれも起きない</li>
+<li>A,B,Cのうち，２つ以上の事象は同時には起きない</li>
+<li>A,B,Cのうち，３つ全部起きるか，どれも起きないかのいずれか</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong> ▶&nbsp; (1) A,B,CのうちAだけが発生する</strong></p>
 <p><span class="math display">\[
@@ -422,46 +968,18 @@ A - (B\cup C) = A \cap B^c \cap C^c
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># genesがsample space omegaに相当</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>genes <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"gene"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># genesがsample space omegaに相当</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>genes <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"gene"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">sample</span>(genes,<span class="dv">300</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="probability_and_set_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RHS setoperation</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rhs_set <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">AB_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">BC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">AC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>union_set <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, rhs_set)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rhs_answer <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(genes, union_set)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># LHS setoperation</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>A, <span class="fu">union</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C)),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>B, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C)),</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>C, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B)),</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">D=</span><span class="fu">setdiff</span>(genes, <span class="fu">Reduce</span>(union, x)))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>lhs_answer <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>結果を確認してみると</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(<span class="fu">list</span>(<span class="at">LHS=</span>lhs_answer, <span class="at">RHS=</span>rhs_answer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -469,7 +987,35 @@ A - (B\cup C) = A \cap B^c \cap C^c
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(lhs_answer, rhs_answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RHS setoperation</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rhs_set <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">AB_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">BC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">AC_inter=</span><span class="fu">intersect</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>union_set <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, rhs_set)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>rhs_answer <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(genes, union_set)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># LHS setoperation</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>A, <span class="fu">union</span>(x<span class="sc">$</span>B, x<span class="sc">$</span>C)),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">B=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>B, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>C)),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">C=</span><span class="fu">setdiff</span>(x<span class="sc">$</span>C, <span class="fu">union</span>(x<span class="sc">$</span>A, x<span class="sc">$</span>B)),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">D=</span><span class="fu">setdiff</span>(genes, <span class="fu">Reduce</span>(union, x)))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>lhs_answer <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(union, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>結果を確認してみると</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(<span class="fu">list</span>(<span class="at">LHS=</span>lhs_answer, <span class="at">RHS=</span>rhs_answer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="probability_and_set_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(lhs_answer, rhs_answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -484,7 +1030,7 @@ A - (B\cup C) = A \cap B^c \cap C^c
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> <br> 3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには</p>
+<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> <br> 3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには</p>
 <p><span class="math display">\[
 [abc|\emptyset|\emptyset]
 \]</span></p>
@@ -492,7 +1038,7 @@ A - (B\cup C) = A \cap B^c \cap C^c
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -501,7 +1047,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>３つのボールについて３つのアサインメント先がそれぞれ考えられるので，</p>
 <p><span class="math display">\[
@@ -512,7 +1058,7 @@ Solution
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，</p>
+<p><span class="theorem-title"><strong>Exercise 1.13</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，</p>
 <ul>
 <li>第１の箱に３つとも入ったときには <span class="math inline">\([3,0,0]\)</span></li>
 <li>第１の箱に2つ, 第２の箱に１つ入ったときには <span class="math inline">\([2,1,0]\)</span></li>
@@ -521,7 +1067,7 @@ Solution
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -530,7 +1076,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>区別できないボール３つに対して，両端を含むボールの間４つの候補から仕切りを２つ選ぶ問題と同じみなせるので ４つから２つ重複ありの組み合わせを選ぶ問題, <span class="math inline">\({}_4H_2\)</span> と考えることができる．</p>
 <p>したがって，</p>
@@ -544,11 +1090,11 @@ Solution
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１と第２の箱が空ではない確率を求めよ．</p>
+<p><span class="theorem-title"><strong>Exercise 1.14</strong></span> <br> 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１と第２の箱が空ではない確率を求めよ．</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -557,7 +1103,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\([2, 1, 0], [1, 1, 1], [1, 2, 0]\)</span>が条件を標本点となりことから，多項分布の問題の問題と考えることができます．</p>
 <p><span class="math display">\[
@@ -583,11 +1129,11 @@ P(\text{第１と第２の箱が空ではない確率})=\frac{4}{9}
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.6</strong></span> <br> 上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１の箱に１つ以上のボールが入っている確率を求めよ</p>
+<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> <br> 上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果， 第１の箱に１つ以上のボールが入っている確率を求めよ</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -596,7 +1142,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>「第１の箱に１つ以上のボールが入っている」という事象Aは「第１の箱に０このボールが入っている」の余事象となるので <span class="math inline">\(1 - \Pr(A^c)\)</span>で求まる．したがって，</p>
 <p><span class="math display">\[
@@ -608,7 +1154,7 @@ Solution
 </div>
 <div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 1.16</strong></span> <br></p>
 <p>A国の人は10%がrich, 7%がfamous, 5%がrich and famousであることが知られている．このとき無作為に選ばれた１人について，以下の事象の確率を求めよ</p>
 <ol type="1">
 <li><span class="math inline">\(\Pr(\text{not rich})\)</span></li>
@@ -618,7 +1164,7 @@ Solution
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -627,7 +1173,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong> ▶&nbsp; (1) <span class="math inline">\(\Pr(\text{not rich})\)</span> </strong></p>
 <p>事象richを<span class="math inline">\(R\)</span>と表すと，事象not richは<span class="math inline">\(R^c\)</span>と表せるので</p>
@@ -1233,13 +1779,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/statistics101/chapter_header.html" class="pagination-link" aria-label="Part 1: 確率基礎">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Part 1: 確率基礎</span>
+      <a href="../../posts/statistics101/chapter_header.html" class="pagination-link" aria-label="確率基礎">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">確率基礎</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/statistics101/conditional_probability.html" class="pagination-link" aria-label="条件付き確率">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">条件付き確率</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
