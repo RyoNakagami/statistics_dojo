@@ -1,6 +1,6 @@
 services:
   rstudio:
-    user: "rstudio"
+    user: $DOCKER_USER
     build:
       context: ../
       dockerfile: Dockerfile
@@ -10,7 +10,6 @@ services:
       - "../:/home/rstudio/workspaces"
       - TinyTeX:/home/rstudio/.TinyTex
       - RenvCache_dojo:/home/rstudio/.cache/R
-    
     tty: true
 volumes:
   TinyTeX:
