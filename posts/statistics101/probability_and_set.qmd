@@ -1,6 +1,6 @@
 ---
 title: "集合演算と確率"
-author: "Ryo Nakagtami"
+author: "Ryo Nakagami"
 date: "2024-08-15"
 date-modified: last-modified
 code-fold: true
@@ -20,14 +20,17 @@ comments:
 
 $$
 \begin{align}
-&(A \cup B) \cup (C \cup B^c)\tag{a}\\
-&A \cap (B \backslash A)\tag{b}\\
-&(A\cap B) \cup (A \backslash B)\tag{c}
+&(A \cup B) \cup (C \cup B^c)\tag{a}\\[4pt]
+&A \cap (B \backslash A)\tag{b}\\[4pt]
+&(A\cap B) \cup (A \backslash B)\tag{c}\\[4pt]
+&(A\cup B) \cap (A \cup B^c)\tag{d}\\[4pt]
+&(A\cup B) \cap (A^c \cup B) \cap (A \cup B^c)\tag{e}\\[4pt]
+&A\cup (B - (A\cap B))\cup (C - (A\cap C))\tag{f}
 \end{align}
 $$
 
-
 :::
+
 
 </div>
 
@@ -64,21 +67,572 @@ $$
 \end{align*}
 $$
 
+
+<strong > &#9654;&nbsp; (d)</strong>
+
+分配法則より
+
+$$
+(A\cup B) \cap (A \cup B^c) = A \cup (B\cap B^c) = A\cup \emptyset = A
+$$
+
+<strong > &#9654;&nbsp; (e)</strong>
+
+結合法則と分配法則より
+
+$$
+\begin{align*}
+&(A\cup B) \cap (A^c \cup B) \cap (A \cup B^c)\\
+&=((A\cup B) \cap (A^c \cup B)) \cap (A \cup B^c)\\
+&= (B\cup (A\cap A^c))\cap (A \cup B^c)\\
+&= B\cap (A \cup B^c)\\
+&= (A\cap B) \cup (B\cap B^c)\\
+&= (A\cap B)
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; (f)</strong>
+
+$$
+\begin{align*}
+B - (A\cap B) &= B \cap (A\cap B)^c\\
+              &= (A^c \cap B) \cup (B \cap B^c)\\
+              &= (A^c \cap B)
+\end{align*}
+$$
+
+したがって，
+
+$$
+\begin{align*}
+&A\cup (B - (A\cap B))\cup (C - (A\cap C))\\
+&= A\cup (A^c \cap B) \cup ((A^c \cap C))\\
+&= A\cup (A^c \cap B) \cup ((A^c \cap C)) \cup A\\
+&= (\Omega \cap (A\cup B)) \cup (\Omega \cap (A\cup C))\\
+&= (A\cup B) \cup ((A\cup C))\\
+&= A\cup B \cup C
+\end{align*}
+$$
+
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+A, Bが事象のとき, 
+$$
+A\cup B = (A\cap B) \cup (A\cap B^c) \cup (A^c \cap B) \tag{a}
+$$
+
+であることを確かめよ．または，$A\cap B, A\cap B^c , A^c \cap B$ は互いに排反であることを調べよ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; (a)の成立について </strong>
+
+$$
+\begin{align*}
+A &= A\cap \Omega\\
+  &= A\cap (B\cup B^c)\\
+  &= (A\cap B) \cup (A\cap B^c)
+\end{align*}
+$$
+
+同様に，$B = (A\cap B) \cup (A^c\cap B)$ . 従って，
+
+$$
+\begin{align*}
+A \cup B &= ((A\cap B) \cup (A^c\cap B)) \cup (A\cap B) \cup (A\cap B^c)\\
+         &= (A\cap B) \cup (A^c\cap B) \cup (A\cap B^c)
+\end{align*}
+$$
+
+
+<strong > &#9654;&nbsp; 各事象の排反性について</strong>
+
+$$
+\begin{align*}
+(A\cap B) &\subset B\\
+(A\cap B^c) &\subset B^c
+\end{align*}
+$$
+
+より，$(A\cap B) \cap (A\cap B^c) = \emptyset$. 同様に
+
+$$
+\begin{align*}
+(A\cap B) &\subset A\\
+(A^c\cap B) &\subset A^c\\
+(A\cap B^c) &\subset A
+\end{align*}
+$$
+
+従って，$(A\cap B) \cap (A^c\cap B) = \emptyset, (A\cap B^c) \cap (A^c\cap B) = \emptyset$ であることがわじゃry．
+
 :::
 
 
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+$A, B$ を空集合ではない集合としたとき，以下の関係式は正しいと言えるか？
+
+$$
+(A\cup B) - A = B
+$$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+$$
+A\cup B = A \cup (B - A)
+$$
+
+と互いに交わりのない集合のUnionと表記できるので
+
+$$
+A\cup B - A = B - A \subset B
+$$
+
+$A \cap B \neq \emptyset$ のとき，$B \not\subset B-A$, つまり $B - A \neq B$となるので関係式は正しくない．
+:::
 
 
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
 
+$A, B, C$ を空集合ではない集合としたとき，以下の関係式は正しいと言えるか？
+
+$$
+(A\cup B) - C = A- (B - C)
+$$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+\text{LHS} &= (A\cup B) \cap C^c\\
+           &= (A\cap C^c) \cup (B \cap C^c)\\
+\Rightarrow& ((A\cap C^c) \cup (B \cap C^c))\cap C = \emptyset
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\text{RHS} &= A\cap (B \cap C^c)^c\\
+           &= A\cap (B^c \cup C)\\
+           &= (A\cap B^c) \cup (A\cap C)\\
+\Rightarrow& ((A\cap B^c) \cup (A\cap C)) \cap C \neq \emptyset
+\end{align*}
+$$
+
+したがって，$\text{LHS} \neq \text{RHS}$となり，与えられた関係式は正しくない．
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+$A, B, C$ を空集合ではない集合としたとき，以下の関係式を示せ
+
+$$
+A\cap B \cap C \subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
+$$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+A\cap B \cap C &\subset A\cap B\\
+               &\subset (A\cap B) \cup (B\cap C) \cup (A\cap C)
+\end{align*}
+$$
+
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-poker-game .custom_problem }
+**ポーカーと集合**
+<br>
+
+ポーカーを考える．５枚のカードの組合せ全体を $\Omega$ としたとき，以下の事象の包含関係を調べよ
+
+- 事象A: 同じ数字のカードが２枚以上存在する組み合わせ
+- 事象B: 同じ数字のカードが３枚以上存在する組み合わせ
+- 事象C: 同じ数字のカードが４枚以上存在する組み合わせ
+- 事象D: 同じ数字のカードが２枚以上あるのが２種類ある組み合わせ
+- 事象E: フルハウス
+- 事象F: ワンペア
+- 事象G: ツーペア
+- 事象H: スリーカーズ
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+C &\subset B \subset A\\
+D &\subset A\\
+E &= B \cap D\\
+F &= (A - B) \cap (A - D) = A \cap (B\cup D)^c \\
+G &= D - B\\
+H &= (B - C) \cap (B - D) = B \cap (C \cup D)^c\\
+B - D &= B - E\\
+D - B &= D - E\\
+\end{align*}
+$$
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+
+上述の[ポーカーと集合問題](#exr-poker-game)において，$\Omega$ 及び各 $A$~$H$ 事象の個数（＝カードの組み合わせ数）を求めよ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+以下では $\sharp(\cdot)$ で集合の個数を表すとする．
+
+$$
+\begin{align*}
+\sharp(\Omega) = {}_{52}C_5 = 2598960
+\end{align*}
+$$
+
+$\sharp(A) = \sharp(\Omega) - \sharp(A^c)$ なので
+
+$$
+\begin{align*}
+&\sharp(A^c) = {}_{13}C_5 \times 4^5 = 1317888\\
+\Rightarrow &\sharp(A) = 2598960 - 1317888 = 1281072
+\end{align*}
+$$
+
+$C$ の個数は，事実上フォーカーズの個数と同じなので
+
+$$
+\sharp(C) = {}_{13}C_1 \times 48 = 624
+$$
+
+フルハウス $E$ の個数は
+
+$$
+\begin{align*}
+\sharp(E) &= {}_{13}C_2 \times 2 {}_{4}C_3 \times 2 {}_{4}C_2\\
+          &= 3744
+\end{align*}
+$$
+
+ツーペア $G$ の個数は, ペアとして選ばれた数値のカード８枚分を引いた44枚の中からドベカードを選ぶ必要があるので
+
+$$
+\begin{align*}
+\sharp(G) &= {}_{13}C_2 \times {}_{4}C_2 \times {}_{4}C_2 \times 44\\
+          &= 123552
+\end{align*}
+$$
+
+スリーカーズ $H$ は $H = B \cap (C \cup E)^c = (B - C) - E$ かつ $E \subset (B - C)$ となるので，
+
+$$
+\begin{align*}
+&\sharp(B-C) = {}_{13}C_1 \times {}_{4}C_3 \times 48 = 58656\\
+\Rightarrow& \sharp(H) = 58656 - 3744 = 54912
+\end{align*}
+$$
+
+また，同様の議論より
+
+$$
+\begin{align*}
+\sharp(B) = \sharp(B-C) + \sharp(C) = 58656 + 624 = 59280
+\end{align*}
+$$
+
+ワンペア集合 $F$ は 集合 $A$ から ツーペア $G$, スリーカーズ $H$, フォーカーズ $C$, フルハウス $E$ を引けば良いので
+
+$$
+\sharp(F) = 1281072 - 123552 - 54912 - 624 - 3744 = 1098240
+$$
+
+$D - E = G$ 及び $E \cap G = \emptyset$ という関係から $\sharp(D) = \sharp(E) + \sharp(G)$ となる．従って，
+
+$$
+\sharp(D) = 3744 + 123552 = 127296
+$$
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong >📘 REMARKS</strong> <br>
+
+組み合わせで表された各標本点は同様に確からしいと考えられるので，各事象の確率は
+
+$$
+\Pr(A) = \frac{\sharp(A)}{\sharp(\Omega)}
+$$
+
+で考えることができる．
+
+また，ワンペア $F$ 個数の別解として，ペアの数字を一つ選んでから残りはバラバラの数字となることとも考えられるので
+
+$$
+\sharp(F) = _{13}C_1 \times _{4}C_2 \times _{12}C_3 \times 4^3 = 1098240
+$$
+
+と求めても良い．
+
+</div>
+
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+
+Rをもちいて，ワンペア，ツーペア，フルハウス，スリーカーズ，フォーカーズの場合の数を確かめよ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+```{r}
+#| code-fold: false
+library(combinat)
+library(parallel)
+
+num_cores <- 20
+
+# Generate the suits and ranks
+suits <- c("H", "D", "H", "S")
+ranks <- c("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+
+# Create the deck of cards
+deck <- paste(rep(ranks, each = 4), suits, sep = "-")
+
+# Create all combinations
+all_hands <- combn(deck, 5, simplify = FALSE)
+
+# Function to check the rank frequency in a hand
+check_hand <- function(hand) {
+  hand_ranks <- sapply(strsplit(hand, "-"), `[`, 1)
+  rank_table <- table(hand_ranks)
+  return(rank_table)
+}
+
+hand_types <- mclapply(all_hands, function(hand) {
+  rank_table <- check_hand(hand)
+  
+  if (max(rank_table) == 4) {
+    return("Four Cards")
+  } else if (max(rank_table) == 3 && any(rank_table == 2)) {
+    return("Full House")
+  } else if (max(rank_table) == 3) {
+    return("Three Cards")
+  } else if (sum(rank_table == 2) == 2) {
+    return("Two Pair")
+  } else if (any(rank_table == 2)) {
+    return("One Pair")
+  } else {
+    return("High Card")
+  }
+}, mc.cores = num_cores)
+
+# Summary of hand types
+table(unlist(hand_types))
+```
+
+:::
 
 
 ## 事象と確率
 
-<strong > &#9654;&nbsp; Key Points</strong>
-
-- 標本点がすべて同程度に確からしいのみ，集合の要素数と有限標本空間の要素数の割り算で確率が計算できる
-
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
 <br>
+
+$A\subset B$ なる確率事象A, Bに対して $\Pr(A)\leq \Pr(B)$ を示せ
+
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$B = A^c \cap B \cup A \cap B$ および $(A^c \cap B) \cap (A \cap B) = \emptyset$ より
+
+$$
+\begin{align*}
+\Pr(B) &= \Pr(A^c \cap B) + \Pr(A \cap B)\\
+       &\geq \Pr(A \cap B)
+\end{align*}
+$$
+
+$A\subset B$ より $A \cap B = A$. 従って，
+
+$$
+\begin{align*}
+\Pr(B) &= \Pr(A^c \cap B) + \Pr(A \cap B)\\
+       &\geq \Pr(A \cap B) = \Pr(A)
+\end{align*}
+$$
+
+よって，$\Pr(A)\leq \Pr(B)$ が成立する．
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+確率事象 $A_1, A_2, \cdots, A_n$ について
+
+$$
+\Pr(\bigcup_{i=1}^n A_i) \leq \sum_{i=1}^n\Pr(A_i)
+$$
+
+が成立することを示せ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution - 数学的帰納法
+
+数学的帰納法を用いいて示す. $n=1$ のときは，
+
+$$
+\Pr(A_{1}) \leq \Pr(A_{1})
+$$
+
+より成立．$n=2$ のときも，
+
+$$
+\Pr(A_{1} \cup A_{2}) = \Pr(A_{1}) + \Pr(A_{2}) - \Pr(A_{1}\cap A_{2}) \leq \Pr(A_{1}) + \Pr(A_{2})
+$$
+
+より成立．$n$ のとき成り立つと仮定すると，仮定より $\Pr(\bigcup_{i=1}^n A_i)\leq \sum_{i=1}^n\Pr(A_i)$.
+
+$$
+\begin{align*}
+\Pr(\bigcup_{i=1}^{n+1} A_i) &= \Pr((\bigcup_{i=1}^n A_i)\cup A_{n+1})\\
+                             &\leq \Pr(\bigcup_{i=1}^n A_i) + \Pr(A_{n+1})\\
+                             &\leq \sum_{i=1}^n\Pr(A_i) + \Pr(A_{n+1})\\
+                             &= \sum_{i=1}^{n+1}\Pr(A_i)
+\end{align*}
+$$
+
+以上より，$n+1$ のときにも成り立つことがわかる．
+
+:::
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution - 排反事象の定義を用いた証明
+
+$B_1 = A_1, B2 = A_2 \cap B_1^c, \cdots, B_i = A_i \cap (B_1\cup \cdots \cup B_{i-1})^c$ と定義する．
+このとき，$B_i \cap B_j = \emptyset$ で
+
+$$
+\bigcup_{i} A_i = \bigcup_{i} B_i
+$$
+
+が成立することをまず確かめる．
+
+<strong > &#9654;&nbsp; 排反性</strong>
+
+$i < j$ について
+
+$$
+\begin{align*}
+B_j &= A_j \cap (B_1 \cup \cdots \cup B_i \cup \cdots B_{j-1})^c\\
+    &\subset (B_1 \cup \cdots \cup B_i \cup \cdots B_{j-1})^c\subset B_i^c
+\end{align*}
+$$
+
+従って，$B_i \cap B_j = \emptyset$
+
+<strong > &#9654;&nbsp; 事象の和</strong>
+
+$B_i \subset A_i$ より
+
+$$
+\begin{align*}
+\bigcup B_i \subset \bigcup A_i
+\end{align*}
+$$
+
+つぎに，$w\in \bigcup A_i$ のとき，$w \in A_1$ ならば $w\in B_1$ なので $w \in \bigcup B_i$.
+$w \in A_i \ \ (i > 1)$ のときは，$B_i = A_i \cap (B_1 \cup \cdots \cup B_{i-1})^c$ であることに留意すると，
+
+- $w \in (B_1 \cup \cdots \cup B_{i-1})^c$ ならば $w\in B_i$ となり, $w \in \bigcup B_i$.
+- $w \not \in (B_1 \cup \cdots \cup B_{i-1})^c$ ならば $w \in B_1 \cup \cdots \cup B_{i-1}$ となり, $w \in  \bigcup B_i$
+
+従って，いずれの場合でも $\bigcup A_i \subset \bigcup B_i$ が成立するので
+
+$$
+\bigcup B_i = \bigcup A_i
+$$
+
+となる．
+
+<strong > &#9654;&nbsp; Conclusion</strong>
+
+$B_i \subset A_i$ より $\Pr(B_i) \leq \Pr(A_i)$ は自明．また上記と合わせると
+
+$$
+\begin{align*}
+\Pr(\bigcup_{i=1}^n A_i) &= \Pr(\bigcup_{i=1}^n B_i)\\
+                         &= \sum_i \Pr(B_i)\\
+                         &\leq \sum_i \Pr(A_i)
+\end{align*}
+$$
+
+となり題意は示せた．
+
+:::
+
 
 
 <div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
@@ -355,6 +909,5 @@ $$
 $$
 \Pr(\text{rich or famous}) = \Pr(R) + \Pr(F) - \Pr(R\cap F) = 0.12
 $$
-
 
 :::

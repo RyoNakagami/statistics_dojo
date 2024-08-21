@@ -1,0 +1,499 @@
+---
+title: "条件付き確率"
+author: "Ryo Nakagami"
+date: "2024-08-20"
+date-modified: last-modified
+code-fold: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+---
+
+## 条件付き確率と独立性
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+空集合ではない事象 A, Bの間に
+
+$$
+\Pr(B\vert A) = \Pr(B\vert A^c)
+$$
+
+という関係があるとき，A, Bは互いに独立であることを示せ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+- $(A\cap B) \cup (A^c\cap B) = B$
+- $(A\cap B) \cap (A^c\cap B) = \emptyset$
+
+に留意すると
+
+$$
+\begin{align*}
+&\Pr(A\cap B) + \Pr(A^c\cap B) = \Pr(B)\\
+&\Pr(A\cap B) = \Pr(B) - \Pr(A^c\cap B)
+\end{align*}
+$$
+
+$\Pr(B\vert A) = \Pr(B\vert A^c)$と問題文より与えられているので
+
+$$
+\begin{align*}
+&\frac{\Pr(B) - \Pr(A^c\cap B)}{\Pr(A)} = \frac{\Pr(A^c \cap B)}{1 - \Pr(A)}\\
+&\Rightarrow \Pr(B) - \Pr(A^c\cap B) -\Pr(A)\Pr(B) + \Pr(A)\Pr(A^C\cap B) = \Pr(A)\Pr(A^C\cap B)\\
+&\Rightarrow \Pr(B) - \Pr(A^c\cap B) = \Pr(A)\Pr(B)\\
+&\Rightarrow \Pr(A\cap B) = \Pr(A)\Pr(B)
+\end{align*}
+$$
+
+したがって，事象A, Bは独立
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+事象A, Bが独立のとき，以下が成立することを示せ．ただし，$0 < \Pr(A) < 1$とする．
+
+$$
+\Pr(B \vert A) = \Pr(B \vert A^c)
+$$
+
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+- 事象 A, Bが独立なので定義より $\Pr(A\cap B) = \Pr(A)\Pr(B)\Rightarrow \Pr(B\vert A)=\Pr(B)$
+- $A$ と $A^c$ は排反なので, $\Pr(B) = \Pr(A\cap B) + \Pr(A^c\cap B)$ 
+
+従って，
+
+$$
+\begin{align*}
+\Pr(B\vert A^c) &= \frac{\Pr(B) - \Pr(A\cap B) }{\Pr(A^c)}\\
+                &= \frac{(1 - \Pr(A))\Pr(B)}{\Pr(A^c)}\\
+                &= \Pr(B)
+\end{align*}
+$$
+
+従って，$\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)$ が成り立つ．
+
+
+:::
+
+::: {.callout-note collapse="true" icon=false}
+## Solution - 加比の理
+
+事象の独立性より $\Pr(B\vert A) = \Pr(B)$ は明らか．次に，
+
+$$
+\begin{align*}
+\Pr(B) &= \frac{\Pr(B)}{1}\\
+       &= \frac{\Pr(A\cap B)}{\Pr(A)}\\
+       &= \frac{\Pr(B) - \Pr(A\cap B)}{1 - \Pr(A)} \because{\text{加比の理}}\\
+       &= \frac{\Pr(A^c\cap B)}{\Pr(A^c)}\\
+       &= \Pr(B\vert A^c)
+\end{align*}
+$$
+
+従って, $$\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)$ が成り立つ.
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+条件付き確率について, 
+
+$$
+\begin{align*}
+\Pr(A\vert D) &\geq \Pr(B\vert D)\\
+\Pr(A\vert D^c) &\geq \Pr(B\vert D^c)
+\end{align*}
+$$
+
+が成立しているとき, $\Pr(A)\geq \Pr(B)$ であることを示せ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+\Pr(A) &= \Pr(A\vert D)\Pr(D) + \Pr(A\vert D^c)\Pr(D^c)\\
+       &\geq \Pr(B\vert D)\Pr(D) + \Pr(B\vert D^c)\Pr(D^c)\\
+       &= \Pr(B)
+\end{align*}
+$$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+**ペアワイズ独立性**
+<br>
+
+空集合ではない確率事象 A, B, C を考える．AとBが独立，BとCが独立のとき, AとCは独立であると言えるか？
+成立しない場合は反例を述べよ．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$\Omega = {w_1, w_2, w_3, w_4}$, 標本点すべてが同程度に確からしい, $A = \{w_1, w_2\}$, $B = \{w_2, w_3\}$, $C = \{w_3, w_4\}$，と確率事象が定義されたとき，
+
+$$
+\begin{align*}
+\Pr(A \cap B) &= \frac{1}{4} = \Pr(A)\Pr(B)\\
+\Pr(B \cap C) &= \frac{1}{4} = \Pr(B)\Pr(C)
+\end{align*}
+$$
+
+とAとBが独立，BとCが独立となるが，
+
+$$
+\Pr(A \cap C) = 0 \neq \Pr(A)\Pr(C)
+$$
+
+となり, A と C は独立でない．
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+**ペアワイズ独立性**
+<br>
+
+$\Omega = \{w_1, w_2, w_3, w_4\}$, 標本点すべてが同程度に確からしい, $A = \{w_1, w_2\}$, $B = \{w_1, w_3\}$, $C = \{w_1, w_4\}$と事象が定義され，
+各根元事象の
+
+$$
+\Pr(\{w_i\}) = \frac{1}{4} \space (i=1,2,3,4)
+$$
+
+このとき，事象A, B, Cのどの２つも独立（=ペアワイズ独立）だが，３つの事象A, B, Cは互いに独立でないことを示せ
+
+:::
+
+</div>
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; 任意の２つ事象の独立性</strong>
+
+$A\cap B = B\cap C = C\cap A = \{w_1\}$
+
+より
+
+$$
+\begin{align*}
+\Pr(A\cap B) &= \Pr(A)\Pr(B) = \frac{1}{4}\\
+\Pr(B\cap C) &= \Pr(B)\Pr(C) = \frac{1}{4}\\
+\Pr(A\cap C) &= \Pr(A)\Pr(A) = \frac{1}{4}
+\end{align*}
+$$
+
+したがって，$A\perp B, B\perp C, A\perp C$が成立する．
+
+<strong > &#9654;&nbsp; ３つの事象A, B, Cの組の独立性</strong>
+
+３つの事象A, B, Cの組の独立性するということは
+
+$$
+\Pr(A\cap B \cap C) = \Pr(A)\Pr(B)\Pr(C)
+$$
+
+が成立するすることが必要十分条件．一方，
+
+$$
+\begin{align*}
+\Pr(A\cap B \cap C) &= \Pr(\{w_1\}) = \frac{1}{4}\\
+\Pr(A)\Pr(B)\Pr(C) &= \frac{1}{8}
+\end{align*}
+$$
+
+従って，$\Pr(A\cap B \cap C) \neq \Pr(A)\Pr(B)\Pr(C)$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+:::
+
+</div>
+
+
+
+## 条件付き確率モデル
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+2人の子供のいる夫婦について，子供に一人が女のことであるという条件のもとで２人共女の子である確率をもとめよ
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+少なくとも子供の一人が女の子である確率は, 子供二人共男の子である確率事象 $A$ の余事象とみなせるので
+
+$$
+\Pr(A^c) = 1- \frac{1}{4} = \frac{3}{4}
+$$
+
+二人共女の子である確率事象 Bは $B \subset A^c$ なので, $B \cap A^c = B$．従って，
+
+$$
+\begin{align*}
+\Pr(B \vert A^c) &= \frac{\Pr(A^c \cap B)}{\Pr(A^c)}\\
+                 &= \frac{\Pr(B)}{\Pr(A^c)}\\
+                 &= \frac{1}{3}
+\end{align*}
+$$
+
+:::
+
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+あたりが $m >0$ 本, はずれが $n$ 本あるくじを２つのプレイヤーが1回ずつ引く場合，先攻と後攻どちらが有利か？
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+\Pr(\text{先攻が当たりを引く}) &= \frac{m}{m+n}\\
+\Pr(\text{後攻が当たりを引く}) &= \Pr(\text{後攻が当たりを引く}\vert \text{先攻が当たりを引く})\Pr(\text{先攻が当たりを引く}) + \Pr(\text{後攻が当たりを引く}\vert \text{先攻がはずれを引く})\Pr(\text{先攻がはずれを引く})\\
+                            &= \frac{m-1}{m+n-1}\frac{m}{m+n} + \frac{m}{m+n-1}\frac{n}{m+n}\\
+                            &= \frac{(m+n-1)(m)}{(m+n-1)(m+n)}\\
+                            &= \frac{m}{m+n}
+\end{align*}
+$$
+
+従って，当たりを引く確率の最大化という観点では有利不利は存在しない．
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+- ある製品を作る機械が3台あり, A, B, Cとする．
+- A, B, Cはそzれぞれ全体の20%, 30%, 50%の製品を生産している
+- A, B, Cの各機械から生産される製品について，それぞれ5%, 4%, 2% の割合で不良品が混ざっていることが知られている
+
+上記の設定において，製品全体からランダムに1個とりだしたとき，それが不良品である確率はいくつか？また，取り出しした製品が不良品であることを条件としたとき，
+その製品を生産した機械がA, B, Cである確率をそれぞれ求めよ
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; 不良品の確率</strong>
+
+ランダムに取り出した製品が不良品である確率事象をDとすると
+
+$$
+\begin{align*}
+\Pr(D) &= \Pr(D\cap A) + \Pr(D\cap B) + \Pr(D\cap C)\\
+       &= \Pr(D\vert A)\Pr(A) + \Pr(D\vert B)\Pr(B) + \Pr(D\vert C)\Pr(C)\\
+       &= \frac{5}{100}\frac{20}{100} + \frac{4}{100}\frac{30}{100} + \frac{2}{100}\frac{50}{100}\\
+       &= \frac{4}{125}
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; 不良品生産機械の確率</strong>
+
+$$
+\begin{align*}
+\Pr(A\vert D) &= \frac{100}{320} = \frac{5}{16}\\
+\Pr(B\vert D) &= \frac{120}{320} = \frac{3}{8}\\
+\Pr(C\vert D) &= \frac{100}{320} = \frac{5}{16}
+\end{align*}
+$$
+
+
+:::
+
+
+## Causal Inference
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1-propensity-score .custom_problem }
+**: MHE The Propensity Score Theorem (p81)**
+<br>
+
+$i$ を観測単位のindexとしたとき，$D_i$ を0,1を値域とするbinary確率変数，$X_i$ をcovariate確率変数のベクトル，
+$\{Y_{0i}, Y_{1i}\}$ を $D_i$ の値に対応したPotential Outcomeの組とする．
+
+$$
+\begin{align*}
+\{Y_{0i}, Y_{1i}\}{\perp \!\!\! \perp} D_i\vert X_i
+\end{align*}
+$$
+
+とCIAが成立するとき，以下が成立することを示せ：
+
+$$
+\begin{align*}
+&\{Y_{0i}, Y_{1i}\} {\perp \!\!\! \perp} D_i\vert p(X_i)\\[4pt]
+&\text{where } p(X_i) \equiv \mathbb E[D_i\vert X_i]
+\end{align*}
+$$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$p(X_i)$ をコントロールしたときに，Potential Outcomeの同時分布は $D_i$ と独立であることが示せれば良いので，
+
+$$
+\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) = \Pr(D_i = 1 \vert p(X_i)) = p(X_i)
+$$
+
+であることが示せれば十分．
+
+$$
+\begin{align*}
+&\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) \\
+&= \mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= \mathbb E[\mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= \mathbb E[\mathbb E[D_i \vert p(X_i), Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= \mathbb E[\mathbb E[D_i \vert Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]
+\end{align*}
+$$
+
+このとき，問題の仮定より $\{Y_{0i}, Y_{1i}\}{\perp \!\!\! \perp} D_i\vert X_i$ なので
+
+$$
+\begin{align*}
+&\mathbb E[\mathbb E[D_i \vert Y_{0i}, Y_{1i}, X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= \mathbb E[\mathbb E[D_i \vert X_i]\vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= \mathbb E[p(X_i) \vert p(X_i), Y_{0i}, Y_{1i}]\\
+&= p(X_i)
+\end{align*}
+$$
+
+従って，
+
+$$
+\Pr(D_i = 1 \vert p(X_i), Y_{0i}, Y_{1i}) = \Pr(D_i = 1 \vert p(X_i)) = p(X_i)
+$$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+**: MHE The Propensity Score and ATT (p82)**
+<br>
+
+[上の問題](#exr-1-propensity-score)と同じ設定のとき，以下を示せ．
+
+$$
+\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1] = \mathbb E\bigg[\frac{(D_i - p(X_i))Y_i}{(1 - p(X_i))\Pr(D_i=1)}\bigg]
+$$
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1] = \mathbb E[Y_{1i}\vert D_i=1] - \mathbb E[Y_{0i}\vert D_i=1]
+$$
+
+と分解できることに注目する．
+
+<strong > &#9654;&nbsp; $\mathbb E[Y_{1i}\vert D_i=1]$ について</strong>
+
+$$
+\begin{align*}
+&\mathbb E[D_iY_i] = \mathbb E[Y_{1i}\vert D_i=1]\Pr(D_i=1)\\[4pt]
+&\Rightarrow \mathbb E[Y_{1i}\vert D_i=1] = \frac{\mathbb E[D_iY_i]}{\Pr(D_i=1)} \tag{a}
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; $\mathbb E[Y_{0i}\vert D_i=1]$ について</strong>
+
+$$
+\begin{align*}
+&\mathbb E[Y_{0i}] = \mathbb E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) + \mathbb E[Y_{0i}\vert D_i = 0] \Pr(D_i = 0)\\[4pt]
+&\Rightarrow \mathbb E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) = \mathbb E[Y_{0i}] - \mathbb E[Y_{0i}\vert D_i = 0] \Pr(D_i = 0)\\[4pt]
+&\Rightarrow E[Y_{0i}\vert D_i = 1] \Pr(D_i = 1) = \mathbb E[Y_{0i}] - \frac{\mathbb E[(1 - D_i)Y_i]}{\Pr(D_i = 0)}\Pr(D_i = 0)\\[4pt]
+&\Rightarrow E[Y_{0i}\vert D_i = 1] = (\mathbb E[Y_{0i}] - \mathbb E[(1 - D_i)Y_i])/\Pr(D_i = 1) \tag{b}
+\end{align*}
+$$
+
+<strong > &#9654;&nbsp; $\mathbb E[Y_{0i}]$ について</strong>
+
+$$
+\begin{align*}
+&\mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg]\\[4pt]
+&= \mathbb E\bigg\{\mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg\vert X_i\bigg]\bigg\}\\[4pt]
+&= \mathbb E\bigg\{\frac{1}{1 - p(X_i)} (1 - p(X_i))\mathbb E\bigg[Y_{0i} \vert X_i\bigg]\bigg\}\\[4pt]
+&= \mathbb E[Y_{0i}] \tag{c}
+\end{align*}
+$$
+
+(a), (b), (c)より
+
+$$
+\begin{align*}
+&\mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1]\\[4pt]
+&= \frac{1}{\Pr(D_i=1)}\bigg(\mathbb E[D_iY_i] - \mathbb E\bigg[\frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg] + \mathbb E[(1 - D_i)Y_i] \bigg)\\[4pt] 
+&= \frac{1}{\Pr(D_i=1)}\mathbb E\bigg[Y_i - \frac{(1 - D_i)Y_i}{1 - p(X_i)}\bigg]\\[4pt]
+&= \frac{1}{\Pr(D_i=1)}\mathbb E\bigg\{\frac{(D_i - p(X_i))Y_i}{1 - p(X_i)}\bigg\}\\[4pt]
+&= \mathbb E\bigg[\frac{(D_i - p(X_i))Y_i}{(1 - p(X_i))\Pr(D_i=1)}\bigg]
+\end{align*}
+$$
+
+
+
+:::

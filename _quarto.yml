@@ -39,6 +39,8 @@ book:
     - part: posts/statistics101/chapter_header.qmd
       chapters:
         - posts/statistics101/probability_and_set.qmd
+        - posts/statistics101/conditional_probability.qmd
+        - posts/statistics101/combination_permutation.qmd
     - intro.qmd
     - summary.qmd
     - references.qmd

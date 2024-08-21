@@ -5,7 +5,8 @@
 
 ### 参考文献
 
-|Title|著者|ISBN|
-|---|---|---|
-|確率そのまま使える答えの書き方|金川 秀也 著|9784061539624|
-|例題で学べる確率モデル|成田 清正 著|9784320019126|
+|略称|Title|著者|ISBN|
+|---|---|---|---|
+|金川本|確率そのまま使える答えの書き方|金川 秀也 著|9784061539624|
+|成田本|例題で学べる確率モデル|成田 清正 著|9784320019126|
+|MHE|Mostly Harmless Econometrics: An Empiricist’s Companion. Princeton University Press, 2009|Angrist, J. D., and J. S. Pischke|9780691120355|

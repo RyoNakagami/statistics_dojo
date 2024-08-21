@@ -1,6 +1,6 @@
 ---
-title: "Part 1: 確率基礎"
-author: "Ryo Nakagtami"
+title: "確率基礎"
+author: "Ryo Nakagami"
 date: "2024-08-15"
 date-modified: last-modified
 number_sections: false
@@ -23,7 +23,7 @@ comments:
 
 </div>
 
-古典的確率論は，
+ラプラス流の古典的確率論は，
 
 - 標本空間$\Omega$が有限個の点からなる集合
 - 標本点がすべて同程度に確からしい
@@ -34,7 +34,7 @@ $$
 P(A) = \frac{\text{A の要素数}}{\Omega\text{の要素数}}
 $$
 
-- ベン図的には $\Omega$ の面積を1と標準化して, 事象Aの面積を対応させる形で古典的確率は定義される
+- ベン図的には $\Omega$ の面積を1と標準化して, 事象Aの面積を対応させる形でラプラス流古典的確率は定義される
 - 確率は事象に対して定義される
 
 
@@ -45,7 +45,7 @@ $$
 
 (P1) 任意の $A\in \wp(\Omega)$ に対して，$0 \leq P(A) \leq 1$ <br>
 (P2) $P(\Omega) = 1$ <br>
-(P3) (有限加法性) $A_i \in \wp(\Omega), i=1, \cdots, n$ としたとき $A_i \cap A_j (i\neq j)$ ならば
+(P3) (有限加法性) $A_i \in \wp(\Omega), i=1, \cdots, n$ としたとき $A_i \cap A_j = \emptyset (i\neq j)$ ならば
 
 $$
 P\bigg(\bigcup^n_i A_i\bigg)=\sum_{i}^n P(A_i)
@@ -54,6 +54,27 @@ $$
 </div>
 
 $\Omega$ を定義域，区間 $[0, 1]$ を値域とする写像 $P:\Omega\to[0, 1]$ として確率関数を理解することができます．
+
+(P3)の有限加法性は
+
+$$
+\begin{align*}
+(A \cap B) \cup (A^c \cap B) &= B\\
+(A \cap B) \cap (A^c \cap B) &= \emptyset
+\end{align*}
+$$
+
+より $\Pr(B) = \Pr(A \cap B) + \Pr(A^c \cap B)$ という式変形でよく使われます．
+
+
+### ラプラス流確率論の問題点
+
+標本空間が無限集合となる場合，要素数の比という計算が不可能になってしまうという問題点をラプラス流確率論は抱えています．
+集合の要素の個数の概念を無限集合についても一般化した「濃度」というものを用いたら解決できそうですが，実際は無理です．
+
+区間 $A = (0,1)$ 上の一様分布に従う確率変数 $X$ を考えます．$B = (0, 0.5)$ としたとき，$X\in B$ となる確率は $\Pr(X \in (0, 0.5)) = 0.5$ 
+と区間の長さで確率測度を定義することで理解できますが，濃度となると 全単射となる $F;A\to B$ という写像を定義できるので，集合 $A$ と $B$ の濃度は等しい
+となってしまいます．そのため，現代では測度論に基づいて確率を定式化するのが主流です．
 
 ## 集合演算における分配法則とド・モルガンの公式
 
@@ -89,6 +110,267 @@ A\cap \emptyset &= \emptyset
 \end{align*}
 $$
 
+</div>
+
+## 条件付き確率と事象の独立性
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong>Def: 事象の独立</strong> <br>
+
+A,Bが確率事象で
+
+$$
+\Pr(A\cap B) = \Pr(A)\Pr(B)
+$$
+
+が成り立つとき，A, Bは互いに独立であるという．更に，一般に $A_1, \cdots, A_n, \cdots$ が有限または加算個の確率事象系列で，その任意の
+有限部分系列, $A_{i_1}, \cdots, A_{i_k}$ に対して
+
+$$
+\Pr(A_{i_1} \cap \cdots\cap A_{i_k}) = \Pr(A_{i_1}) \cdots\Pr(A_{i_k})
+$$
+
+が成り立つとき，$A_1, \cdots, A_n, \cdots$ は互いに独立であるという．
+
+</div>
+
+<br>
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong>Def: 条件付き確率</strong> <br>
+
+事象 $A, B$ について，$\Pr(A)\neq 0$ のとき
+
+$$
+\Pr(B\vert A) = \frac{\Pr(A\cap B)}{\Pr(A)}
+$$
+
+をAが起こったとき前提の下にBの起こる「条件付き確率」という．
+
+</div>
+
+条件付き独立の定義より以下のこともわかる
+
+$$
+\begin{align*}
+A \perp B &\Leftrightarrow \Pr(A\cap B) = \Pr(A)\Pr(B)\\
+          &\Leftrightarrow \Pr(A\cap B)/\Pr(A) = \Pr(B)\\
+          &\Leftrightarrow \Pr(B\vert A) = \Pr(B)
+\end{align*}
+$$
+
+::: {#exm-1 .custom_problem }
+<br>
+
+事象 A, Bが独立のとき，$\Pr(B) = \Pr(A\cap B) + \Pr(A^c\cap B)$なので
+
+$$
+\begin{align*}
+&\Pr(A\cap B) = \Pr(A)\Pr(B)\\
+&\Rightarrow \Pr(A^c\cap B) = (1  - \Pr(A))\Pr(B) = \Pr(A^c)\Pr(B)
+\end{align*}
+$$
+
+従って，事象 A, Bが独立のとき, $A^c \perp B$ が成立する．同様のロジックで, $A \perp B^c, A^c\perp B^c$ 
+も成立する．
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong>Theorem: 互いに独立</strong> <br>
+
+n個の事象の集まり $\{A_1, \cdots, A_n\}$ が互いに独立であるならば，$B_i = A_i$ または $B_i = A_i^c$ とおいて
+得られる $k \leq n$ 個のあつまり $\{B_1, B_2, \cdots, B_k\}$ も互いに独立である．
+
+</div>
+
+この定理から，確率事象 $\{A_1, \cdots, A_n\}$ が互いに独立で，$\Pr(A_i) = p_i$ のとき，
+
+$$
+\Pr(A_1 \cup \cdots \cup A_n) = 1 - (1 - p_1)(1 - p_2)\cdots(1 - p_n)
+$$
+
+が成立することがわかる．ド・モルガンの公式と独立性より
+
+$$
+\begin{align*}
+\Pr(A_1 \cup \cdots \cup A_n) &= 1 - \Pr((A_1 \cup \cdots \cup A_n))^c\\
+                              &= 1 - \Pr(A_1^c \cap \cdots \cap A_n^c)\\
+                              &= 1 - \Pr(A_1^c)\cdots\Pr(A_n^c)\\
+                              &= 1 - (1 - p_1)(1 - p_2)\cdots(1 - p_n)
+\end{align*}
+$$
+
+が成立するため．
+
+::: {#exm- .custom_problem }
+<br>
+
+n台のサーバーで動くシステムがある．このシステムは，n台すべてのサーバーが故障したときのみ停止する．
+それぞれのサーバーは独立に作動し，故障の確率は10%である．99%以上の可能性でシステムが停止とならないためには，
+最低何台のサーバーが必要かを考えてみる．
+
+$A_i = \{\text{サーバー i が稼働している}\}$ と確率事象を定義すると，$\Pr(A^c) = 0.1$. つまり，
+
+$$
+\begin{align*}
+\Pr(\text{システムが稼働}) &= \Pr(A_1 \cup A_2 \cup \cdots \cup A_n)\\
+                        &= 1 - \Pr((A_1 \cup A_2 \cup \cdots \cup A_n)^c)\\
+                        &= 1 - \Pr(A_1^c \cap A_2^C \cap \cdots \cap A_n^c)\\
+                        &= 1 - 0.1^n \geq 0.99
+\end{align*}
+$$
+
+従って，$0.01 \geq 0.1^n \Rightarrow n\geq 2$.
+
+:::
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong > 📘 全確率の公式</strong> <br>
+
+確率事象 $A_1, A_2, \cdots$ に対し，
+
+- $A_i\cap A_j = \emptyset \ \  (i\neq j)$
+- $\Pr(A_i) >0 \ \  \forall i$
+- $\bigcup_i A_i = \Omega$
+
+ならば任意の確率事象 $B$ について，
+
+$$
+B = (A_1\cap B) \cup (A_2\cap B) \cup \cdots
+$$
+
+また，各 $(A_i\cap B) \cap (A_j\cap B) = \emptyset$ が成立するので
+
+$$
+\Pr(B) = \Pr(A_1\cap B) + \Pr(A_2\cap B) \cup \cdots
+$$
+
+従って，
+
+$$
+\Pr(B) = \Pr(B\vert A_1)\Pr(A_1) + \Pr(B\vert A_2)\Pr(A_2) + \cdots
+$$
+
+が成立する．
+
+</div>
+<br>
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong>Def: ベイズの定理</strong> <br>
+
+確率事象 $A_1, A_2, \cdots$ に対し，
+
+- $A_i\cap A_j = \emptyset \ \ (i\neq j)$
+- $\Pr(A_i) >0 \ \  \forall i$
+- $\bigcup_i A_i = \Omega$
+
+ならば任意の確率事象 $B$ について，$\Pr(B) > 0$ のときには $B$ を与えたときの $A_j$ の条件付き確率は
+
+$$
+\Pr(A_j\vert B) = \frac{\Pr(B \vert A_j)\Pr(A_j)}{\sum_{i=1}\Pr(B \vert A_i)\Pr(A_i)}
+$$
+
+と表される．とくに $\Pr(A_j)$ を事前確率, $\Pr(A_j\vert B)$ を事後確率と呼ぶ．
+
+
+</div>
+
+## 組み合わせ
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong >📘 マルチクラスの組み合わせ</strong> <br>
+
+n個のものがc個のクラスに分けられていて，各クラスの個数を $n_i$ と表すとする．このときの組み合わせ個数は
+
+$$
+\frac{n!}{n_1!n_2!\cdots n_c!} \ \ (n_1 + n_2 + \cdots + n_c = n)
+$$
+
+と表せる．
+
+</div>
+
+::: {#exm- .custom_problem }
+<br>
+
+n個の要素を$C_1, C_2, C_3$の３つのクラスに分けることを考える．$C_1$ の個数を $n_1$, $C_2$ の個数を $n_2$,  $C_3$ の個数を $n_3 = n-n_1-n_2$としたとき，
+
+$$
+\begin{align*}
+{}_nC_{n_1} \times {}_{n-n_1}C_{n_2} &= \frac{n!}{(n-n_1)!n_1!}\frac{(n-n_1)!}{n_2!(n-n_1-n_2)!}\\
+                                     &=\frac{n!}{n_1!n_2!n_3!}
+\end{align*}
+$$
+
+となりマルチクラスの組み合わせの式と一致することがわかる．
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong >📘 重複組み合わせ</strong> <br>
+
+n個のツボに，空ツボを許容して区別できない r 個のボールをアサインする問題を考えるとき，その組み合わせの個数は
+
+$$
+{}_nH_r = {}_{n+r-1}C_r
+$$
+
+</div>
+
+重複組み合わせは次のような考えでも理解できる，例として，a, b, cの３つの文字から５個取り出す組み合わせの問題を考えるとする．
+このとき，
+
+- ○○|○○○| → aが2個, bが3個, cが0個
+- ○|○|○○○ → aが1個, bが1個, cが3個
+
+と考えてみると，○５個と|２個を一列に並べる問題と同一視できることがわかる．従って，
+
+$$
+{}_3H_5 = \frac{7!}{5!2!} = {}_{7}C_2
+$$
+
+
+
+::: {#exm- .custom_problem }
+<br>
+
+黒と白の２種類のまんじゅうから３個のまんじゅうを買う問題を考える．このとき，組み合わせに個数は
+
+$$
+{}_2H_3 = {}_4C_3 = 4
+$$
+
+となるが，実際に買い方として $(3, 0), (2, 1), (1, 2), (3, 0)$ が考えられるので正しいことがわかる．
+
+:::
+
+
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<strong >📘 写像を用いた重複組み合わせと組み合わせの対応</strong> <br>
+
+集合 $A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, C = \{1, 2, 3, \cdots, n + r - 1\}$ であるとき，
+写像 $f: A\to B$ に対して，
+
+$$
+F(k) = f(k) + (k - 1)
+$$
+
+という写像 $F: A\to C$ を考える．このとき，
+
+- $f$ が広義単調増加写像なら $F:A\to C$ は狭義単調増加写像となる
+- $F$ が狭義単調増加写像なら $f$ は広義単調増加写像になる
+
+従って，広義単調増加写像に限定した $f$ の個数と 狭義単調増加写像に限定した $F$ の個数は等しくなるので
+
+$$
+{}_nH_r = _{n+r-1}C_r
+$$
+
+という関係性がわかる．
 
 
 </div>

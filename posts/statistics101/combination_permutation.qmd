@@ -1,0 +1,214 @@
+---
+title: "場合の数"
+author: "Ryo Nakagami"
+date: "2024-08-21"
+date-modified: last-modified
+code-fold: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+---
+
+## 組み合わせと順列
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-map .custom_problem }
+**写像の個数**
+<br>
+
+集合 $A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, n\geq r$ を考える．
+このとき以下の条件を満たす写像 $f: A\to B$ はそれぞれ全部でいくつあるか？
+
+1. 任意の写像
+2. １対１写像(＝単射)
+3. 広義単調増加写像
+4. 狭義単調増加写像
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+<strong > &#9654;&nbsp; (1) 任意の写像</strong>
+
+Aの各元について，Bの元の個数分の割当先が考えられるので $n^r$ 個
+
+<strong > &#9654;&nbsp; (2) １対１写像(＝単射)</strong>
+
+単射の定義として
+
+$$
+(\forall i, j \in A) [i\neq j\Rightarrow f(i)\neq f(j)]
+$$
+
+Bからr個の要素を順番に取り出す順列と対応することがわかる．従って，
+
+$$
+\text{単射の個数} = \frac{n!}{(n-r)!}
+$$
+
+<strong > &#9654;&nbsp; (3) 広義単調増加写像 </strong>
+
+n個のツボにr個の区別できないボールを空ツボを許容して割り当てる問題と同一視できるので 
+
+$$
+\text{広義単調増加写像の個数} = {}_nH_r = \frac{n+r-1!}{r!(n-1)!}
+$$
+
+<strong > &#9654;&nbsp; (4) 狭義単調増加写像 </strong>
+
+n個元からr個選ぶ組み合わせの問題と同一視できるので
+
+$$
+\text{狭義単調増加写像の個数} = {}_nC_r = \frac{n!}{r!(n-r)!}
+$$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+$$
+{}_{n}P_r = {}_{n-1}P_r + r \cdot {}_{n-1}P_{r-1}
+$$
+
+を示せ
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+$$
+\begin{align*}
+\text{RHS} &= \frac{(n-1!)}{(n-1-r)!} + r \frac{(n-1!)}{(n-r)!} \\
+           &= (n-1)! \bigg(\frac{1}{(n-1-r)!} + \frac{r}{(n-r)!}\bigg)\\
+           &= (n-1)! \frac{n + r - r}{(n-r)!}\\
+           &= \frac{n!}{(n-r)!} = \text{LHS}
+\end{align*}
+$$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+0から9を１回ずつ用いて一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+0から9を１回ずつ用いて一直線に並べる場合の数は $10!$．ここから左右ひっくり返したものを除かなくてはならないが，
+すべての要素が異なる順列に対しての反転なので，その数はちょうど半分となる．従って，$10!/2$
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+
+赤玉５個，白玉４個を一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+一直線に並べる場合の数は
+
+$$
+\frac{9!}{5!}{4!}
+$$
+
+この内，左右対称となるもの(=ひっくり返したら同じになる並び順が存在しない組)は次の条件を満たすもの
+
+- 中央が赤玉
+- 左右の枠４個ずつについて，赤白がそれぞれ２個ずつ使用されている
+
+つまり，${}_{4}C_2 = 6$ 通りが完全左右対称の並びとなる．従って，
+
+$$
+\frac{126 - 6}{2} + 6 = 66\text{通り}
+$$
+
+
+:::
+
+
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr-1 .custom_problem }
+<br>
+
+ある野球チームの9人の選手の打順を決める．投手と二塁手は，７番，８番，９番のどれかにするとしたとき，９人の打順の決め方は何通りあるか？
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+- 投手と２塁手以外の順番は $7!$
+- 投手と二塁手の順番の表し方は $2!$
+- 投手と二塁手が専有する打順の組み合わせは ${}_3C_2 = 3!/2!$
+
+従って，
+
+$$
+7! \times 2! \times \frac{3!}{2!} = 7! \times 3! = 5040 \times 6 = 30240
+$$
+
+
+:::
+
+<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+::: {#exr- .custom_problem }
+<br>
+
+4つのサイコロの出る目のくみあわせを求めよ．
+例: $(4, 1, 1, 1)$ という組と $(1, 4, 1, 1)$ 組は出ている目の組み合わせが同じなので
+同一の組とみなす．
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution - 組み合わせ
+
+- 4つすべて同じ目の場合: $6\text{通り}$
+- 3つが同じ目の場合: ${}_6C_2 \times 2 = 30\text{通り}$
+- 2つ, 2つが同じ目の場合: ${}_6C_2 = 15\text{通り}$ 
+- 2つが同じ目，残り２つ異なる目の場合: ${}_6C_3 \times 3 = 60\text{通り}$ 
+- すべてが異なる場合: ${}_6C_4 = 15\text{通り}$
+
+従って，$126\text{通り}$
+
+:::
+
+::: {.callout-note collapse="true" icon=false}
+## Solution - 重複組み合わせ
+
+サイコロの枠 1, 2, 3, 4, 5, 6に対して区別されない４つのボールを重複を許してアサインする問題と考えることができるので
+
+$$
+{}_6H_4 = {}_{9}C_4 = 126\text{通り}
+$$
+
+
+
+:::
