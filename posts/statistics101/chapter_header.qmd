@@ -13,7 +13,7 @@ comments:
 
 ## 標本空間と確率の公理
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong>Def: 標本空間</strong> <br>
 
 - **試行**: 不確実性を伴う実験や調査
@@ -38,7 +38,7 @@ $$
 - 確率は事象に対して定義される
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong >📘 コルモゴロフの確率の公理</strong> <br>
 
 上記の古典的確率$P(A)$は常に以下の性質を満たしている．
@@ -79,7 +79,7 @@ $$
 ## 集合演算における分配法則とド・モルガンの公式
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong > 📘 集合演算における分配法則</strong> <br>
 
 $$
@@ -114,7 +114,7 @@ $$
 
 ## 条件付き確率と事象の独立性
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong>Def: 事象の独立</strong> <br>
 
 A,Bが確率事象で
@@ -137,7 +137,7 @@ $$
 <br>
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong>Def: 条件付き確率</strong> <br>
 
 事象 $A, B$ について，$\Pr(A)\neq 0$ のとき
@@ -177,7 +177,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong>Theorem: 互いに独立</strong> <br>
 
 n個の事象の集まり $\{A_1, \cdots, A_n\}$ が互いに独立であるならば，$B_i = A_i$ または $B_i = A_i^c$ とおいて
@@ -227,7 +227,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong > 📘 全確率の公式</strong> <br>
 
 確率事象 $A_1, A_2, \cdots$ に対し，
@@ -258,7 +258,7 @@ $$
 
 </div>
 <br>
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong>Def: ベイズの定理</strong> <br>
 
 確率事象 $A_1, A_2, \cdots$ に対し，
@@ -280,7 +280,7 @@ $$
 
 ## 組み合わせ
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong >📘 マルチクラスの組み合わせ</strong> <br>
 
 n個のものがc個のクラスに分けられていて，各クラスの個数を $n_i$ と表すとする．このときの組み合わせ個数は
@@ -308,7 +308,7 @@ $$
 となりマルチクラスの組み合わせの式と一致することがわかる．
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong >📘 重複組み合わせ</strong> <br>
 
 n個のツボに，空ツボを許容して区別できない r 個のボールをアサインする問題を考えるとき，その組み合わせの個数は
@@ -349,7 +349,7 @@ $$
 
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong >📘 写像を用いた重複組み合わせと組み合わせの対応</strong> <br>
 
 集合 $A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, C = \{1, 2, 3, \cdots, n + r - 1\}$ であるとき，
@@ -372,5 +372,21 @@ $$
 
 という関係性がわかる．
 
+
+</div>
+
+<br>
+
+<div class="blog-custom-border">
+<strong>Def: 一般化二項係数</strong> <br>
+
+$\alpha \in \mathbb R, r \in \mathbb Z_+$ としたとき，
+
+$$
+\dbinom{\alpha}{r} = \frac{\Gamma(\alpha + 1 )}{\Gamma(a - r + 1)\Gamma(r + 1)} = \frac{\alpha(\alpha - 1)\cdots (\alpha - (r-1))}{r!}
+$$
+
+
+これを一般化二項係数と呼ぶ
 
 </div>

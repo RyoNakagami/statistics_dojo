@@ -16,7 +16,7 @@ book:
   sidebar:
       tools:
        - text: Blog Series
-         icon: brush
+         icon: book
          menu:
          - text: Ryo's Tech Blog
            href: https://ryonakagami.github.io/
@@ -41,6 +41,7 @@ book:
         - posts/statistics101/probability_and_set.qmd
         - posts/statistics101/conditional_probability.qmd
         - posts/statistics101/combination_permutation.qmd
+        - posts/statistics101/basic_probabilistic_model.qmd
     - intro.qmd
     - summary.qmd
     - references.qmd
@@ -57,8 +58,14 @@ format:
     lang: ja_JP.UTF-8
     number-depth: 1
     theme: 
-      light: cosmo
-      dark: darkly
+      light: 
+        - cosmo
+        - include/custom.scss
+        - include/light.scss
+      dark: 
+        - darkly
+        - include/custom.scss
+        - include/dark.scss
     code-copy: true
     code-fold: true
     code-overflow: wrap

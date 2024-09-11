@@ -12,7 +12,7 @@ comments:
 
 ## 条件付き確率と独立性
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -58,7 +58,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -109,12 +109,12 @@ $$
 \end{align*}
 $$
 
-従って, $$\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)$ が成り立つ.
+従って, $\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)$ が成り立つ.
 
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -146,7 +146,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 **ペアワイズ独立性**
 <br>
@@ -181,7 +181,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 **ペアワイズ独立性**
 <br>
@@ -240,19 +240,10 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
-::: {#exr-1 .custom_problem }
-<br>
-
-:::
-
-</div>
-
-
 
 ## 条件付き確率モデル
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -285,7 +276,7 @@ $$
 
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -313,7 +304,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -360,7 +351,7 @@ $$
 
 ## Causal Inference
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1-propensity-score .custom_problem }
 **: MHE The Propensity Score Theorem (p81)**
 <br>
@@ -427,7 +418,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 **: MHE The Propensity Score and ATT (p82)**
 <br>

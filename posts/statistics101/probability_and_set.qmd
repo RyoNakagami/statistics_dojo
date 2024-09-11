@@ -12,7 +12,7 @@ comments:
 
 ## 集合演算
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -117,7 +117,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -179,7 +179,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -209,7 +209,7 @@ $A \cap B \neq \emptyset$ のとき，$B \not\subset B-A$, つまり $B - A \neq
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -247,7 +247,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -274,7 +274,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-poker-game .custom_problem }
 **ポーカーと集合**
 <br>
@@ -313,7 +313,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 
@@ -396,7 +396,7 @@ $$
 \sharp(D) = 3744 + 123552 = 127296
 $$
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 <strong >📘 REMARKS</strong> <br>
 
 組み合わせで表された各標本点は同様に確からしいと考えられるので，各事象の確率は
@@ -420,7 +420,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 
@@ -484,7 +484,38 @@ table(unlist(hand_types))
 
 ## 事象と確率
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
+::: {#exr- .custom_problem }
+<br>
+
+コインを一回投げて，表をH, 裏をTとした場合の標本空間と事象を列挙せよ
+
+:::
+
+</div>
+
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+標本空間は
+
+$$
+\Omega = \{H, T\}
+$$
+
+事象は $2^\text{標本点の数} = 4$ 個存在する．それらを書き出すと以下，
+
+$$
+\{H, T\}, \{H\}, \{T\}, \emptyset 
+$$
+
+
+:::
+
+
+
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -520,7 +551,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -634,7 +665,7 @@ $$
 
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -737,7 +768,7 @@ $$
 
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 3つのボールa,b,cを３つの箱の中に分配するという実験を考える．この実験の結果，例えば第１の箱に３つとも入ったときには
@@ -765,7 +796,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
@@ -797,7 +828,7 @@ $$
 
 :::
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
@@ -839,7 +870,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr- .custom_problem }
 <br>
 上と同様に区別できない3つのボールを区別できる３つの箱の中に分配するという実験を考える．この実験の結果，
@@ -863,7 +894,7 @@ $$
 :::
 
 
-<div style='padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;'>
+<div class="blog-custom-border">
 ::: {#exr-1 .custom_problem }
 <br>
 
@@ -908,5 +939,73 @@ $$
 $$
 \Pr(\text{rich or famous}) = \Pr(R) + \Pr(F) - \Pr(R\cap F) = 0.12
 $$
+
+:::
+
+
+<div class="blog-custom-border">
+::: {#exr- .custom_problem }
+**捕獲再捕獲法**
+<br>
+
+池の魚の数 $N$ を推定したい．まず $m$ 匹の魚を捕り，マークをつけて池に再び放した．
+しばらくしてから，再び $n$ 匹の魚をランダムに採取したところ，その内 $k$ 匹の魚にマークがついていた．
+
+どの魚も捕獲される否かは，独立に同一分布に従っていると仮定したとき，魚の総数 $N$ の最尤推定値を求めよ．
+
+```{r}
+library(eulerr)
+set.seed(42)
+# move to new plotting page 
+D <-list('Total N'=1:20,'m-k'=1:8, 
+         'n-k'=6:10, 'k'= 6:6) 
+
+# creating venn diagram for four sets 
+D_eulerr <- euler(D)
+plot(D_eulerr, quantities = FALSE, fill = "transparent", lty = c(1,1,1,0), labels = list(font = 4))
+```
+
+:::
+
+</div>
+
+::: {.callout-note collapse="true" icon=false}
+## Solution
+
+パラメーターが $N$ の尤度関数 $L(N)$は．
+
+$$
+L(N) = \frac{{}_mC_k {}_{N-m}C_{n-k}}{{}_NC_n}
+$$
+
+これを最大にする整数 $N$ を求めたい．ここで以下のような式を露わに定義する
+
+$$
+\begin{align*}
+\frac{L(N)}{L(N-1)} &= \frac{{}_mC_k {}_{N-m}C_{n-k}}{{}_NC_n}\frac{{}_{N-1}C_n}{{}_mC_k {}_{N-1-m}C_{n-k}}\\[6pt]
+                    &= \frac{(N-m)(N-n)}{N(N-m-n+k)}\\[6pt]
+                    &= \frac{N^2 - (n+m)N +mn}{N^2 - (n+m)N +kN}
+\end{align*}
+$$
+
+従って，
+
+$$
+\begin{align*}
+\frac{L(N)}{L(N-1)} &> 1 \Leftrightarrow N < mn/k\\
+\frac{L(N)}{L(N-1)} &= 1 \Leftrightarrow N = mn/k\\
+\frac{L(N)}{L(N-1)} &< 1 \Leftrightarrow N > mn/k
+\end{align*}
+$$
+
+従って，
+
+$$
+\hat N = \begin{cases}
+mn/k, mn/k - 1 & (mn/k: \text{整数})\\
+\lfloor mn/k, \rfloor & (\text{otherwise})
+\end{cases}
+$$
+
 
 :::
