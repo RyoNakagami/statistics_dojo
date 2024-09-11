@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja_JP.UTF-8" xml:lang="ja_JP.UTF-8"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -152,7 +152,7 @@ window.Quarto = {
       <a href="../../">statistics dojo</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
-      <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-brush"></i></a>
+      <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-book"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://ryonakagami.github.io/">
@@ -217,18 +217,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/statistics101/basic_probabilistic_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">確率モデル - 基礎編</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -282,7 +288,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2024-08-21</p>
+      <p class="date-modified">2024-09-11</p>
     </div>
   </div>
     
@@ -295,7 +301,7 @@ window.Quarto = {
 
 <section id="条件付き確率と独立性" class="level2">
 <h2 class="anchored" data-anchor-id="条件付き確率と独立性">条件付き確率と独立性</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1</strong></span> <br></p>
 <p>空集合ではない事象 A, Bの間に</p>
@@ -341,7 +347,7 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.2</strong></span> <br></p>
 <p>事象A, Bが独立のとき，以下が成立することを示せ．ただし，<span class="math inline">\(0 &lt; \Pr(A) &lt; 1\)</span>とする．</p>
@@ -400,11 +406,11 @@ Solution - 加比の理
        &amp;= \Pr(B\vert A^c)
 \end{align*}
 \]</span></p>
-<p>従って, $<span class="math inline">\(\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)\)</span> が成り立つ.</p>
+<p>従って, <span class="math inline">\(\Pr(B\vert A) = \Pr(B\vert A^c) = \Pr(B)\)</span> が成り立つ.</p>
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.3</strong></span> <br></p>
 <p>条件付き確率について,</p>
@@ -439,7 +445,7 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.4</strong></span> <strong>ペアワイズ独立性</strong> <br></p>
 <p>空集合ではない確率事象 A, B, C を考える．AとBが独立，BとCが独立のとき, AとCは独立であると言えるか？ 成立しない場合は反例を述べよ．</p>
@@ -472,7 +478,7 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.5</strong></span> <strong>ペアワイズ独立性</strong> <br></p>
 <p><span class="math inline">\(\Omega = \{w_1, w_2, w_3, w_4\}\)</span>, 標本点すべてが同程度に確からしい, <span class="math inline">\(A = \{w_1, w_2\}\)</span>, <span class="math inline">\(B = \{w_1, w_3\}\)</span>, <span class="math inline">\(C = \{w_1, w_4\}\)</span>と事象が定義され， 各根元事象の</p>
@@ -521,17 +527,12 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> <br></p>
-</div>
-</div>
 </section>
 <section id="条件付き確率モデル" class="level2">
 <h2 class="anchored" data-anchor-id="条件付き確率モデル">条件付き確率モデル</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> <br></p>
 <p>2人の子供のいる夫婦について，子供に一人が女のことであるという条件のもとで２人共女の子である確率をもとめよ</p>
 </div>
 </div>
@@ -562,9 +563,9 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.8</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> <br></p>
 <p>あたりが <span class="math inline">\(m &gt;0\)</span> 本, はずれが <span class="math inline">\(n\)</span> 本あるくじを２つのプレイヤーが1回ずつ引く場合，先攻と後攻どちらが有利か？</p>
 </div>
 </div>
@@ -593,9 +594,9 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 2.8</strong></span> <br></p>
 <ul>
 <li>ある製品を作る機械が3台あり, A, B, Cとする．</li>
 <li>A, B, Cはそzれぞれ全体の20%, 30%, 50%の製品を生産している</li>
@@ -640,9 +641,9 @@ Solution
 </section>
 <section id="causal-inference" class="level2">
 <h2 class="anchored" data-anchor-id="causal-inference">Causal Inference</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1-propensity-score" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> <strong>: MHE The Propensity Score Theorem (p81)</strong> <br></p>
+<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> <strong>: MHE The Propensity Score Theorem (p81)</strong> <br></p>
 <p><span class="math inline">\(i\)</span> を観測単位のindexとしたとき，<span class="math inline">\(D_i\)</span> を0,1を値域とするbinary確率変数，<span class="math inline">\(X_i\)</span> をcovariate確率変数のベクトル， <span class="math inline">\(\{Y_{0i}, Y_{1i}\}\)</span> を <span class="math inline">\(D_i\)</span> の値に対応したPotential Outcomeの組とする．</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -700,9 +701,9 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> <strong>: MHE The Propensity Score and ATT (p82)</strong> <br></p>
+<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> <strong>: MHE The Propensity Score and ATT (p82)</strong> <br></p>
 <p><a href="#exr-1-propensity-score">上の問題</a>と同じ設定のとき，以下を示せ．</p>
 <p><span class="math display">\[
 \mathbb E[Y_{1i} - Y_{0i}\vert D_i = 1] = \mathbb E\bigg[\frac{(D_i - p(X_i))Y_i}{(1 - p(X_i))\Pr(D_i=1)}\bigg]

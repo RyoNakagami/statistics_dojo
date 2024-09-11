@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja_JP.UTF-8" xml:lang="ja_JP.UTF-8"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../intro.html" rel="next">
+<link href="../../posts/statistics101/basic_probabilistic_model.html" rel="next">
 <link href="../../posts/statistics101/conditional_probability.html" rel="prev">
 <link href="../.././img/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -152,7 +186,7 @@ window.Quarto = {
       <a href="../../">statistics dojo</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
-      <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-brush"></i></a>
+      <a href="" title="Blog Series" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Blog Series"><i class="bi bi-book"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://ryonakagami.github.io/">
@@ -217,18 +251,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">場合の数</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/statistics101/basic_probabilistic_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">確率モデル - 基礎編</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -248,6 +288,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#組み合わせと順列" id="toc-組み合わせと順列" class="nav-link active" data-scroll-target="#組み合わせと順列">組み合わせと順列</a></li>
+  <li><a href="#二項係数" id="toc-二項係数" class="nav-link" data-scroll-target="#二項係数">二項係数</a>
+  <ul class="collapse">
+  <li><a href="#一般二項係数" id="toc-一般二項係数" class="nav-link" data-scroll-target="#一般二項係数">一般二項係数</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/statistics_dojo/edit/main/posts/statistics101/combination_permutation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/RyoNakagami/statistics_dojo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -280,7 +324,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2024-08-21</p>
+      <p class="date-modified">2024-09-11</p>
     </div>
   </div>
     
@@ -293,7 +337,7 @@ window.Quarto = {
 
 <section id="組み合わせと順列" class="level2">
 <h2 class="anchored" data-anchor-id="組み合わせと順列">組み合わせと順列</h2>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-map" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.1</strong></span> <strong>写像の個数</strong> <br></p>
 <p>集合 <span class="math inline">\(A = \{1, 2, 3, \cdots, r\}, B = \{1, 2, 3, \cdots, n\}, n\geq r\)</span> を考える． このとき以下の条件を満たす写像 <span class="math inline">\(f: A\to B\)</span> はそれぞれ全部でいくつあるか？</p>
@@ -341,13 +385,13 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<div id="exr-1" class="custom_problem theorem exercise">
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.2</strong></span> <br></p>
 <p><span class="math display">\[
-{}_{n}P_r = {}_{n-1}P_r + r \cdot {}_{n-1}P_{r-1}
+x + y + z = 6
 \]</span></p>
-<p>を示せ</p>
+<p>を満たす非負の整数の組 <span class="math inline">\((x, y, z)\)</span> は何組あるか？</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -362,21 +406,20 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>6つのボールを区別できる３つのツボにアサインする問題と同一視できるので</p>
 <p><span class="math display">\[
-\begin{align*}
-\text{RHS} &amp;= \frac{(n-1!)}{(n-1-r)!} + r \frac{(n-1!)}{(n-r)!} \\
-           &amp;= (n-1)! \bigg(\frac{1}{(n-1-r)!} + \frac{r}{(n-r)!}\bigg)\\
-           &amp;= (n-1)! \frac{n + r - r}{(n-r)!}\\
-           &amp;= \frac{n!}{(n-r)!} = \text{LHS}
-\end{align*}
+{}_3H_6 = 28\text{通り}
 \]</span></p>
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.3</strong></span> <br></p>
-<p>0から9を１回ずつ用いて一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
+<p><span class="math display">\[
+{}_{n}P_r = {}_{n-1}P_r + r \cdot {}_{n-1}P_{r-1}
+\]</span></p>
+<p>を示せ</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -391,14 +434,21 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>0から9を１回ずつ用いて一直線に並べる場合の数は <span class="math inline">\(10!\)</span>．ここから左右ひっくり返したものを除かなくてはならないが， すべての要素が異なる順列に対しての反転なので，その数はちょうど半分となる．従って，<span class="math inline">\(10!/2\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\text{RHS} &amp;= \frac{(n-1!)}{(n-1-r)!} + r \frac{(n-1!)}{(n-r)!} \\
+           &amp;= (n-1)! \bigg(\frac{1}{(n-1-r)!} + \frac{r}{(n-r)!}\bigg)\\
+           &amp;= (n-1)! \frac{n + r - r}{(n-r)!}\\
+           &amp;= \frac{n!}{(n-r)!} = \text{LHS}
+\end{align*}
+\]</span></p>
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
-<div id="exr-" class="custom_problem theorem exercise">
+<div class="blog-custom-border">
+<div id="exr-1" class="custom_problem theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.4</strong></span> <br></p>
-<p>赤玉５個，白玉４個を一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
+<p>0から9を１回ずつ用いて一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -412,6 +462,28 @@ Solution
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>0から9を１回ずつ用いて一直線に並べる場合の数は <span class="math inline">\(10!\)</span>．ここから左右ひっくり返したものを除かなくてはならないが， すべての要素が異なる順列に対しての反転なので，その数はちょうど半分となる．従って，<span class="math inline">\(10!/2\)</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> <br></p>
+<p>赤玉５個，白玉４個を一直線に並べる場合の数を求めよ．ただし，左右をひっくり返したものは同じと考える．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>一直線に並べる場合の数は</p>
 <p><span class="math display">\[
@@ -429,14 +501,14 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-1" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> <br></p>
 <p>ある野球チームの9人の選手の打順を決める．投手と二塁手は，７番，８番，９番のどれかにするとしたとき，９人の打順の決め方は何通りあるか？</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -445,7 +517,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>投手と２塁手以外の順番は <span class="math inline">\(7!\)</span></li>
@@ -459,14 +531,14 @@ Solution
 </div>
 </div>
 </div>
-<div style="padding-left: 2em; padding-right: 2em; border-radius: 0em; border-style:solid; border-color:#00008B;">
+<div class="blog-custom-border">
 <div id="exr-" class="custom_problem theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> <br></p>
 <p>4つのサイコロの出る目のくみあわせを求めよ． 例: <span class="math inline">\((4, 1, 1, 1)\)</span> という組と <span class="math inline">\((1, 4, 1, 1)\)</span> 組は出ている目の組み合わせが同じなので 同一の組とみなす．</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -475,7 +547,7 @@ Solution - 組み合わせ
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>4つすべて同じ目の場合: <span class="math inline">\(6\text{通り}\)</span></li>
@@ -489,7 +561,7 @@ Solution - 組み合わせ
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -498,7 +570,7 @@ Solution - 重複組み合わせ
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>サイコロの枠 1, 2, 3, 4, 5, 6に対して区別されない４つのボールを重複を許してアサインする問題と考えることができるので</p>
 <p><span class="math display">\[
@@ -507,8 +579,629 @@ Solution - 重複組み合わせ
 </div>
 </div>
 </div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> <br></p>
+<p>サイコロを <span class="math inline">\(n\)</span> 回なげるとき，その結果である標本点を <span class="math inline">\((x_1, x_2, \cdots, x_n)\)</span> であらわす． この標本の個数を求めよ．</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>重複を許して <span class="math inline">\(\{1, 2, 3, 4, 5, 6\}\)</span> からn個選んで順列を作る問題とみなせるので <span class="math inline">\(2^n\text{通り}\)</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> <br></p>
+<p>サイコロを <span class="math inline">\(n\)</span> 回なげるとき，<span class="math inline">\(i \in \{1, 2, 3, 4, 5, 6\}\)</span> の目が <span class="math inline">\(r_i\)</span> 回出たとする．各面の出る確率が <span class="math inline">\(p_i\)</span> で表されるときの 確率関数 <span class="math inline">\(P( \mathbf{r})\)</span> を求めよ．ただし，</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{i=1}^6 p_i &amp;= 1\\
+\sum_{i=1}^6 r_i &amp;= n
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+P( \mathbf{r}) = \frac{n!}{r_1!r_2!r_3!r_4!r_5!r_6!}p_1^{r_1}p_2^{r_2}p_3^{r_3}p_4^{r_4}p_5^{r_5}p_6^{r_6}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.10</strong></span> <br></p>
+<p>10円硬貨６枚，100円硬貨４枚，500円硬貨２枚から全部，または一部（どれも使わないはなし）を使って支払える金額は何通りあるか？</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+7\times 5 \times 3 - 1 = 104
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.11</strong></span> <strong>支払金額の数と多項式</strong> <br></p>
+<p>10円硬貨６枚，100円硬貨６枚，500円硬貨２枚から全部，または一部（どれも使わないはなし）を使って支払える金額は何通りあるか？</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>この問題は</p>
+<p><span class="math display">\[
+\begin{align*}
+f(x)\equiv &amp;(1 + x^{10} + x^{20} + x^{30} + x^{40} + x^{50} + x^{60})\\
+&amp;\times (1 + x^{100} + x^{200} + x^{300} + x^{400} + x^{500} + x^{600})\\
+&amp;\times (1 + x^{500} + x^{1000})
+\end{align*}
+\]</span></p>
+<p>と式をおいたときに，<span class="math inline">\(x\)</span>の項の数と置き換えて考えることができます．従って，</p>
+<p><span class="math display">\[
+\begin{align*}
+f(x) =&amp; (1 + x^{10} + x^{20} + x^{30} + x^{40} + x^{50} + x^{60})\\
+      &amp;\times (1 + x^{100} + x^{200} + x^{300} + x^{400} + 2x^{500} + 2x^{600}\\
+      &amp; + x^{700} + x^{800} + x^{900} + 2x^{1000} + 2x^{1100} + x^{1200} + x^{1300} + x^{1400} + x^{1500} + x^{1600})
+\end{align*}
+\]</span></p>
+<p>従って，<span class="math inline">\(7 \times 15 - 1 = 84\text{通り}\)</span></p>
+<p><strong> ▶&nbsp; Rでの検算</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">500</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">coin1 =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">coin2 =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">coin3 =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a product join using expand.grid()</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>product_join_result <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(y)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the data frame to an array</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>product_join_array <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(product_join_result)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the matrix product</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> product_join_array <span class="sc">%*%</span> x</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(res))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 85</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> <br></p>
+<p>AABCCDEという７文字をすべて用いて並べるとき，以下の場合の数を求めよ</p>
+<ol type="1">
+<li>異なる順列の総数</li>
+<li>AAという並び方と，CCという並び方を，ともに含む順列の総数</li>
+<li>ACまたはCAという並び方を少なくとも１つ含む順列の総数</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; 1. 異なる順列の総数</strong></p>
+<p><span class="math display">\[
+\frac{7!}{2!2!} = 1260\text{通り}
+\]</span></p>
+<p><strong> ▶&nbsp; 2. AAという並び方と，CCという並び方を，ともに含む順列の総数</strong></p>
+<p><span class="math display">\[
+5! =  120\text{通り}
+\]</span></p>
+<p><strong> ▶&nbsp; 3. ACまたはCAという並び方を少なくとも１つ含む順列の総数</strong></p>
+<p>まずAABDEという文字列の並び方の総数は</p>
+<p><span class="math display">\[
+\frac{5!}{2!} = 60\text{通り}
+\]</span></p>
+<p>このうち，以下の場合分けができる</p>
+<ul>
+<li>A同士が隣り合う場合 → Cが入れる枠は ○BAAD○E○ の○の位置数なので３通り</li>
+<li>A同士が隣り合わない場合 → Cが入れる枠は ABAD○E○ の○の位置数なので2通り</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\text{A同士が隣り合う場合の数} &amp;= 4! = 24\\
+\text{A同士が隣り合わない場合の数} &amp;= 60 - 24 = 36
+\end{align*}
+\]</span></p>
+<p>更に，○の位置へのCの割り当て方は区別できないボールを区別できるツボへ空を許容して割り当てる問題と同一視できるので</p>
+<p><span class="math display">\[
+\begin{align*}
+\text{A同士が隣り合う場合のCの組み合わせ} &amp;= {}_3H_2 = 6\\
+\text{A同士が隣り合わない場合のCの組み合わせ} &amp;=  {}_2H_2 = 3
+\end{align*}
+\]</span></p>
+<p>従って，AとCが隣り合わない場合の数は</p>
+<p><span class="math display">\[
+6 \times 24 + 3 \times 36 = 252
+\]</span></p>
+<p>「ACまたはCAという並び方を少なくとも１つ含む順列の総数」は全事象から「AとCが隣り合わない場合の数」を引けば良いので</p>
+<p><span class="math display">\[
+1260 - 252 = 1008\text{通り}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="二項係数" class="level2">
+<h2 class="anchored" data-anchor-id="二項係数">二項係数</h2>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> <br></p>
+<p><span class="math display">\[
+\bigg(x^3 - \frac{3}{x}\bigg)^6
+\]</span></p>
+<p>の <span class="math inline">\(x^2\)</span> の係数を求めよ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(x^2\)</span> の係数は</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{6!}{p!q!} (-3)^q\  \ \text{s.t. }&amp; 3p - q = 2\\
+&amp; p + q = 6\\
+&amp; p \geq 0, q \geq 0
+\end{align*}
+\]</span></p>
+<p>上記の制約を満たす <span class="math inline">\((p, q) = (2, 4)\)</span> なので</p>
+<p><span class="math display">\[
+\frac{6!}{2!4!}(-3)^4 = 15 \times 81 = 1215
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> <strong>パスカルの三角形</strong> <br></p>
+<p>以下の等式を証明せよ</p>
+<p><span class="math display">\[
+{}_nC_r = {}_{n-1}C_{r} + {}_{n-1}C_{r-1}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+{}_{n-1}C_{r} + {}_{n-1}C_{r-1} &amp;= \frac{(n-1)!}{r!(n-1-r)!} + \frac{(n-1)!}{(r-1)!(n-r)!}\\
+                                &amp;= \frac{(n-1)!}{r!(n-r)!}((n-r) - r)\\
+                                &amp;= \frac{n!}{r!(n-r)!} = {}_nC_r
+\end{align*}
+\]</span></p>
+<div class="blog-custom-border">
+<p><strong>📘 REMARKS</strong> <br></p>
+<ul>
+<li>パスカルの三角形で「上の2つの数字の和が下と等しい」という性質を表している</li>
+<li>組み合わせの文脈では，n 個のものから r 個のものを選ぶ組み合わせの集合は，Aを除いたn-1個からr個選ぶ集合 + Aを用いて残りのn-1個から r-1個選ぶ集合の和集合と等しい</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> <br></p>
+<p>以下の等式を証明せよ</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\sum_{i=0}^n {}_nC_i = 2^n \tag{a}\\
+&amp;\sum_{i=0}^n (-1)^i{}_nC_i = 0 \tag{b}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong> ▶&nbsp; (a)</strong></p>
+<p><span class="math display">\[
+\begin{align*}
+(1 + 1)^n = \sum_{i=0}^n {}_nC_i = 2^n
+\end{align*}
+\]</span></p>
+<p><strong> ▶&nbsp; (b)</strong></p>
+<p><span class="math display">\[
+(1 - 1)^n = \sum_{i=0}^n (-1)^i{}_nC_i = 0
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> <br></p>
+<p>以下の等式を証明せよ</p>
+<p><span class="math display">\[
+{}_nC_1 + 2 {}_nC_2 + \cdots + r {}_nC_r + \cdots + n{}_nC_n = 2^{n-1}n
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+2^{n-1}n &amp;= (1 + 1)^{n-1}n\\
+         &amp;= n\sum_{i=0}^{n-1}{}_{n-1}C_i\\
+         &amp;=\sum_{i=0}^{n-1}\frac{n!}{i!(n-1-i)!}\\
+         &amp;=\sum_{i=0}^{n-1}\frac{n!}{i!(n-i)!}(n-i)\\
+         &amp;= \sum_{i=0}^{n}\frac{n!}{i!(n-i)!}(n-i)\\
+         &amp;= \sum_{j=0}^{n}\frac{n!}{j!(n-j)!}j\\
+         &amp;= {}_nC_1 + 2 {}_nC_2 + \cdots + r {}_nC_r + \cdots + n{}_nC_n
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 微分を用いた別解
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((1 + x)^n\)</span> を <span class="math inline">\(x\)</span> について微分して以下のような式を得ます</p>
+<p><span class="math display">\[
+\begin{align*}
+n(1 + x)^{n-1} = \sum_{i=1}^n {}_nC_{i} i x^{i-1}
+\end{align*}
+\]</span></p>
+<p>この式に対して <span class="math inline">\(x=0\)</span> を代入すると</p>
+<p><span class="math display">\[
+2^{n-1} n = \sum_{i=1}^n {}_nC_{i} i
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.17</strong></span> <br></p>
+<p>以下の等式を証明せよ</p>
+<p><span class="math display">\[
+{}_nC_0 + \frac{1}{2} {}_nC_1 + \cdots + \frac{1}{r+1} {}_nC_r + \cdots + \frac{1}{n+1}{}_nC_n = \frac{2^{n+1}-1}{n+1}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\frac{2^{n+1}-1}{n+1} &amp;= \frac{(1 + 1)^{n+1} - 1}{n + 1}\\
+                      &amp;= \frac{1}{n+1}\sum_{i=0}^{n+1}\frac{(n+1)!}{i!(n+1-i)!} - \frac{1}{n+1}\\
+                      &amp;= \sum_{i=0}^{n}\frac{n!}{i!(n+1-i)!} + \frac{1}{n+1} - \frac{1}{n+1}\\
+                      &amp;= \sum_{i=0}^{n}\frac{n!}{i!(n-i)!}\frac{1}{n-i + 1}\\
+                      &amp;= \sum_{j=0}^n \frac{n!}{j!(n-j)!}\frac{1}{j + 1}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution - 積分を用いた別解
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>厳密さは欠くが <span class="math inline">\((1 + x)^n\)</span> を積分すると</p>
+<p><span class="math display">\[
+\frac{1}{n+1}(1 + x)^{n+1} + C = \sum_{r=0}^n \frac{1}{r+1}x^{r+1} + \frac{1}{n+1} + C
+\]</span></p>
+<p>を得るので，ここに <span class="math inline">\(x=1\)</span> を代入すると</p>
+<p><span class="math display">\[
+\frac{2^{n+1} - 1}{n+1} = {}_nC_0 + \frac{1}{2} {}_nC_1 + \cdots + \frac{1}{r+1} {}_nC_r + \cdots + \frac{1}{n+1}{}_nC_n
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.18</strong></span> <br></p>
+<p><span class="math inline">\(k\leq \min(n,m)\)</span> としたとき，次の等式を証明せよ</p>
+<p><span class="math display">\[
+\sum_{i=0}^k {}_mC_i \cdot {}_nC_{k-i} = {}_{m+n}C_{k}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+(1+x)^{m+n} = (1 + x)^m(1 + x)^n
+\]</span></p>
+<p>の両辺について，それぞれ <span class="math inline">\(x^k\)</span> の係数 <span class="math inline">\(p_k\)</span> を計算すると，まずLHSベースだと</p>
+<p><span class="math display">\[
+p_k = {}_{m+n}C_{k}
+\]</span></p>
+<p>RHSベースで計算すると</p>
+<p><span class="math display">\[
+p_k = \sum_{i=0}^k {}_mC_i \cdot {}_nC_{k-i}
+\]</span></p>
+<p>従って，</p>
+<p><span class="math display">\[
+\sum_{i=0}^k {}_mC_i \cdot {}_nC_{k-i} = {}_{m+n}C_{k}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.19</strong></span> <br></p>
+<p>フェアなコインを２人が独立にｎ回ずつ投げるとき，表が同じ回数ずつ出る確率をもとめよ</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>プレーヤー <span class="math inline">\(i\in \{1, 2\}\)</span> が <span class="math inline">\(n\)</span> 回トライして表を出す回数を <span class="math inline">\(X_i\)</span> とすると，独立性より</p>
+<p><span class="math display">\[
+\Pr(X_1 = k, X_2 = k) = \Pr(X_1 = k)\Pr(X_2 = k)
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\Pr(X_i = k) = {}_nC_k \bigg(\frac{1}{2}\bigg)^n\\
+&amp;\Rightarrow \Pr(X_1 = k, X_2 = k) = {}_nC_k {}_nC_k \bigg(\frac{1}{2}\bigg)^{2n}
+\end{align*}
+\]</span></p>
+<p>表が同じ回数ずつ出る確率を求めたいので, <span class="math inline">\(\Pr(\text{n回トライしたとき表が同じ回数ずつ出る}) = p_n\)</span> とすると</p>
+<p><span class="math display">\[
+\begin{align*}
+p_n &amp;= \sum_{k=0}^n {}_nC_k {}_nC_k \bigg(\frac{1}{2}\bigg)^{2n}\\
+                             &amp;= \bigg(\frac{1}{2}\bigg)^{2n}\sum_{k=0}^n {}_nC_k {}_nC_k\\
+                             &amp;= \bigg(\frac{1}{2}\bigg)^{2n} \sum_{k=0}^n {}_nC_{k} {}_nC_{n-k}\\
+                             &amp;= \bigg(\frac{1}{2}\bigg)^{2n} {}_{2n}C_n
+\end{align*}
+\]</span></p>
+<div class="blog-custom-border">
+<p><strong>📘 REMARKS</strong> <br></p>
+<p><span class="math inline">\(\frac{1}{\sqrt{1 + x}}\)</span> をマクローリン展開すると</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{1}{\sqrt{1 + x}} &amp;= 1 + (-1)^1 \frac{1}{2}x + (-1)^2\frac{1}{2}\frac{3}{2}\frac{1}{2!}x^2 + (-1)^3\frac{1}{2}\frac{3}{2}\frac{5}{2}\frac{1}{3!}x^3 + \cdots\\
+                       &amp;= 1 + \sum_{k=1}^\infty (-1)^k\frac{2k!}{2^k 2^k k! k!}x^k\\
+                       &amp;= 1 + \sum_{k=1}^\infty (-1)^k\frac{{}_{2k}C_k}{2^{2k}}x^k\\
+\end{align*}
+\]</span></p>
+<p>と 数列 <span class="math inline">\(\{p_n\}\)</span> の情報を持っていることがわかる．このとき，<span class="math inline">\(\frac{1}{\sqrt{1 + x}}\)</span> を <span class="math inline">\(\{p_n\}\)</span> の確率母関数という．</p>
+</div>
+</div>
+</div>
+</div>
+<section id="一般二項係数" class="level3">
+<h3 class="anchored" data-anchor-id="一般二項係数">一般二項係数</h3>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.20</strong></span> <br></p>
+<p>実数 <span class="math inline">\(\alpha\)</span>, 正の整数 <span class="math inline">\(n\)</span> に対して，次の等式を証明せよ</p>
+<p><span class="math display">\[
+\dbinom{-\alpha}{r} = (-1)^r\dbinom{\alpha + r - 1}{r}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{LHS} &amp;= \frac{(-\alpha)(-\alpha-1)\cdots(-\alpha-(r-1))}{r!}\\
+           &amp;= (-1)^r\frac{(\alpha)(\alpha+1)\cdots(\alpha+r-1)}{r!}\\
+           &amp;= (-1)^r\dbinom{\alpha + r - 1}{r}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.21</strong></span> <br></p>
+<p>実数 <span class="math inline">\(\alpha\)</span>, 正の整数 <span class="math inline">\(n\)</span> に対して，次の等式を証明せよ</p>
+<p><span class="math display">\[
+\dbinom{1/2}{n} = \frac{(-1)^{n-1}}{2^{2n-1}n}\dbinom{2n-2}{n-1}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{LHS} &amp;= \frac{(\frac{1}{2})(\frac{1}{2}-1)\cdots(\frac{1}{2}-(n-1))}{n!}\\[6pt]
+           &amp;= (-1)^{n-1}\frac{\frac{1}{2}\frac{1}{2}\frac{3}{2}\cdots \frac{2n-3}{2}}{n!}\\[6pt]
+           &amp;= (-1)^{n-1}\frac{(2n-2)!}{2^n 2^{n-1}(n-1)!n!}\\[6pt]
+           &amp;= (-1)^{n-1}\frac{(2n-2)!}{2^{2n-1}n(n-1)!(n-1)!}\\[6pt]
+           &amp;= \frac{(-1)^{n-1}}{2^{2n-1}n}\dbinom{2n-2}{n-1}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="blog-custom-border">
+<div id="exr-" class="custom_problem theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.22</strong></span> <br></p>
+<p>実数 <span class="math inline">\(\alpha\)</span>, 正の整数 <span class="math inline">\(n\)</span> に対して，次の等式を証明せよ</p>
+<p><span class="math display">\[
+\dbinom{-1/2}{n} = \frac{(-1)^{n}}{2^{2n}n}\dbinom{2n}{n}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{LHS} &amp;= \frac{(-\frac{1}{2})(-\frac{1}{2}-1)\cdots(-\frac{1}{2}-(n-1))}{n!}\\[6pt]
+           &amp;= (-1)^{n}\frac{\frac{1}{2}\frac{3}{2}\cdots \frac{2n-1}{2}}{n!}\\[6pt]
+           &amp;= (-1)^{n-1}\frac{(2n)!}{2^n 2^{n}n!n!}\\[6pt]
+           &amp;= \frac{(-1)^{n}}{2^{2n}n}\dbinom{2n}{n}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1093,8 +1786,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/statistics101/basic_probabilistic_model.html" class="pagination-link" aria-label="確率モデル - 基礎編">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">確率モデル - 基礎編</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
